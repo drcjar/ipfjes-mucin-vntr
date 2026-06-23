@@ -216,7 +216,7 @@ Seibold MA, et al. A common MUC5B promoter polymorphism and pulmonary fibrosis. 
 
 **Abstract word count:** 250 words (structured, within the 250-word limit)
 
-*Analysis code, the exact genotype-handling commands (`code/REPRODUCE.md`), and three independent numerical-verification scripts are available at [GitHub repository URL]. Individual-level participant data are held under IPFJES governance arrangements and are available to qualified researchers upon application to the corresponding author and completion of a data access agreement.*
+*Analysis code, the exact genotype-handling commands (`code/REPRODUCE.md`), and three independent numerical-verification scripts are available at https://github.com/drcjar/ipfjes-mucin-vntr. Individual-level participant data are held under IPFJES governance arrangements and are available to qualified researchers upon application to the corresponding author and completion of a data access agreement.*
 
 ---
 
