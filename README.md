@@ -11,7 +11,8 @@ composition-defined) VNTR haplogroups associate with IPF independently of the *M
 promoter variant rs35705950, in the IPFJES occupational case–control cohort.
 
 - 📄 Manuscript source: [`MUC5_VNTR_haplogroup_paper_draft.md`](MUC5_VNTR_haplogroup_paper_draft.md)
-- 🔬 Technical methods (full code listing): [`MUC5_VNTR_technical_methods.md`](MUC5_VNTR_technical_methods.md)
+- 🔬 Exact genotype-handling commands: [`code/REPRODUCE.md`](code/REPRODUCE.md)
+- 🧪 Code/data inventory and run instructions: [`code/README.md`](code/README.md)
 - 🧪 Preprint: _(medRxiv DOI to be added)_
 
 ## Data availability
