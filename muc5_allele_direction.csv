@@ -1,0 +1,18 @@
+rsID,column,counted_allele,freq,haplogroup,direction,evidence
+rs28542750,chr11:1165501:T:A_T,T,0.769,MUC5AC H3 concordance,counted T = NON-H3; H3 count = 2 - dosage,Table S4 H3 r2=1.0
+rs769768817,chr11:1195214:G:C_C,C,0.573,MUC5AC H1 concordance,counted C = H1 allele,Table S4 H1 r2=0.899
+rs2075842,chr11:1193830:G:C_G,G,0.579,MUC5AC H1,counted G = H1 allele,Table S4 H1 r2=0.923; freq~H1
+rs1132433,chr11:1194354:A:G_A,A,0.579,MUC5AC H1,counted A = H1 allele,Table S4 H1 r2=0.923; S6 Risk=A
+rs1132434,chr11:1195265:G:C_C,C,0.578,MUC5AC H1,counted C = H1 allele,Table S4 H1 r2=0.923; S6 Risk=C
+rs28652890,chr11:1195858:T:C_T,T,0.58,MUC5AC H1,counted T = H1 allele,Table S4 H1 r2=0.923; freq~H1
+rs879136008,chr11:1182048:A:T_T,T,0.579,MUC5AC H1,counted T = H1 allele,Table S4 H1 r2=0.923; freq~H1
+rs28519516,chr11:1202343:T:C_C,C,0.808,MUC5AC H2,complement T (freq=0.192) likely H2-enriched; complex LD with H1 (r2=0.633),Table S4 H2 r2=0.862
+rs28558973,chr11:1202859:A:G_G,G,0.809,MUC5AC H2,complement A (freq=0.191) likely H2-enriched; complex LD with H1 (r2=0.633),Table S4 H2 r2=0.862
+rs28368633,chr11:1202914:T:C_C,C,0.808,MUC5AC H2,complement T (freq=0.192) likely H2-enriched; complex LD with H1 (r2=0.633),Table S4 H2 r2=0.862
+rs36154966,chr11:1178216:C:G_C,C,0.774,MUC5AC H3,counted C = NON-H3; H3 count = 2 - dosage,Table S4 H3 r2=1.0; freq~non-H3
+rs1004828576,chr11:1178023:A:G_A,A,0.769,MUC5AC H3,counted A = NON-H3; H3 count = 2 - dosage,Table S4 H3 r2=1.0
+rs940158763,chr11:1177688:A:T_A,A,0.769,MUC5AC H3,counted A = NON-H3; H3 count = 2 - dosage,Table S4 H3 r2=1.0
+rs36151150,chr11:1177356:T:C_T,T,0.769,MUC5AC H3,counted T = NON-H3; H3 count = 2 - dosage,Table S4 H3 r2=1.0
+rs36132281,chr11:1177269:T:C_T,T,0.769,MUC5AC H3,counted T = NON-H3; H3 count = 2 - dosage,Table S4 H3 r2=1.0; S6 Risk=C
+rs35779873,chr11:1197482:C:T_C,C,0.771,MUC5AC H3,counted C = NON-H3; H3 count = 2 - dosage,Table S4 H3 r2=0.805; S6 Risk=T
+rs35705950,chr11:1219991:G:T_G,G,0.849,MUC5B promoter,counted G = non-risk ref; T risk allele count = 2 - dosage,"Known biology; G=ref, T=IPF risk"

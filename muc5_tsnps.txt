@@ -1,0 +1,23 @@
+# MUC5AC high-confidence concordance tSNPs (used to validate Locityper)
+rs28542750
+rs769768817
+# MUC5AC H1 tag set
+rs2075842
+rs1132433
+rs1132434
+rs28652890
+rs879136008
+# MUC5AC H2 tag set
+rs1015856541
+rs28519516
+rs28558973
+rs28368633
+# MUC5AC H3 tag set
+rs36154966
+rs1004828576
+rs940158763
+rs36151150
+rs36132281
+rs35779873
+# MUC5B promoter (already genotyped) + the H1/H2 distinguishing tSNP
+rs35705950

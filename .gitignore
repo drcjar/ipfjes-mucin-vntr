@@ -1,0 +1,65 @@
+# Large binary genotype filesets — never commit
+*.bed
+*.bim.gz
+chr*.bim
+chr*.fam
+ipfjes_cases_and_controls.bed
+ipfjes_cases_and_controls.bim
+ipfjes_cases_and_controls.fam
+
+# PLINK binaries and source zips
+plink
+plink2
+prettify
+*.zip
+
+# Per-chromosome imputed data (large)
+chr11_imputed*
+controls_imputed.txt
+
+# Individual-level participant data (IPFJES governance) — never commit / never publish
+flat_data_genotype_subset.csv
+muc5_haplogroups.csv
+*.eigenvec
+
+# Copyrighted third-party publications / supplements — do not redistribute publicly
+papers/*.pdf
+Plender2024.pdf
+Reynolds2023.pdf
+Seibold2011.pdf
+mmc2.xlsx
+
+# Large intermediate files
+muc5_tsnps_dosage.raw
+muc5b_h1h2_tsnp.raw
+muc5_tsnps_dosage_pheno.csv
+
+# Single-variant PED extractions (binary equivalent on array)
+muc5b.ped
+muc5b.map
+muc5b.nosex
+Q705K.ped
+Q705K.map
+Q705K.nosex
+card8.ped
+card8.map
+card8.nosex
+chrna5.ped
+chrna5.map
+chrna5.nosex
+
+# PCA intermediate files
+pruned_for_pca.prune.in
+pruned_for_pca.prune.out
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# venv
+.venv/
+
+# Personal working notes / correspondence drafts — not for the repo
+pre_send_notes.md
+
+# Claude memory
+.claude/
