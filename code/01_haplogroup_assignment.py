@@ -106,8 +106,6 @@ print(f"\nMUC5B H1/H2 tSNP column: {muc5b_col}")
 print(f"Counted allele freq (IPFJES): {muc5b[muc5b_col].mean()/2:.3f}")
 
 # Merge into main df
-fam = pd.read_csv('/home/drcjar/ipfjes-omics/ipfjes_cases_and_controls.fam', sep=r'\s+',
-                  header=None, names=['FID','IID','PAT','MAT','SEX','PHENOTYPE'])
 df['IID_bare'] = df['IID'].str.split('_').str[0].astype(int)
 df = df.merge(muc5b[['IID_bare', muc5b_col]], on='IID_bare', how='left')
 # Per brief: H2 r²=1 at 1244757 — identify which allele based on freq vs Plender (H2~82%)

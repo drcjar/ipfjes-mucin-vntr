@@ -41,10 +41,9 @@ df['H2t'] = df[_h2c] if _f < 0.5 else 2 - df[_h2c]
 # Centre 16 has no controls (31/31 cases) — exclude from regression models only
 dm = df[df['centre'] != 16].copy()
 
-cases   = df[df['case']==1]
-controls= df[df['case']==0]
-print(f"Descriptive N={len(df)}, cases={len(cases)}, controls={len(controls)}")
-print(f"Regression N={len(dm)}, cases={int(dm.case.sum())}, controls={int((dm.case==0).sum())}")
+cases   = dm[dm['case']==1]        # Table 1 is the N=798 analytical sample (centre 16 excluded)
+controls= dm[dm['case']==0]
+print(f"Merged N={len(df)} -> analytical N={len(dm)} (centre 16 excluded); cases={len(cases)}, controls={len(controls)}")
 
 # TABLE 1 (N=798)
 age_p = stats.mannwhitneyu(cases['age'], controls['age'], alternative='two-sided').pvalue
@@ -77,11 +76,11 @@ print(f"T-carrier: {rs_c}({100*rs_c/len(cases):.1f}%) vs {rs_ct}({100*rs_ct/len(
 print(f"TT: {tt_c}({100*tt_c/len(cases):.1f}%) vs {tt_ct}({100*tt_ct/len(controls):.1f}%) p={tt_p:.2e}")
 
 # LD (N=798)
-r_h3,p_h3 = stats.pearsonr(df['H3_count'], df['rs35705950_T_count'])
-h3c = (df['H3_count']>0)
-h3T = int((df.loc[h3c,'rs35705950_T_count']>0).sum())
-r_h1  = np.corrcoef(df['H1_count'], df['rs35705950_T_count'])[0,1]
-r_mh1 = np.corrcoef(df['MUC5B_H1_count'], df['rs35705950_T_count'])[0,1]
+r_h3,p_h3 = stats.pearsonr(dm['H3_count'], dm['rs35705950_T_count'])
+h3c = (dm['H3_count']>0)
+h3T = int((dm.loc[h3c,'rs35705950_T_count']>0).sum())
+r_h1  = np.corrcoef(dm['H1_count'], dm['rs35705950_T_count'])[0,1]
+r_mh1 = np.corrcoef(dm['MUC5B_H1_count'], dm['rs35705950_T_count'])[0,1]
 print(f"r(H3,rs35705950)={r_h3:.3f} p={p_h3:.2e}; H3 with T: {h3T}/{h3c.sum()}={100*h3T/h3c.sum():.1f}%")
 print(f"r(H1,rs35705950)={r_h1:.3f}; r(MUC5B_H1,rs35705950)={r_mh1:.3f}")
 
@@ -117,28 +116,8 @@ mrs = fit(f'case~rs35705950_T_count+{covs}')
 o,l,h,p = fmt(mrs,'rs35705950_T_count')
 print(f"rs35705950 alone: OR {o:.2f}({l:.2f}-{h:.2f}) p={p:.2e}")
 
-# INTERACTIONS + RERI
-def reri_delta(m, ht, et, it):
-    b = m.params; V = m.cov_params()
-    lor11 = b[ht]+b[et]+b.get(it,0)
-    lor10  = b[ht]; lor01 = b[et]
-    reri = np.exp(lor11)-np.exp(lor10)-np.exp(lor01)+1
-    g = np.zeros(len(b)); idx = {n:i for i,n in enumerate(b.index)}
-    if ht in idx: g[idx[ht]] = np.exp(lor11)-np.exp(lor10)
-    if et in idx: g[idx[et]] = np.exp(lor11)-np.exp(lor01)
-    if it in idx: g[idx[it]] = np.exp(lor11)
-    se = np.sqrt(g @ V.values @ g)
-    p  = 2*(1-stats.norm.cdf(abs(reri/se)))
-    return reri, se, p
-
-for hc,ec,hl,el in [('H3_count','peto_exposed','H3','Asbestos'),
-                     ('H3_count','ever_smoked','H3','Smoking'),
-                     ('MUC5B_H1_count','peto_exposed','MUC5B_H1','Asbestos'),
-                     ('MUC5B_H1_count','ever_smoked','MUC5B_H1','Smoking')]:
-    it = f'{hc}:{ec}'
-    mi = fit(f'case~{hc}+{ec}+{hc}:{ec}+{covs}')
-    o,l,h,p = fmt(mi,it)
-    reri,se,pr = reri_delta(mi,hc,ec,it)
-    print(f"{hl}x{el}: intOR {o:.2f}({l:.2f}-{h:.2f}) p={p:.2f} | RERI {reri:+.3f}({reri-1.96*se:.3f} to {reri+1.96*se:.3f}) p={pr:.2f}")
-
+# Gene x environment interactions / RERI are reported in Supplementary Table S4, computed in
+# 16_ancestry_and_promoter_gxe.py (risk-oriented, carrier-coded per Knol & VanderWeele) and
+# cross-checked in 03_supplementary_analyses.py. Not duplicated here: the earlier additive
+# 0/1/2-count RERI parameterisation was superseded by the carrier-level one.
 print("DONE")

@@ -211,7 +211,5 @@ print(f"    NEW (MUC2 / MUC5B / intergenic / other MUC5AC): {len(new)}")
 if len(new):
     print(new[["gene", "pos", "delta_bp", "or_marg", "p_marg", "or_adj", "p_adj"]].to_string(index=False))
 
-R.sort_values("p_marg").to_csv(
-    "/tmp/claude-1000/-home-drcjar-ipfjes-omics/3a59b030-84d1-425d-82c5-150b7cee977a/scratchpad/mucin_cluster_scan.csv",
-    index=False)
+R.sort_values("p_marg").to_csv(f"{ROOT}/mucin_cluster_scan.csv", index=False)
 print("\nDONE")

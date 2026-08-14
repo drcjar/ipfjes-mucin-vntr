@@ -77,7 +77,7 @@ def orci(m, t):
 
 # %%
 print(f"N={len(d)} (cases={int(d.case.sum())}, controls={int((d.case == 0).sum())})\n")
-print("MUC5AC H2 (direct tag rs28519516) under progressive conditioning on Kousathanas 2025")
+print("MUC5AC H2 (direct tag rs879201833) under progressive conditioning on Kousathanas 2025")
 print("independent 11p15.5 signals:\n")
 for lab, adj in [("+ rs35705950 only",               "rs35705950_T_count"),
                  ("+ rs35705950 + MUC5B signals",     "rs35705950_T_count+" + "+".join(MUC5B)),

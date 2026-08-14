@@ -242,7 +242,7 @@ def interaction_power_sim(n_cases, n_controls, p_hap, p_exp,
     rejected = 0
     for _ in range(n_sim):
         n = n_cases + n_controls
-        hap = rng.binomial(1, p_hap, n)
+        hap = rng.binomial(2, p_hap, n)   # additive 0/1/2 dosage under HWE (p_hap = allele freq), matching the primary coding
         exp = rng.binomial(1, p_exp, n)
         lo  = (np.log(or_hap)*hap + np.log(or_exp)*exp + np.log(or_int)*hap*exp)
         prob= 1/(1+np.exp(-lo))
