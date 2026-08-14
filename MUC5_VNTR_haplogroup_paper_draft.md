@@ -290,22 +290,28 @@ Freq = frequency of the counted (effect) allele in the IPFJES controls (n=401), 
 
 **Supplementary Table S3. *MUC5AC* H2 association across tagging measures**
 
-| H2 measure | Plender H2 r² | Control freq | r with complement | Unadjusted OR (95% CI) | + rs35705950 OR (95% CI) | p |
-|------------|:--:|:--:|:--:|:--:|:--:|:--:|
+\scriptsize
+
+| H2 measure | Plender r² | Ctrl freq | r (compl.) | Unadjusted OR (95% CI) | +rs35705950 OR (95% CI) | p |
+|--------------|:---:|:---:|:----:|----------|----------|:-:|
 | rs879201833 (primary) | 0.888 | 0.237 | 0.973 | 0.56 (0.42–0.75) | 0.66 (0.49–0.89) | 0.006 |
 | rs28519516 | 0.862 | 0.241 | 0.963 | 0.54 (0.40–0.72) | 0.64 (0.47–0.86) | 0.003 |
 | rs28558973 | 0.862 | 0.241 | 0.963 | 0.54 (0.40–0.72) | 0.64 (0.47–0.86) | 0.003 |
 | rs28368633 | 0.862 | 0.241 | 0.963 | 0.54 (0.40–0.72) | 0.64 (0.47–0.86) | 0.003 |
 | Diplotype complement (2 − H1 − H3) | n/a | 0.237 | 1.000 | 0.62 (0.47–0.81) | 0.71 (0.53–0.95) | 0.020 |
 
-The primary H2 measure is the direct tag rs879201833 (r²=0.888). The three r²=0.862 panel tags are in complete mutual linkage disequilibrium (r=1.000) and give identical rows; the diplotype complement (2 − H1 − H3) is shown as a cross-check. All measures agree in direction and magnitude (adjusted OR 0.64–0.71), so the H2 residual is not an artefact of how H2 is assigned; the tags and the complement have comparable tagging quality (r²≈0.86–0.90), and the small differences between them should not be over-read. All models are the *MUC5AC* joint model (H2 and H3 entered together, H1 reference), adjusted for age, ever-smoking, PC1–5 and recruitment centre (N=798). Computed by `code/11_h2_direct_and_lrt.py`.
+\normalsize
+
+Ctrl freq = control-allele frequency; r (compl.) = correlation with the diplotype complement. The primary H2 measure is the direct tag rs879201833 (r²=0.888). The three r²=0.862 panel tags are in complete mutual linkage disequilibrium (r=1.000) and give identical rows; the diplotype complement (2 − H1 − H3) is shown as a cross-check. All measures agree in direction and magnitude (adjusted OR 0.64–0.71), so the H2 residual is not an artefact of how H2 is assigned; the tags and the complement have comparable tagging quality (r²≈0.86–0.90), and the small differences between them should not be over-read. All models are the *MUC5AC* joint model (H2 and H3 entered together, H1 reference), adjusted for age, ever-smoking, PC1–5 and recruitment centre (N=798). Computed by `code/11_h2_direct_and_lrt.py`.
 
 ---
 
 **Supplementary Table S4. Gene×environment interaction analyses (exploratory)**
 
-| Genetic factor (risk-increasing direction) | Exposure | Multiplicative OR (95% CI) | p | RERI (95% CI) |
-|------------|----------|---------------------------|:-:|---------------|
+\scriptsize
+
+| Genetic factor | Exposure | Mult. OR (95% CI) | p | RERI (95% CI) |
+|-------------|---------|-----------|:-:|--------------|
 | MUC5AC H3 carrier | Asbestos (Peto) | 0.64 (0.34–1.21) | 0.17 | −0.69 (−2.04 to +0.65) |
 | MUC5AC H3 carrier | Ever-smoked | 1.19 (0.60–2.34) | 0.62 | +0.71 (−0.41 to +1.84) |
 | MUC5AC H2 non-carrier | Asbestos (Peto) | 0.96 (0.49–1.89) | 0.91 | +0.09 (−0.96 to +1.13) |
@@ -315,20 +321,26 @@ The primary H2 measure is the direct tag rs879201833 (r²=0.888). The three r²=
 | rs35705950 T carrier | Asbestos (Peto) | 0.85 (0.44–1.66) | 0.64 | −0.04 (−2.70 to +2.63) |
 | rs35705950 T carrier | Ever-smoked | 1.73 (0.84–3.58) | 0.14 | +2.78 (+0.37 to +5.19) |
 
+\normalsize
+
 Each genetic factor and each exposure is entered as a binary indicator oriented to its risk-increasing direction, as additive-scale interaction (the relative excess risk due to interaction, RERI) requires (Knol and VanderWeele, 2012); for the protective MUC5AC H2 and MUC5B H1 haplogroups the risk-increasing indicator is non-carriage, so the RERI is not distorted by entering a protective factor against a harmful one. RERI confidence intervals are by the delta method. Models adjust for age, ever-smoking, PC1–5 and recruitment centre (N=798); the smoking models omit the duplicate ever-smoking covariate. Post-hoc power figures are not reported; the confidence intervals convey the precision. Every multiplicative-scale interaction is null. On the additive scale, the only RERIs whose confidence interval excludes zero are the two ever-smoking rows for the risk-increasing background, rs35705950 × ever-smoking (+2.78) and non-carriage of MUC5AC H2 × ever-smoking (+1.03); these are two nominal results among many underpowered contrasts and should not be over-interpreted. Computed by `code/16_ancestry_and_promoter_gxe.py`.
 
 ---
 
 **Supplementary Table S5. Imputed *MUC5AC* exon-31 repeat length versus IPF**
 
-| Length measure | Imputation r² | Correlation with H3 | Unadjusted OR (95% CI) | + rs35705950 OR (95% CI) |
-|----------------|:-:|:-:|------------------------|--------------------------|
+\scriptsize
+
+| Length measure | Imp. r² | r (H3) | Unadj. OR (95% CI) | +rs35705950 OR (95% CI) |
+|--------------|:--:|:--:|--------------|-------------|
 | 751 bp exon-31 insertion (chr11:1,188,533) | 0.98 | r=0.98 | 1.67 (1.29–2.15); p=8×10⁻⁵ | 1.13 (0.85–1.49); p=0.40 |
 | MUC5AC H3 clade tag (for comparison) | n/a | n/a | 1.69 (1.32–2.17); p=4×10⁻⁵ | 1.17 (0.89–1.54); p=0.27 |
 | Composite exon-31 length, per +1 kb | n/a | r=0.92 | 1.46 (1.12–1.90); p=0.006 | 0.99 (0.73–1.32); p=0.92 |
 | Composite exon-31 length, per +1 repeat (24 bp) | n/a | r=0.92 | 1.009 (1.003–1.016); p=0.006 | 1.000 (0.993–1.007); p=0.92 |
 
-Repeat lengths were imputed into the 798 analytical participants from the Bai et al. (2026) long-read VNTR reference panel using the ImputeSV server (BCFtools QC → SHAPEIT5 v5.0.1 phasing → Minimac4 v4.1.6); the 751 bp allele is the exon-31 length variant that tracks the H3 clade in long-read assemblies. Imputation r² is the server's estimate. The composite is total inserted exon-31 sequence per participant relative to GRCh38, summed across imputed alleles (r²≥0.30); results are unchanged if built from the two common well-imputed alleles alone (r=0.96 between definitions). Adding H3 to a model containing the imputed length, or vice versa, does not improve fit (likelihood-ratio p=0.24 and 0.76): the imputed length and the clade tag are the same information. The imputed length therefore behaves as the H3 tag does, associated unadjusted and abolished by rs35705950, consistent with the paper's argument that an SNP-imputed length inherits the tags' linkage disequilibrium and cannot isolate the repeat. Models adjust for age, ever-smoking, PC1–5 and recruitment centre. Computed by `code/12_imputed_vntr_length.py`; submission and provenance in `code/REPRODUCE.md` (step 6).
+\normalsize
+
+Imp. r² = imputation r²; r (H3) = correlation with imputed H3 count. Repeat lengths were imputed into the 798 analytical participants from the Bai et al. (2026) long-read VNTR reference panel using the ImputeSV server (BCFtools QC → SHAPEIT5 v5.0.1 phasing → Minimac4 v4.1.6); the 751 bp allele is the exon-31 length variant that tracks the H3 clade in long-read assemblies. Imputation r² is the server's estimate. The composite is total inserted exon-31 sequence per participant relative to GRCh38, summed across imputed alleles (r²≥0.30); results are unchanged if built from the two common well-imputed alleles alone (r=0.96 between definitions). Adding H3 to a model containing the imputed length, or vice versa, does not improve fit (likelihood-ratio p=0.24 and 0.76): the imputed length and the clade tag are the same information. The imputed length therefore behaves as the H3 tag does, associated unadjusted and abolished by rs35705950, consistent with the paper's argument that an SNP-imputed length inherits the tags' linkage disequilibrium and cannot isolate the repeat. Models adjust for age, ever-smoking, PC1–5 and recruitment centre. Computed by `code/12_imputed_vntr_length.py`; submission and provenance in `code/REPRODUCE.md` (step 6).
 
 ---
 
