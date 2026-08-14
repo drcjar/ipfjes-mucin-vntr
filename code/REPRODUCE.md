@@ -192,24 +192,8 @@ gitignored):
 
 ## External figures cited in the Discussion
 
-Two sets of figures in the Discussion are not computed from IPFJES data and so cannot be
-reproduced by `verify_numbers.py`. They are recorded here instead.
-
-### Guo et al. 2011 (measured MUC5AC VNTR length in cystic fibrosis)
-
-Quoted from the paper itself, not from summary statistics; the PDF is at `papers/Guo2011.pdf`
-(PLoS One 6(10):e25452, open access, `doi:10.1371/journal.pone.0025452`). The three figures used:
-
-- **OR 2.5** for one or two copies of the 6.4 kbp allele vs severe CF lung disease, and the
-  **~7.7% FEV₁ (% predicted)** difference (≈275 mL) — Discussion, final paragraph before
-  "Functional variants in mucin genes…" (n=290 non-carriers vs 178 carriers).
-- **p=6.2×10⁻⁴** — Bonferroni-corrected across the 8 tests in their Table 2 footnote
-  (nominal p=1.4×10⁻⁵); N=468 patients (194 severe, 274 mild).
-- The tagging failure — Results, closing sentence: "even though the 6.4 kb allele can be
-  distinguished from other VNTR alleles […], the SNPs thus far tested do not clearly tag the
-  6.4 kb severity-associated variant (Table S4)", and Discussion: "None of the tested SNPs were
-  able to strongly tag the causal allele, and we were unable to define any SNP haplotypes that
-  show the same phenotypic association as the 6.4 kb allele."
+One set of figures in the Discussion is not computed from IPFJES data and so cannot be
+reproduced by `verify_numbers.py`. It is recorded here instead.
 
 ### Bai et al. 2026 (imputed VNTR repeat number in UK Biobank)
 
