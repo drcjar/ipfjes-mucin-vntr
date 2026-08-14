@@ -65,11 +65,11 @@ def row(rsid, col, hap, r2):
     ambiguous = "Y" if {ref, alt} in ({"C", "G"}, {"A", "T"}) else ""
     return f"| {rsid} | chr11:{pos} | {ref}/{alt} | {counted} | {freq:.3f} | {maf:.3f} | {ambiguous} | {hap} | {r2} |"
 
-print("| tSNP | Position (GRCh38) | Alleles | Counted | Freq | MAF | Palindromic | Tags | Plender r² |")
-print("|------|-------------------|:--:|:--:|:--:|:--:|:--:|------|:--:|")
+print("| tSNP | Position | Alleles | Counted | Freq | MAF | Palin. | Tags | Plender r² |")
+print("|------------|---------|:--:|:--:|:--:|:--:|:-:|-----------|:--:|")
 for _, r in ad.iterrows():
-    hap = "*MUC5B* promoter" if r["haplogroup"] == "MUC5B promoter" else r["haplogroup"]
+    hap = "*MUC5B* promoter" if r["haplogroup"] == "MUC5B promoter" else r["haplogroup"].replace(" concordance", " conc.")
     # trailing zeros stripped but at least one decimal kept: 1.000 -> "1.0", 0.899 -> "0.899"
     r2 = "n/a" if pd.isna(r["source_r2"]) else f'{r["source_r2"]:.3f}'.rstrip("0").ljust(3, "0")
     print(row(r["rsID"], r["column"], hap, r2))
-print(row("MUC5B discriminator", "chr11:1244757:C:G_C", "MUC5B H2 (H1=complement)", "1.0"))
+print(row("MUC5B discriminator", "chr11:1244757:C:G_C", "MUC5B H2", "1.0"))

@@ -153,7 +153,7 @@ chk_num("Table 1", "Asbestos cases %", 67.0, 100*ab_c/len(cases), dp=1)
 chk_num("Table 1", "Asbestos controls %", 63.1, 100*ab_ct/len(controls), dp=1)
 chk_int("Table 1", "Asbestos-exposed total n (Methods)", 519, int(dm.peto_exposed.sum()))
 
-for col, lab, mc, mct in [("H1_count","MUC5AC H1",316,327), ("H2_count","MUC5AC H2",106,167),
+for col, lab, mc, mct in [("H1_count","MUC5AC H1",316,327), ("H2t","MUC5AC H2",103,168),
                           ("H3_count","MUC5AC H3",207,141), ("MUC5B_H1_count","MUC5B H1",81,109)]:
     chk_int("Table 1", f"{lab} carrier cases n", mc, int((cases[col] > 0).sum()))
     chk_int("Table 1", f"{lab} carrier controls n", mct, int((controls[col] > 0).sum()))
@@ -177,7 +177,7 @@ chk_p("Table 1", "rs35705950 T-carrier p", 9.4e-25, rs_p)
 # Quoted approximately in the Results, computed in the 401 IPFJES controls —
 # compare with a ~1 percentage-point tolerance.
 chk_tol("Freqs", "MUC5AC H1 freq % (controls)", 57, 100*controls.H1_count.mean()/2, tol=1.0)
-chk_tol("Freqs", "MUC5AC H2 freq % (controls)", 24, 100*controls.H2_count.mean()/2, tol=1.0)
+chk_tol("Freqs", "MUC5AC H2 freq % (controls)", 24, 100*controls.H2t.mean()/2, tol=1.0)
 chk_tol("Freqs", "MUC5AC H3 freq % (controls)", 20, 100*controls.H3_count.mean()/2, tol=1.0)
 chk_tol("Freqs", "MUC5B H2 freq % (controls)", 85, 100*controls.MUC5B_H2_count.mean()/2, tol=1.0)
 chk_tol("Freqs", "MUC5B H1 freq % (controls)", 15, 100*controls.MUC5B_H1_count.mean()/2, tol=1.0)

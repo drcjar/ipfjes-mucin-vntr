@@ -236,8 +236,8 @@ First, `00_build_dosage_pheno.py` assembles `muc5_tsnps_dosage_pheno.csv` from t
 `muc5_tsnps_dosage.raw` and the case/control phenotype in `ipfjes_cases_and_controls.fam` (the
 `chr11` fileset is unphenotyped, so its PHENOTYPE column is all -9). Then the `.raw` / `.eigenvec`
 outputs feed the analysis scripts; run them in order per `README.md`
-(`00_build_dosage_pheno.py` → `09_firth_sensitivity.py`), then the verification layers
-(`verify_numbers.py`, `07_foundational_audit.py`, `08_consistency_checks.py`). Clinical covariates come from `flat_data_genotype_subset.csv` (provenance in `README.md`).
+(`00_build_dosage_pheno.py` onward), then the verification layers
+(`verify_numbers.py`, `07_foundational_audit.py`, `08_consistency_checks.py`, `10_provenance_audit.py`). Clinical covariates come from `flat_data_genotype_subset.csv` (provenance in `README.md`).
 
 > The `.raw`, `.ped`, and `.eigenvec` products are individual-level and are **gitignored** (IPFJES
 > governance); the commands above regenerate them from the source filesets.

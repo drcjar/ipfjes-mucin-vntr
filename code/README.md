@@ -11,7 +11,6 @@ uv run --python .venv python3 code/00_build_dosage_pheno.py      # .raw + .fam p
 uv run --python .venv python3 code/01_haplogroup_assignment.py   # tSNP dosages -> haplogroup calls
 uv run --python .venv python3 code/02_primary_analysis.py        # Table 1, Table 2, LD, interactions
 uv run --python .venv python3 code/03_supplementary_analyses.py  # Tables S1/S2, HWE, bootstrap, power
-uv run --python .venv python3 code/04_forest_plot.py             # Figure 1 (muc5_forest_plot.png)
 ```
 
 Before sending the manuscript anywhere, run all four verification layers; `10_provenance_audit.py`
@@ -40,13 +39,6 @@ uv run --python .venv python3 code/10_provenance_audit.py
   explanation for the surviving H2 signal fails); nested-model likelihood-ratio tests
   for the conditional asymmetry; and rs35705950 estimated within H3-carrier strata.
   Needs `muc5ac_h2_tag.raw` from REPRODUCE.md step 3b.
-- `09_firth_sensitivity.py` — Firth penalised-logistic sensitivity: refits the primary MUC5AC H3
-  models on all 829 merged participants (retaining the cases-only centre 16 that the standard models drop to
-  avoid complete separation). Confirms the result is unchanged (H3 unadjusted OR 1.67 vs 1.69;
-  H3|rs35705950 OR 1.16 vs 1.17), so the centre exclusion does not bias the estimate. Also prints
-  the discordant subset (265/829) split by case/control (138/428 cases, 127/401 controls).
-  Firth is implemented directly (Jeffreys-penalised IRLS) — `firthlogist` is incompatible with the
-  venv's scikit-learn.
 - `08_consistency_checks.py` — **internal-consistency audit** (re-runnable): checks the manuscript
   prose against itself — additive cohort sums, fraction↔% agreement, Table 1 cell arithmetic, CI
   ordering/bracketing of every OR, OR-quote drift, and CI-vs-p significance. A third layer that
@@ -107,6 +99,3 @@ Of Plender's 92 MUC5AC tSNPs (35 H1 / 5 H2 / 52 H3) we use 17; of their 1 MUC5B 
   sample (one cases-only centre, centre 16, excluded). Principal components are computed
   within those 798 IPFJES participants.
 - The gene x environment / RERI analyses ARE reported, as Supplementary Table S5; `03` Task 3b emits them exactly as published (carrier-coded, delta-method CIs).
-- `09_firth_sensitivity.py` is SUPERSEDED and does not run as described: the within-798 PCA
-  leaves the 31 centre-16 participants without PC scores, so it silently runs on 798. Any
-  N=829 figures quoted for it below are no longer reproducible.

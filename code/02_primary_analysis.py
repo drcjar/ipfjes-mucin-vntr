@@ -30,6 +30,13 @@ df = (clin
       .merge(hap[['pid','H1_count','H2_count','H3_count','MUC5B_H1_count','MUC5B_H2_count','rs35705950_T_count']], on='pid')
       .merge(pcs[['pid','PC1','PC2','PC3','PC4','PC5']], on='pid')
       .dropna(subset=['age','ever_smoked','peto_exposed','centre']))
+# Primary MUC5AC H2 is the direct tag rs879201833 (H2_count is the diplotype complement).
+_h2 = pd.read_csv('/home/drcjar/ipfjes-omics/muc5ac_h2_tag.raw', sep=r'\s+')
+_h2['pid'] = _h2['IID'].astype(str).str.split('_').str[0]
+_h2c = [c for c in _h2.columns if c.startswith('chr11:1182279')][0]
+df = df.merge(_h2[['pid', _h2c]], on='pid')
+_f = df.loc[df.case == 0, _h2c].mean() / 2
+df['H2t'] = df[_h2c] if _f < 0.5 else 2 - df[_h2c]
 
 # Centre 16 has no controls (31/31 cases) — exclude from regression models only
 dm = df[df['centre'] != 16].copy()
@@ -55,7 +62,7 @@ print(f"Pack-years: {sc.median():.1f}({sc.quantile(.25):.1f}-{sc.quantile(.75):.
 print(f"Asbestos: {ab_c}({100*ab_c/len(cases):.1f}%) vs {ab_ct}({100*ab_ct/len(controls):.1f}%) p={ab_p:.3f}")
 print(f"Peto exposed all: {ab_c+ab_ct}/{len(df)} = {(ab_c+ab_ct)/len(df):.1%}")
 
-for col,lab in [('H1_count','MUC5AC H1'),('H2_count','MUC5AC H2'),('H3_count','MUC5AC H3'),('MUC5B_H1_count','MUC5B H1')]:
+for col,lab in [('H1_count','MUC5AC H1'),('H2t','MUC5AC H2'),('H3_count','MUC5AC H3'),('MUC5B_H1_count','MUC5B H1')]:
     cn  = int((cases[col]>0).sum());   ctn = int((controls[col]>0).sum())
     _,p,_,_ = stats.chi2_contingency([[cn,len(cases)-cn],[ctn,len(controls)-ctn]])
     print(f"{lab}: {cn}({100*cn/len(cases):.1f}%) vs {ctn}({100*ctn/len(controls):.1f}%) p={p:.3e}")
@@ -94,8 +101,8 @@ m1b = fit(f'case~H3_count+rs35705950_T_count+{covs}')
 o,l,h,p = fmt(m1b,'H3_count'); print(f"1b H3+rs35705950 | H3: OR {o:.2f}({l:.2f}-{h:.2f}) p={p:.2e}")
 o,l,h,p = fmt(m1b,'rs35705950_T_count'); print(f"1b H3+rs35705950 | rs35705950: OR {o:.2f}({l:.2f}-{h:.2f}) p={p:.2e}")
 
-m1c = fit(f'case~H2_count+H3_count+{covs}')
-o,l,h,p = fmt(m1c,'H2_count'); print(f"1c joint (H1 ref) | H2: OR {o:.2f}({l:.2f}-{h:.2f}) p={p:.2e}")
+m1c = fit(f'case~H2t+H3_count+{covs}')
+o,l,h,p = fmt(m1c,'H2t'); print(f"1c joint (H1 ref) | H2: OR {o:.2f}({l:.2f}-{h:.2f}) p={p:.2e}")
 o,l,h,p = fmt(m1c,'H3_count'); print(f"1c joint (H1 ref) | H3: OR {o:.2f}({l:.2f}-{h:.2f}) p={p:.2e}")
 
 m4a = fit(f'case~MUC5B_H1_count+{covs}')

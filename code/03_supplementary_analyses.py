@@ -53,6 +53,14 @@ df = (clin
       .merge(hap[['pid','H1_count','H2_count','H3_count','MUC5B_H1_count','MUC5B_H2_count','rs35705950_T_count']], on='pid')
       .merge(pcs[['pid','PC1','PC2','PC3','PC4','PC5']], on='pid')
       .dropna(subset=['age','ever_smoked','peto_exposed','centre']))
+# Primary MUC5AC H2 is the direct tag rs879201833 (H2_count is the diplotype complement,
+# kept for the descriptive diplotype and the tag-sensitivity table).
+_h2 = pd.read_csv('/home/drcjar/ipfjes-omics/muc5ac_h2_tag.raw', sep=r'\s+')
+_h2['pid'] = _h2['IID'].astype(str).str.split('_').str[0]
+_h2c = [c for c in _h2.columns if c.startswith('chr11:1182279')][0]
+df = df.merge(_h2[['pid', _h2c]], on='pid')
+_f = df.loc[df.case == 0, _h2c].mean() / 2
+df['H2t'] = df[_h2c] if _f < 0.5 else 2 - df[_h2c]
 dm = df[df['centre'] != 16].copy()   # regression dataset (N=798)
 
 covs = 'age + ever_smoked + PC1+PC2+PC3+PC4+PC5 + C(centre)'
@@ -94,8 +102,8 @@ print('='*70)
 print('TASK 2 — rs35705950-Adjusted Joint MUC5AC Model')
 print('='*70)
 
-m_joint_adj = fit(f'case~H2_count+H3_count+rs35705950_T_count+{covs}')
-o2,l2,h2,p2 = fmt(m_joint_adj, 'H2_count')
+m_joint_adj = fit(f'case~H2t+H3_count+rs35705950_T_count+{covs}')
+o2,l2,h2,p2 = fmt(m_joint_adj, 'H2t')
 o3,l3,h3,p3 = fmt(m_joint_adj, 'H3_count')
 or_,l_,h_,p_ = fmt(m_joint_adj, 'rs35705950_T_count')
 print(f"Joint+rs35705950 (H1 ref) | H2: OR {o2:.2f}({l2:.2f}-{h2:.2f}) p={p2:.2e}")
@@ -104,8 +112,8 @@ print(f"Joint+rs35705950 (H1 ref) | rs35705950: OR {or_:.2f}({l_:.2f}-{h_:.2f}) 
 
 # Attenuation on log-OR scale
 import math
-m_joint = fit(f'case~H2_count+H3_count+{covs}')
-o2u,_,_,_ = fmt(m_joint,'H2_count'); o3u,_,_,_ = fmt(m_joint,'H3_count')
+m_joint = fit(f'case~H2t+H3_count+{covs}')
+o2u,_,_,_ = fmt(m_joint,'H2t'); o3u,_,_,_ = fmt(m_joint,'H3_count')
 atten_h2 = 100*(1 - math.log(o2)/math.log(o2u))
 atten_h3 = 100*(1 - math.log(o3)/math.log(o3u))
 print(f"H2 attenuation on log-OR: {atten_h2:.0f}%  ({math.log(o2u):.3f} -> {math.log(o2):.3f})")

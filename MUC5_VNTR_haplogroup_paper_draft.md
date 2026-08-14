@@ -150,7 +150,7 @@ Strengths include the use of validated tSNPs from a long-read sequencing study a
 | Asbestos-exposed (Peto), n (%) | 266 (67.0%) | 253 (63.1%) | 0.278 |
 | **_MUC5AC_ haplogroup** | | | |
 | H1 carrier, n (%) | 316 (79.6%) | 327 (81.5%) | 0.544 |
-| H2 carrier, n (%) | 106 (26.7%) | 167 (41.6%) | 1.2×10⁻⁵ |
+| H2 carrier, n (%) | 103 (25.9%) | 168 (41.9%) | 2.0×10⁻⁶ |
 | H3 carrier, n (%) | 207 (52.1%) | 141 (35.2%) | 1.9×10⁻⁶ |
 | **_MUC5B_ haplogroup** | | | |
 | H1 carrier, n (%) | 81 (20.4%) | 109 (27.2%) | 0.030 |
@@ -256,31 +256,39 @@ All models adjusted for age, ever-smoking, PC1–5, and recruitment centre. Non-
 
 ---
 
+\begin{landscape}
+
 **Supplementary Table S2. Haplogroup-tagging SNP panel: alleles, frequencies, and tagging quality**
 
-| tSNP | Position (GRCh38) | Alleles | Counted | Freq | MAF | Palindromic | Tags | Plender r² |
-|------|-------------------|:--:|:--:|:--:|:--:|:--:|------|:--:|
-| rs28542750 | chr11:1165501 | T/A | T | 0.803 | 0.197 | Y | MUC5AC H3 concordance | 1.0 |
-| rs769768817 | chr11:1195214 | G/C | C | 0.566 | 0.434 | Y | MUC5AC H1 concordance | 0.899 |
-| rs2075842 | chr11:1193830 | G/C | G | 0.569 | 0.431 | Y | MUC5AC H1 | 0.923 |
-| rs1132433 | chr11:1194354 | A/G | A | 0.569 | 0.431 | | MUC5AC H1 | 0.923 |
-| rs1132434 | chr11:1195265 | G/C | C | 0.567 | 0.433 | Y | MUC5AC H1 | 0.923 |
-| rs28652890 | chr11:1195858 | T/C | T | 0.567 | 0.433 | | MUC5AC H1 | 0.923 |
-| rs879136008 | chr11:1182048 | A/T | T | 0.569 | 0.431 | Y | MUC5AC H1 | 0.923 |
-| rs28519516 | chr11:1202343 | T/C | C | 0.759 | 0.241 | | MUC5AC H2 | 0.862 |
-| rs28558973 | chr11:1202859 | A/G | G | 0.759 | 0.241 | | MUC5AC H2 | 0.862 |
-| rs28368633 | chr11:1202914 | T/C | C | 0.759 | 0.241 | | MUC5AC H2 | 0.862 |
-| rs879201833 | chr11:1182279 | A/G | A | 0.763 | 0.237 | | MUC5AC H2 direct | 0.888 |
-| rs36154966 | chr11:1178216 | C/G | C | 0.809 | 0.191 | Y | MUC5AC H3 | 1.0 |
-| rs1004828576 | chr11:1178023 | A/G | A | 0.803 | 0.197 | | MUC5AC H3 | 1.0 |
-| rs940158763 | chr11:1177688 | A/T | A | 0.803 | 0.197 | Y | MUC5AC H3 | 1.0 |
-| rs36151150 | chr11:1177356 | T/C | T | 0.803 | 0.197 | | MUC5AC H3 | 1.0 |
-| rs36132281 | chr11:1177269 | T/C | T | 0.803 | 0.197 | | MUC5AC H3 | 1.0 |
-| rs35779873 | chr11:1197482 | C/T | C | 0.805 | 0.195 | | MUC5AC H3 | 0.805 |
-| rs35705950 | chr11:1219991 | G/T | G | 0.880 | 0.120 | | *MUC5B* promoter | n/a |
-| MUC5B discriminator | chr11:1244757 | C/G | C | 0.854 | 0.146 | Y | MUC5B H2 (H1=complement) | 1.0 |
+\footnotesize
 
-Freq = frequency of the counted (effect) allele in the IPFJES controls (n=401), which approximate a population reference; MAF = minor-allele frequency. Plender r² = haplogroup-tagging r² from Plender et al. Supplementary Table S4, except rs35779873, whose r²=0.805 is from their Supplementary Table S6 (it is absent from Table S4, being below their stated r²>0.85 discovery threshold, but Plender designate it a *MUC5AC* H3 tSNP in Table S6 and in their PheWAS). The *MUC5B* discriminator r² is from the Plender main text; rs35705950 is the promoter variant, not a haplogroup tag. "Palindromic" marks strand-ambiguous C/G or A/T variants, whose orientation was resolved by allele frequency (Methods), unambiguous where the MAF is away from 0.5, notably the *MUC5B* C/G discriminator (MAF 0.146) and the A/T H3 concordance tag rs28542750 (MAF 0.197, matching the ~21% European H3 frequency). Orientation is in any case fixed by the reference genome, since both the TOPMed output and Plender's allele designations are reported on the GRCh38 forward strand. The H1 concordance tag (rs769768817; r²=0.899, MAF 0.43) is used only as a cross-check; in the primary analysis H1 is the reference baseline and is not entered as a dosage term. Computed by `code/06_tsnp_table.py`.
+| tSNP | Position | Alleles | Counted | Freq | MAF | Palin. | Tags | Plender r² |
+|------------|---------|:--:|:--:|:--:|:--:|:-:|-----------|:--:|
+| rs28542750 | chr11:1165501 | T/A | T | 0.803 | 0.197 | Y | MUC5AC H3 conc. | 1.0 |
+| rs769768817 | chr11:1195214 | G/C | C | 0.566 | 0.434 | Y | MUC5AC H1 conc. | 0.899 |
+| rs2075842 | chr11:1193830 | G/C | G | 0.569 | 0.431 | Y | MUC5AC H1 | 0.923 |
+| rs1132433 | chr11:1194354 | A/G | A | 0.569 | 0.431 |  | MUC5AC H1 | 0.923 |
+| rs1132434 | chr11:1195265 | G/C | C | 0.567 | 0.433 | Y | MUC5AC H1 | 0.923 |
+| rs28652890 | chr11:1195858 | T/C | T | 0.567 | 0.433 |  | MUC5AC H1 | 0.923 |
+| rs879136008 | chr11:1182048 | A/T | T | 0.569 | 0.431 | Y | MUC5AC H1 | 0.923 |
+| rs28519516 | chr11:1202343 | T/C | C | 0.759 | 0.241 |  | MUC5AC H2 | 0.862 |
+| rs28558973 | chr11:1202859 | A/G | G | 0.759 | 0.241 |  | MUC5AC H2 | 0.862 |
+| rs28368633 | chr11:1202914 | T/C | C | 0.759 | 0.241 |  | MUC5AC H2 | 0.862 |
+| rs36154966 | chr11:1178216 | C/G | C | 0.809 | 0.191 | Y | MUC5AC H3 | 1.0 |
+| rs1004828576 | chr11:1178023 | A/G | A | 0.803 | 0.197 |  | MUC5AC H3 | 1.0 |
+| rs940158763 | chr11:1177688 | A/T | A | 0.803 | 0.197 | Y | MUC5AC H3 | 1.0 |
+| rs36151150 | chr11:1177356 | T/C | T | 0.803 | 0.197 |  | MUC5AC H3 | 1.0 |
+| rs36132281 | chr11:1177269 | T/C | T | 0.803 | 0.197 |  | MUC5AC H3 | 1.0 |
+| rs35779873 | chr11:1197482 | C/T | C | 0.805 | 0.195 |  | MUC5AC H3 | 0.805 |
+| rs35705950 | chr11:1219991 | G/T | G | 0.880 | 0.120 |  | *MUC5B* promoter | n/a |
+| rs879201833 | chr11:1182279 | A/G | A | 0.763 | 0.237 |  | MUC5AC H2 direct | 0.888 |
+| MUC5B discriminator | chr11:1244757 | C/G | C | 0.854 | 0.146 | Y | MUC5B H2 | 1.0 |
+
+\normalsize
+
+\end{landscape}
+
+Freq = frequency of the counted (effect) allele in the IPFJES controls (n=401), which approximate a population reference; MAF = minor-allele frequency. Plender r² = haplogroup-tagging r² from Plender et al. Supplementary Table S4, except rs35779873, whose r²=0.805 is from their Supplementary Table S6 (it is absent from Table S4, being below their stated r²>0.85 discovery threshold, but Plender designate it a *MUC5AC* H3 tSNP in Table S6 and in their PheWAS). The *MUC5B* discriminator r² is from the Plender main text; rs35705950 is the promoter variant, not a haplogroup tag. "Palin." (palindromic) marks strand-ambiguous C/G or A/T variants, whose orientation was resolved by allele frequency (Methods), unambiguous where the MAF is away from 0.5, notably the *MUC5B* C/G discriminator (MAF 0.146) and the A/T H3 concordance tag rs28542750 (MAF 0.197, matching the ~21% European H3 frequency). Orientation is in any case fixed by the reference genome, since both the TOPMed output and Plender's allele designations are reported on the GRCh38 forward strand. The H1 concordance tag (rs769768817; r²=0.899, MAF 0.43) is used only as a cross-check; in the primary analysis H1 is the reference baseline and is not entered as a dosage term. Computed by `code/06_tsnp_table.py`.
 
 ---
 

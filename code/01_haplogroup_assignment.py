@@ -25,6 +25,9 @@ df = pd.read_csv('/home/drcjar/ipfjes-omics/muc5_tsnps_dosage_pheno.csv')
 df['H3_count'] = 2 - df['chr11:1165501:T:A_T']
 df['H1_count'] = df['chr11:1195214:G:C_C']
 df['H2_count'] = (2 - df['H3_count'] - df['H1_count']).clip(lower=0)
+# NB: H2_count is the diplotype complement (H1+H2+H3 = 2), used only for the descriptive
+# MUC5AC diplotype and the tag-sensitivity table (S3). The PRIMARY inferential MUC5AC H2 is
+# the direct tag rs879201833 (muc5ac_h2_tag.raw), used for Table 1, Table 2, and 03.
 
 # ── Cross-check: H1 tag-set average (each counted allele = H1 allele) ─────
 h1_tag_cols = [
