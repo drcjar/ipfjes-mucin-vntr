@@ -62,11 +62,10 @@ def row(rsid, col, hap, r2):
     src = dos if col in dos.columns else (mb if col in mb.columns else h2)
     freq = src[col].mean() / 2
     maf = min(freq, 1 - freq)
-    ambiguous = "Y" if {ref, alt} in ({"C", "G"}, {"A", "T"}) else ""
-    return f"| {rsid} | chr11:{pos} | {ref}/{alt} | {counted} | {freq:.3f} | {maf:.3f} | {ambiguous} | {hap} | {r2} |"
+    return f"| {rsid} | chr11:{pos} | {ref}/{alt} | {counted} | {freq:.3f} | {maf:.3f} | {hap} | {r2} |"
 
-print("| tSNP | Position | Alleles | Counted | Freq | MAF | Palin. | Tags | Plender r² |")
-print("|------------|---------|:--:|:--:|:--:|:--:|:-:|-----------|:--:|")
+print("| tSNP | Position | Alleles | Counted | Freq | MAF | Tags | r² |")
+print("|--------------|---------|:---:|:---:|:--:|:--:|-----------|:--:|")
 for _, r in ad.iterrows():
     hap = "*MUC5B* promoter" if r["haplogroup"] == "MUC5B promoter" else r["haplogroup"].replace(" concordance", " conc.")
     # trailing zeros stripped but at least one decimal kept: 1.000 -> "1.0", 0.899 -> "0.899"

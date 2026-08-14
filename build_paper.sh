@@ -12,7 +12,6 @@ PANDOC="$(uv run --python .venv python3 -c 'import pypandoc; print(pypandoc.get_
 
 # PDF — DejaVu Serif gives full Unicode coverage so superscript p-values (e.g. ×10⁻²⁴) render.
 "$PANDOC" "$BASE.md" -o "$BASE.pdf" --pdf-engine=xelatex \
-  -V mainfont="DejaVu Serif" -V geometry:margin=2.5cm -V fontsize=11pt \
-  -V header-includes='\usepackage{pdflscape}' --resource-path=.
+  -V mainfont="DejaVu Serif" -V geometry:margin=2.5cm -V fontsize=11pt --resource-path=.
 
 echo "built: $BASE.pdf  $BASE.docx"
