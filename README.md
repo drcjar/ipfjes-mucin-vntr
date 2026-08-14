@@ -37,17 +37,17 @@ The pipeline runs in numbered order from the source genotype filesets:
 | 01 | `code/01_haplogroup_assignment.py` | Assign MUC5AC/MUC5B haplogroups from tSNPs |
 | 02 | `code/02_primary_analysis.py` | Primary logistic-regression associations |
 | 03 | `code/03_supplementary_analyses.py` | Stratified, interaction, bootstrap, power |
-| 05 | `code/05_h2ref_sensitivity.py` | Reference-category sensitivity |
-| 06 | `code/06_tsnp_table.py` | Tagging-SNP table |
-| 07 | `code/07_foundational_audit.py` | Label/orientation audit |
-| 08 | `code/08_consistency_checks.py` | Manuscript internal-consistency checks |
-| 10 | `code/10_provenance_audit.py` | Plender r² provenance audit |
-| 11 | `code/11_h2_direct_and_lrt.py` | Direct H2 tag + likelihood-ratio tests |
-| 12 | `code/12_imputed_vntr_length.py` | Imputed VNTR repeat length (Table S5) |
-| 13 | `code/13_mucin_cluster_scan.py` | Mucin-cluster conditional scan (Table S6) |
-| 14 | `code/14_h2_conditional_on_locus_signals.py` | H2 conditioned on locus signals |
-| 15 | `code/15_ld_haplogroup_rs35705950.py` | Haplogroup–rs35705950 LD (Table S7) |
-| 16 | `code/16_ancestry_and_promoter_gxe.py` | Ancestry sensitivity + gene×env (Table S4) |
+| 05 | `code/04_h2ref_sensitivity.py` | Reference-category sensitivity |
+| 06 | `code/05_tsnp_table.py` | Tagging-SNP table |
+| 07 | `code/06_foundational_audit.py` | Label/orientation audit |
+| 08 | `code/07_consistency_checks.py` | Manuscript internal-consistency checks |
+| 10 | `code/08_provenance_audit.py` | Plender r² provenance audit |
+| 11 | `code/09_h2_direct_and_lrt.py` | Direct H2 tag + likelihood-ratio tests |
+| 12 | `code/10_imputed_vntr_length.py` | Imputed VNTR repeat length (Table S5) |
+| 13 | `code/11_mucin_cluster_scan.py` | Mucin-cluster conditional scan (Table S6) |
+| 14 | `code/12_h2_conditional_on_locus_signals.py` | H2 conditioned on locus signals |
+| 15 | `code/13_ld_haplogroup_rs35705950.py` | Haplogroup–rs35705950 LD (Table S7) |
+| 16 | `code/14_ancestry_and_promoter_gxe.py` | Ancestry sensitivity + gene×env (Table S4) |
 | —  | `code/verify_numbers.py` | Recompute every number cited in the manuscript |
 
 - Exact PLINK / PLINK2 commands used to extract genotypes: [`code/REPRODUCE.md`](code/REPRODUCE.md)

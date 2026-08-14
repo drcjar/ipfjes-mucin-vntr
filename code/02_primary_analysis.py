@@ -117,7 +117,7 @@ o,l,h,p = fmt(mrs,'rs35705950_T_count')
 print(f"rs35705950 alone: OR {o:.2f}({l:.2f}-{h:.2f}) p={p:.2e}")
 
 # Gene x environment interactions / RERI are reported in Supplementary Table S4, computed in
-# 16_ancestry_and_promoter_gxe.py (risk-oriented, carrier-coded per Knol & VanderWeele) and
+# 14_ancestry_and_promoter_gxe.py (risk-oriented, carrier-coded per Knol & VanderWeele) and
 # cross-checked in 03_supplementary_analyses.py. Not duplicated here: the earlier additive
 # 0/1/2-count RERI parameterisation was superseded by the carrier-level one.
 print("DONE")

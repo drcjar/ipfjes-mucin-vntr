@@ -16,7 +16,7 @@
 
 """00_build_dosage_pheno.py — assemble muc5_tsnps_dosage_pheno.csv.
 
-Builds the input read by 01_haplogroup_assignment.py, 06_tsnp_table.py, and
+Builds the input read by 01_haplogroup_assignment.py, 05_tsnp_table.py, and
 verify_numbers.py. It merges:
 
   - muc5_tsnps_dosage.raw  : PLINK2 `--export A` dosages (REPRODUCE.md step 2):

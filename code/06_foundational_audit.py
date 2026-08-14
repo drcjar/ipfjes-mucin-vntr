@@ -14,7 +14,7 @@
 #     name: python3
 # ---
 
-"""07_foundational_audit.py — verify foundational ASSIGNMENTS / ORIENTATIONS.
+"""06_foundational_audit.py — verify foundational ASSIGNMENTS / ORIENTATIONS.
 
 Complements verify_numbers.py. That script checks the data->code->manuscript NUMBER
 chain but TRUSTS the haplogroup labels and allele orientations: a mislabel or allele
@@ -75,4 +75,4 @@ nflag = sum(v == "FLAG" for *_, v in rows)
 print(f"\n{len(rows)} foundational checks · {len(rows)-nflag} OK · {nflag} FLAG")
 print("NOTE: this audits LABELS/ORIENTATION (what verify_numbers trusts). The external"
       " primary-source seal — every cited Plender r2 checked against ../mmc2.xlsx itself —"
-      " is now 10_provenance_audit.py; run it too.")
+      " is now 08_provenance_audit.py; run it too.")

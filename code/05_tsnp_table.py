@@ -14,7 +14,7 @@
 #     name: python3
 # ---
 
-"""06_tsnp_table.py — Supplementary Table S2: haplogroup-tagging SNP panel.
+"""05_tsnp_table.py — Supplementary Table S2: haplogroup-tagging SNP panel.
 
 Emits a markdown table of the tagging SNPs used for haplogroup assignment, with
 the counted (effect) allele, its frequency and the minor-allele frequency (MAF)
@@ -30,7 +30,7 @@ The r² values come from the structured `source_r2` column of muc5_allele_direct
 (with `source_table`/`source_hap` recording WHICH Plender table each was read from).
 They used to be regex-scraped out of the free-text `evidence` column, which meant the
 cited table name was never machine-read — that is how rs35779873's r² was mis-attributed
-to Table S4 when it actually comes from Table S6. `10_provenance_audit.py` now validates
+to Table S4 when it actually comes from Table S6. `08_provenance_audit.py` now validates
 every (source_table, source_hap, source_r2) triple against ../mmc2.xlsx directly, and
 diffs this script's output against the table pasted into the manuscript.
 """

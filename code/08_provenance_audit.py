@@ -14,25 +14,25 @@
 #     name: python3
 # ---
 
-"""10_provenance_audit.py — external primary-source seal (fourth audit layer).
+"""08_provenance_audit.py — external primary-source seal (fourth audit layer).
 
 WHY THIS EXISTS
 ---------------
 The other three layers never open the primary source:
 
   verify_numbers.py        numbers vs. OUR data      (recomputes from genotypes)
-  07_foundational_audit.py labels/orientation        (internally consistent?)
-  08_consistency_checks.py prose vs. prose           (does the paper contradict itself?)
+  06_foundational_audit.py labels/orientation        (internally consistent?)
+  07_consistency_checks.py prose vs. prose           (does the paper contradict itself?)
 
 None of them checked a CITATION against the cited document — even though that document,
-Plender et al.'s supplement, sits in the repo as ../mmc2.xlsx. 07_foundational_audit.py
+Plender et al.'s supplement, sits in the repo as ../mmc2.xlsx. 06_foundational_audit.py
 said so explicitly in its closing note: "the Plender Table S4 r2 values remain the one
 external primary-source seal still to confirm."
 
 That gap let a real error through: rs35779873's tagging r²=0.805 was recorded and published
 as coming from Plender Supplementary Table S4. It is not in Table S4 at all — the value is
 from Table S6. The mechanism was that provenance lived in a free-text `evidence` string
-("Table S4 H3 r2=0.805") from which 06_tsnp_table.py regex-scraped only the NUMBER. The
+("Table S4 H3 r2=0.805") from which 05_tsnp_table.py regex-scraped only the NUMBER. The
 table name was never read by any program, so nothing could ever contradict it.
 
 WHAT THIS CHECKS
@@ -44,7 +44,7 @@ WHAT THIS CHECKS
      The two known position-level quirks are asserted explicitly rather than tolerated.
   C. Panel-level counts we state in the manuscript match Plender's Table S4: 92 MUC5AC
      tSNPs, 35 tagging H1 / 5 H2 / 52 H3 at r²>=0.8, maxima 0.923 / 0.888 / 1.0.
-  D. Table-drift: 06_tsnp_table.py's output matches the Supplementary Table S4 block pasted
+  D. Table-drift: 05_tsnp_table.py's output matches the Supplementary Table S4 block pasted
      into the manuscript, cell for cell. (The published table was a hand-paste; it had
      already drifted — rs28542750's palindromic flag.)
   E. Citation sweep: every "Table S<n>" cited next to an r² in the manuscript and the
@@ -52,7 +52,7 @@ WHAT THIS CHECKS
 
 Exit status is non-zero if any check FLAGs, so this can gate a build.
 
-Run: uv run --python .venv python3 code/10_provenance_audit.py
+Run: uv run --python .venv python3 code/08_provenance_audit.py
 """
 import re
 import subprocess
@@ -145,7 +145,7 @@ audit("MUC5AC tSNPs used", len(tags), "17 (manuscript Methods)", len(tags) == 17
 audit("MUC5AC tSNPs are a subset of Plender's", sum(x in S4.index or x in S6.index for x in tags.rsID),
       f"all {len(tags)}", all(x in S4.index or x in S6.index for x in tags.rsID))
 
-# ------------------------------------------- D. manuscript Table S4 vs 06_tsnp_table.py output
+# ------------------------------------------- D. manuscript Table S4 vs 05_tsnp_table.py output
 def cells(lines):
     out = {}
     for ln in lines:
@@ -169,12 +169,12 @@ def s3_block(path):
     return out
 
 
-gen = cells(subprocess.run([sys.executable, f"{R}/code/06_tsnp_table.py"],
+gen = cells(subprocess.run([sys.executable, f"{R}/code/05_tsnp_table.py"],
                            capture_output=True, text=True, check=True).stdout.splitlines())
 paper = cells(s3_block(f"{R}/MUC5_VNTR_haplogroup_paper_draft.md"))
 drift = [f"{k}:{i}" for k, g in gen.items()
          for i, (a, b) in enumerate(zip(g, paper.get(k, [""] * len(g)))) if a != b]
-audit("Manuscript Table S2 == 06_tsnp_table.py output", f"{len(gen)} rows, {len(drift)} drifted cells",
+audit("Manuscript Table S2 == 05_tsnp_table.py output", f"{len(gen)} rows, {len(drift)} drifted cells",
       "0 drifted cells", set(gen) == set(paper) and not drift)
 if drift:
     print("DRIFTED CELLS:", ", ".join(drift), "\n")

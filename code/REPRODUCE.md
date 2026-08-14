@@ -1,7 +1,7 @@
 # Reproducibility — exact commands
 
 Every genotype-handling command used downstream of the imputed data, in order, reconciled
-against the PLINK `.log` files. Together with the Python scripts (`00`–`11`, see `README.md`)
+against the PLINK `.log` files. Together with the Python scripts (`00`–`14`, see `README.md`)
 and the four verification layers, this reproduces every number in the manuscript.
 
 ## Software
@@ -26,7 +26,7 @@ Genotyping (Biobank Affymetrix Axiom array, GRCh37), TOPMed imputation (GRCh38),
   sample and the 401 IPFJES controls used for all frequency and Hardy-Weinberg reporting.
 - `mmc2.xlsx` — Plender et al. (2024) supplementary workbook (sheets S1–S21). The **primary source**
   for every tagging r² we quote: sheet S4 (92 MUC5AC tSNPs) and sheet S6 (eQTL correlations, the
-  source of rs35779873's H3 r²=0.805). `10_provenance_audit.py` reads it directly and fails if any
+  source of rs35779873's H3 r²=0.805). `08_provenance_audit.py` reads it directly and fails if any
   citation in `muc5_allele_direction.csv` or the manuscript names the wrong sheet.
 - `muc5_tsnps.txt` — the human-readable rsID candidate list (documentation only; PLINK reads the
   position-based `tsnps_imputed_ids.txt`). One candidate, rs1015856541, is commented out: it is in
@@ -102,7 +102,7 @@ structure within the analytical sample.
 ```bash
 # rs879201833, chr11:1,182,279 A/G (GRCh38). Plender Table S4: H1 r2=0.662, H2 r2=0.888,
 # H3 r2=0.074 — the best direct H2 tag available in our imputed data. Used by
-# 11_h2_direct_and_lrt.py to test whether the residual H2 association is an artefact of
+# 09_h2_direct_and_lrt.py to test whether the residual H2 association is an artefact of
 # assigning H2 by subtraction. It is not: see that script.
 # The three H2 tSNPs already in the panel (rs28519516, rs28558973, rs28368633; H2 r2=0.862)
 # come from step 2 and need no separate extraction.
@@ -116,7 +116,7 @@ structure within the analytical sample.
 The eight conditionally-independent 11p15.5 IPF signals from Kousathanas et al. (2025),
 Supplementary Table S5 — MUC6 `chr11:1013992:C:T`; MUC2 `chr11:1057948:G:C`,
 `chr11:1078249:C:T`, `chr11:1081750:C:T`; MUC5B `chr11:1208601:C:T`, `chr11:1214934:A:G`,
-`chr11:1219775:T:C`, `chr11:1224068:C:T`. Used by `14_h2_conditional_on_locus_signals.py` to
+`chr11:1219775:T:C`, `chr11:1224068:C:T`. Used by `12_h2_conditional_on_locus_signals.py` to
 test whether the MUC5AC H2 residual survives adjustment for every independent signal at the
 locus, not just rs35705950. The variant IDs are listed in `kous_independent_signals.txt`.
 ```bash
@@ -152,7 +152,7 @@ construction and a call-rate threshold is not informative.
 Repeat lengths were imputed by the ImputeSV server (`https://yanglab.westlake.edu.cn/ImputeSV/`)
 rather than locally, so this step is a data transfer, not a command we run. IPFJES governance
 (17/EM/0021) permits it; only pseudonymised genotypes leave the machine. Analysed by
-`12_imputed_vntr_length.py`.
+`10_imputed_vntr_length.py`.
 
 ```bash
 # Build the submission VCF: 798 analytical participants, whole chr11, polymorphic
@@ -184,8 +184,8 @@ password-protected `chr11.VNTR.GRCh38.noSNPs.zip` (`.dose.vcf.gz` with GT/DS/GP/
 
 Two analyses read the returned dose VCFs (`chr11.{VNTR,SV}.GRCh38.noSNPs/…dose.vcf.gz`, both
 gitignored):
-- `12_imputed_vntr_length.py` — MUC5AC exon-31 repeat length vs IPF (Supplementary Table S6).
-- `13_mucin_cluster_scan.py` — agnostic conditional scan of all 109 common, well-imputed VNTR/SV
+- `10_imputed_vntr_length.py` — MUC5AC exon-31 repeat length vs IPF (Supplementary Table S6).
+- `11_mucin_cluster_scan.py` — agnostic conditional scan of all 109 common, well-imputed VNTR/SV
   alleles across the mucin cluster (MUC6–MUC5B, chr11:1.01–1.263 Mb), marginally and conditional
   on rs35705950, with a Li & Ji (2005) effective-tests threshold (Supplementary Table S7). Gene
   coordinates are GRCh38 (Ensembl); pseudonyms map back through `imputesv_id_map.tsv` (local).
@@ -237,7 +237,7 @@ First, `00_build_dosage_pheno.py` assembles `muc5_tsnps_dosage_pheno.csv` from t
 `chr11` fileset is unphenotyped, so its PHENOTYPE column is all -9). Then the `.raw` / `.eigenvec`
 outputs feed the analysis scripts; run them in order per `README.md`
 (`00_build_dosage_pheno.py` onward), then the verification layers
-(`verify_numbers.py`, `07_foundational_audit.py`, `08_consistency_checks.py`, `10_provenance_audit.py`). Clinical covariates come from `flat_data_genotype_subset.csv` (provenance in `README.md`).
+(`verify_numbers.py`, `06_foundational_audit.py`, `07_consistency_checks.py`, `08_provenance_audit.py`). Clinical covariates come from `flat_data_genotype_subset.csv` (provenance in `README.md`).
 
 > The `.raw`, `.ped`, and `.eigenvec` products are individual-level and are **gitignored** (IPFJES
 > governance); the commands above regenerate them from the source filesets.

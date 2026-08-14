@@ -318,7 +318,7 @@ chk_num("Attenuation", "MUC5B H1 attenuation %", 38, 100*(1-math.log(o4b)/math.l
 # %% [markdown]
 # ## 6. Direct H2 tagging, nested-model LRTs, reciprocal stratification
 #
-# Reported in the Discussion; computed by `11_h2_direct_and_lrt.py`.
+# Reported in the Discussion; computed by `09_h2_direct_and_lrt.py`.
 
 # %%
 _NEW = _h2tcol   # rs879201833 column, already merged into dm above

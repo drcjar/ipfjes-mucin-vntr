@@ -14,7 +14,7 @@
 #     name: python3
 # ---
 
-"""05_h2ref_sensitivity.py — MUC5AC joint-model reference-category sensitivity.
+"""04_h2ref_sensitivity.py — MUC5AC joint-model reference-category sensitivity.
 
 Reviewer concern: the joint MUC5AC model uses H1 as the reference, and the H1
 concordance tSNP is imperfect (r²=0.899) so some H2 may be misclassified as H1.

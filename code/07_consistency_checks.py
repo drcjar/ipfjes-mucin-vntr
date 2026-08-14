@@ -14,11 +14,11 @@
 #     name: python3
 # ---
 
-"""08_consistency_checks.py — internal-consistency audit of the manuscript prose.
+"""07_consistency_checks.py — internal-consistency audit of the manuscript prose.
 
 Third verification layer, complementing:
   - verify_numbers.py        : manuscript numbers vs the code that produced them
-  - 07_foundational_audit.py : haplogroup labels / allele orientations vs sources
+  - 06_foundational_audit.py : haplogroup labels / allele orientations vs sources
 This script checks the manuscript's INTERNAL self-consistency — statements compared
 to each other — which neither of the above catches. It flags:
   1. additive cohort breakdowns that don't sum
@@ -28,7 +28,7 @@ to each other — which neither of the above catches. It flags:
   5. the same OR quoted with two different CIs (edit-drift)
   6. a CI and p-value that disagree on significance
 
-Run: uv run --python .venv python3 code/08_consistency_checks.py
+Run: uv run --python .venv python3 code/07_consistency_checks.py
 (The cohort sums in check 1 are hard-coded to the current data freeze — update them
 if the cohort numbers change.)
 """
