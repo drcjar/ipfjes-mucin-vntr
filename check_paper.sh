@@ -121,6 +121,16 @@ PYEOF
 if [ "$EM" -eq 0 ] && [ "$BOLD" -eq 0 ]; then ok "no em dashes, no bold in body text"
 else bad "$EM em dash(es), $BOLD bold span(s) in body text"; fi
 
+# Markdown that renders differently from how it reads: a literal * pairing with a later *
+# into italics (the joint-senior-author markers vanished this way), consecutive lines
+# merging into one paragraph (the affiliations ran together), and @text parsed as a
+# citation. Checked on pandoc's own parse, so it sees exactly what the PDF/DOCX get.
+step "markdown rendering"
+PANDOC="$($PY -c 'import pypandoc; print(pypandoc.get_pandoc_path())')"
+RENDER=$("$PANDOC" -f markdown -t json MUC5_VNTR_haplogroup_paper_draft.md | $PY code/render_lint.py)
+if [ -z "$RENDER" ]; then ok "no stray emphasis, joined lines or citations"
+else bad "$(echo "$RENDER" | wc -l) finding(s)"; echo "$RENDER" | sed 's/^/      /'; fi
+
 echo
 [ $FAIL -eq 0 ] && echo "All checks passed." || echo "Something needs attention (see FAIL above)."
 exit $FAIL

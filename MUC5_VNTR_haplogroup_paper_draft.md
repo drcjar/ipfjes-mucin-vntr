@@ -1,15 +1,15 @@
 # Mucin VNTR haplogroup associations with idiopathic pulmonary fibrosis are not independent of rs35705950
 
-**Authors:** Carl J Reynolds¹², Richard J Allen³, Katherine A Fawcett³, Edward J Hollox⁴, Anna Peljto⁵, David A Schwartz⁵*, Louise V Wain³⁶*
+**Authors:** Carl J Reynolds¹², Richard J Allen³, Katherine A Fawcett³, Edward J Hollox⁴, Anna Peljto⁵, David A Schwartz⁵\*, Louise V Wain³⁶\*
 
-*Joint senior authors.
+\*Joint senior authors.
 
-**Affiliations:**
-¹ Homerton University Hospital NHS Foundation Trust, London, England, UK
-² Wolfson Institute of Population Health, Queen Mary University of London, London, England, UK
-³ Division of Public Health and Epidemiology, School of Medical Sciences, University of Leicester, Leicester, UK
-⁴ Division of Genetics and Genome Biology, School of Biological and Biomedical Sciences, University of Leicester, Leicester, UK
-⁵ University of Colorado School of Medicine, Aurora, Colorado, USA
+**Affiliations:**\
+¹ Homerton University Hospital NHS Foundation Trust, London, England, UK\
+² Wolfson Institute of Population Health, Queen Mary University of London, London, England, UK\
+³ Division of Public Health and Epidemiology, School of Medical Sciences, University of Leicester, Leicester, UK\
+⁴ Division of Genetics and Genome Biology, School of Biological and Biomedical Sciences, University of Leicester, Leicester, UK\
+⁵ University of Colorado School of Medicine, Aurora, Colorado, USA\
 ⁶ NIHR Leicester Respiratory Biomedical Research Centre, Leicester, UK
 
 **Corresponding author:** Carl Reynolds, Homerton University Hospital NHS Foundation Trust, Homerton Row, London E9 6SR, UK. academic@carlreynolds.net
@@ -335,7 +335,7 @@ Imp. r² = imputation r²; r (H3) = correlation with imputed H3 count. Repeat le
 | By gene | MUC2 73, MUC5AC 15, MUC5B 8, intergenic/flanking 13, MUC6 0 (imputes poorly) |
 | Effective independent tests (Li & Ji, 2005) | M_eff = 54; cluster-wide threshold 0.05/M_eff = 9.3×10⁻⁴ |
 | Reaching threshold marginally | 21 (mostly MUC2; 2 the already-reported MUC5AC exon-31) |
-| Strongest marginal | MUC2 +1479 bp @1,096,722: OR 2.77, p=6×10⁻¹² (r=0.52 with rs35705950 T) |
+| Strongest marginal | MUC2 +1479 bp \@1,096,722: OR 2.77, p=6×10⁻¹² (r=0.52 with rs35705950 T) |
 | Surviving adjustment for rs35705950 | 0; smallest adjusted p=0.003, expected P(min<0.003) over M_eff=54 = 0.15 |
 
 Every common, well-imputed VNTR and structural-variant allele in the mucin cluster was tested against IPF by logistic regression (adjusted for age, ever-smoking, PC1–5 and recruitment centre), marginally and with rs35705950 T-allele count added; loci present in both the VNTR and SV panels were de-duplicated and kept at their higher imputation r². The strong marginal associations, concentrated in the *MUC2* VNTR domain that no haplogroup analysis reaches, all reflect linkage disequilibrium with rs35705950 (top hits r=0.24–0.53 with the T allele) and are markedly attenuated by adjustment for it (the strongest, a *MUC2* allele, from OR 2.77 to 1.64); none survives the cluster-wide threshold, and the smallest adjusted p is within chance expectation across the correlated tests. Survival of adjustment would in any case not establish a causal repeat effect, since every variant lies in the same linkage-disequilibrium block (Discussion). Within this sample, then, no imputed mucin structural variant reached significance independently of the promoter variant. (The *MUC5AC* H2 haplogroup tags are SNPs, not structural variants, and so are not among the 109 alleles scanned here; the smallest adjusted p in this table, 0.003, is a low-frequency *MUC2* allele, whereas the residual H2 association discussed in the main text is assessed against a different, less stringent multiplicity family, the four primary haplogroup coefficients, not this 54-test cluster-wide threshold.) This is a power-limited negative, not a claim that no such variant exists: in a far larger IPF meta-analysis, GCTA-COJO resolves conditionally-independent signals annotated by nearest gene to *MUC2* (three) and *MUC6* (one), as well as several in *MUC5B* (Kousathanas et al., 2025), which 385 cases are underpowered to detect (*MUC2* and *MUC6* are canonically gastrointestinal mucins, so these labels are positional and need not imply an airway role for those proteins). The locus is therefore genuinely multi-signal; what the haplogroup analysis shows is more specifically that the *MUC5AC* and *MUC5B* *haplogroups* are not separable from rs35705950. Computed by `code/11_mucin_cluster_scan.py`; provenance in `code/REPRODUCE.md` (step 6).
