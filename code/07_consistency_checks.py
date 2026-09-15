@@ -236,7 +236,7 @@ else:
              "Table 2 / 1b H3+rs|H3_count OR", 0.0051),
             (r"does not improve fit \(\u03c7\u00b2\u2081=([\d.]+)",
              "LRT|add H3 to rs35705950 chi2", 0.051),
-            (r"the reverse improves it decisively \(\u03c7\u00b2\u2081=([\d.]+)",
+            (r"whereas the reverse does \(\u03c7\u00b2\u2081=([\d.]+)",
              "LRT|add rs35705950 to H3 chi2", 0.051),
             (r"adjustment for rs35705950 did not abolish it \(([\d.]+) to",
              r"Table 2 / joint \(H1 ref\)|H2t OR", 0.0051),
