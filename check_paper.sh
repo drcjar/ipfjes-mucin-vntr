@@ -18,21 +18,33 @@ if [ "${1:-}" != "--no-build" ]; then
 fi
 
 step "1. number audit"
-OUT=$($PY code/verify_numbers.py 2>&1); echo "$OUT" | grep -q "0 FAIL" && ok "$(echo "$OUT" | grep -o '[0-9]* checks · [0-9]* PASS')" || bad "$(echo "$OUT" | grep -c FAIL) failing"
+# The counts are matched with a leading-boundary pattern, not a bare substring: the audits
+# print "N FAIL" / "N FLAG" / "N differ", so grep -q "0 FAIL" would also match "10 FAIL"
+# and pass the gate on a double-digit failure count.
+OUT=$($PY code/verify_numbers.py 2>&1)
+if   echo "$OUT" | grep -qE "(^|[^0-9])0 FAIL";  then ok "$(echo "$OUT" | grep -o '[0-9]* checks · [0-9]* PASS')"
+elif ! echo "$OUT" | grep -q "checks ·";         then bad "did not complete: $(echo "$OUT" | tail -1)"
+else bad "$(echo "$OUT" | grep -oE '[0-9]+ FAIL' | tail -1)"; fi
 
 step "2. assignment/orientation"
-OUT=$($PY code/06_foundational_audit.py 2>&1); echo "$OUT" | grep -q "0 FLAG" && ok "11 checks" || bad "flags raised"
+OUT=$($PY code/06_foundational_audit.py 2>&1)
+if   echo "$OUT" | grep -qE "(^|[^0-9])0 FLAG";     then ok "11 checks"
+elif ! echo "$OUT" | grep -q "foundational checks"; then bad "did not complete: $(echo "$OUT" | tail -1)"
+else bad "flags raised"; fi
 
 # 07 covers two different kinds of finding: numbers/prose that disagree, and
 # submission checklist items still outstanding. A pending conflict-of-interest
 # statement is not a numerical error, so they are reported separately.
 OUT=$($PY code/07_consistency_checks.py 2>&1)
-CONSIST=$(echo "$OUT" | grep -E "^  \[(ADDITIVE|FRACTION%|TABLE1|CI|SIG|OR-DRIFT|XCHECK|REFS)\]" || true)
+# Every finding class except SUBMIT counts as a consistency failure, matched by shape
+# rather than by name: an allow-list silently dropped new classes as 07 grew them (the
+# [PROV] provenance findings were invisible here for exactly that reason).
+CONSIST=$(echo "$OUT" | grep -E "^  \[[A-Z0-9%-]+\]" | grep -v "^  \[SUBMIT\]" || true)
 SUBMIT=$(echo "$OUT"  | grep -E "^  \[SUBMIT\]" || true)
 MECH=$(echo "$OUT"    | grep -oE "^\([0-9]+ sentences use mechanism words" | grep -oE "[0-9]+" || echo "?")
 
 step "3. internal consistency"
-if [ -z "$CONSIST" ]; then ok "sums, %, CIs, cross-check vs computed, references"
+if [ -z "$CONSIST" ]; then ok "sums, %, CIs, cross-check vs computed, provenance, references"
 else bad "$(echo "$CONSIST" | wc -l) finding(s)"; echo "$CONSIST" | sed 's/^  /      /'; fi
 
 step "submission readiness"
@@ -56,11 +68,15 @@ fi
 
 step "independent re-derivation"
 OUT=$($PY code/16_independent_recompute.py 2>&1)
-if echo "$OUT" | grep -q "0 differ"; then ok "12 Table 2 estimates, second code path"
+if   echo "$OUT" | grep -qE "(^|[^0-9])0 differ";     then ok "12 Table 2 estimates, second code path"
+elif ! echo "$OUT" | grep -q "re-derived independently"; then bad "did not complete: $(echo "$OUT" | tail -1)"
 else bad "routes disagree"; echo "$OUT" | grep DIFFERS | sed 's/^/      /'; fi
 
 step "4. source provenance"
-OUT=$($PY code/08_provenance_audit.py 2>&1); echo "$OUT" | grep -q "0 FLAG" && ok "67 checks" || bad "flags raised"
+OUT=$($PY code/08_provenance_audit.py 2>&1)
+if   echo "$OUT" | grep -qE "(^|[^0-9])0 FLAG";    then ok "67 checks"
+elif ! echo "$OUT" | grep -q "provenance checks";  then bad "did not complete: $(echo "$OUT" | tail -1)"
+else bad "flags raised"; fi
 
 # --- ERJ Open Research limits: main text 3000, structured abstract 250 ---
 step "word limits"

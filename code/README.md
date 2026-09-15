@@ -27,25 +27,15 @@ uv run --python .venv python3 code/08_provenance_audit.py
 
 ## Verification & sensitivity
 
-Run build pdf/docx                    OK
-1. number audit                   OK  204 checks · 204 PASS
-2. assignment/orientation         OK  11 checks
-3. internal consistency           OK  sums, %, CIs, cross-check vs computed, references
-submission readiness              FAIL  1 outstanding
-      [SUBMIT] missing: conflict-of-interest statement
-analysis pipeline runs            OK  12 scripts
-independent re-derivation         OK  12 Table 2 estimates, second code path
-4. source provenance              OK  67 checks
-word limits                       OK    main 2997/3000, abstract 236/250
-house style                       OK  no em dashes, no bold in body text
-
-Something needs attention (see FAIL above). from the repo root before sending the paper anywhere. It takes about two
-minutes: it rebuilds the PDF/DOCX, runs all four audits, executes every analysis script, re-derives
-Table 2 by an independent code path, and checks the ERJ word limits, house style, references and
-submission readiness.  skips the slow pipeline step while iterating.
+`./check_paper.sh`, the release gate described above, takes about two minutes: it rebuilds the
+PDF/DOCX, runs all four audits, executes every analysis script, re-derives Table 2 by an
+independent code path, and checks the ERJ word limits, house style, references and submission
+readiness. Every step prints `OK` or `FAIL` and the script exits non-zero if any of them fails.
+`RUN_SCRIPTS=0 ./check_paper.sh --no-build` skips the build and the slow pipeline step while
+iterating. The layers it runs are:
 
 - `verify_numbers.ipynb` (+ paired `verify_numbers.py`) — **number audit**: recomputes every
-  manuscript number from source data (196 checks; European-ancestry-restricted analytical sample, N=771).
+  manuscript number from source data (209 checks; European-ancestry-restricted analytical sample, N=771).
 - `06_foundational_audit.py` — **assignment/orientation audit** (11 checks): re-derives every
   haplogroup-tag, allele-orientation, and case-coding decision and checks it against independent
   references (gnomAD, Plender, the OEM paper). Catches a mislabel the number audit would not — it
@@ -117,7 +107,8 @@ that gives the 17 in Supplementary Table S2. Of their 1 MUC5B tSNP we use 1.
 ## Notes
 
 - Step 01 calls `plink2` to extract the MUC5B H1/H2 tSNP (`chr11:1244757:C:G`) from `chr11`.
-- All reported analyses, descriptive and regression alike, use the single N=798 analytical
-  sample (one cases-only centre, centre 16, excluded). Principal components are computed
-  within those 798 IPFJES participants.
+- All reported analyses, descriptive and regression alike, use the single N=771 analytical
+  sample: one cases-only centre (centre 16) excluded, leaving 798, then restricted to
+  self-reported white ethnicity (385 cases, 386 controls). Principal components are computed
+  within those 771 IPFJES participants, so no PCs exist for the 27 the restriction removes.
 - The gene x environment / RERI analyses ARE reported, as Supplementary Table S5; `03` Task 3b emits them exactly as published (carrier-coded, delta-method CIs).

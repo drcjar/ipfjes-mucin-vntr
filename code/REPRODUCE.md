@@ -35,8 +35,8 @@ Genotyping (Biobank Affymetrix Axiom array, GRCh37), TOPMed imputation (GRCh38),
 ## Commands (in order)
 
 ### 1. Genetic principal components (from typed-array data)
-Both steps are restricted to the 798 analytical participants via `--keep`, so that no external
-control sample contributes to the ancestry adjustment. `keep798.txt` is a two-column FID/IID list
+Both steps are restricted to the 771 analytical participants via `--keep`, so that no external
+control sample contributes to the ancestry adjustment. `keep771.txt` is a two-column FID/IID list
 of the analytical sample. It contains participant identifiers, so it is **not committed**; build it
 first with:
 
@@ -47,9 +47,10 @@ clin = pd.read_csv("flat_data_genotype_subset.csv"); clin["pid"] = clin.particip
 hap  = pd.read_csv("muc5_haplogroups.csv");          hap["pid"]  = hap.IID.str.split("_").str[0]
 d = (clin.merge(hap[["pid"]], on="pid")
          .dropna(subset=["age", "ever_smoked", "peto_exposed", "centre"]))
-d = d[d.centre != 16]                                  # cases-only centre
+d = d[d.centre != 16]                                  # cases-only centre -> 798
+d = d[d.ethnicity.astype(str).str.contains("White", case=False, na=False)]   # -> 771
 pd.DataFrame({"FID": d.pid, "IID": d.pid}).to_csv(
-    "keep798.txt", sep=" ", header=False, index=False)  # 798 rows
+    "keep771.txt", sep=" ", header=False, index=False)  # 771 rows
 # EOF
 ```
 
@@ -57,23 +58,27 @@ Note this bootstraps from the haplogroup calls (step 2/3 output) rather than fro
 file, so it does not depend on the PCA it is used to produce.
 
 ```bash
-# 1a. LD-prune within the 798  (862,298 autosomal variants -> 314,996 retained)
+# 1a. LD-prune within the 771  (862,298 autosomal variants -> 309,453 retained)
 ./plink2 --bfile ipfjes_cases_and_controls \
-         --keep keep798.txt \
+         --keep keep771.txt \
          --indep-pairwise 500 50 0.2 \
-         --out pruned_for_pca
+         --out pruned_for_pca771
 
-# 1b. PCA on the pruned set  -> ipfjes_pca.eigenvec / .eigenval  (first 5 PCs used in all models)
+# 1b. PCA on the pruned set  -> ipfjes_pca771.eigenvec / .eigenval  (first 5 PCs used in all models)
 ./plink2 --bfile ipfjes_cases_and_controls \
-         --keep keep798.txt \
-         --extract pruned_for_pca.prune.in \
+         --keep keep771.txt \
+         --extract pruned_for_pca771.prune.in \
          --pca 10 \
-         --out ipfjes_pca
+         --out ipfjes_pca771
+
+# The analysis scripts read code/ipfjes_pca.eigenvec, which is a copy of this output:
+cp ipfjes_pca771.eigenvec code/ipfjes_pca.eigenvec
+cp ipfjes_pca771.eigenval code/ipfjes_pca.eigenval
 ```
 
-**Note on the PCA sample.** The eigenvectors are computed **within the 798 IPFJES analytical participants** via `--keep`, so the ancestry adjustment uses only the analytical sample. An earlier version computed the PCs on a wider fileset and subset the eigenvectors afterwards; that version is superseded. Refitting under the within-sample PCs changed no substantive result — the largest
+**Note on the PCA sample.** The eigenvectors are computed **within the 771 IPFJES analytical participants** via `--keep`, so the ancestry adjustment uses only the analytical sample, and no PCs exist for the 27 participants the ancestry restriction removes. Two earlier versions are superseded: one computed the PCs on a wider fileset and subset the eigenvectors afterwards, the other computed them within the unrestricted 798. Moving from the wider fileset to within-sample PCs changed no substantive result — the largest
 movement in any reported estimate was in the third significant figure — but the eigenvalue
-spectrum flattens appreciably (PC1 9.05 → 5.71, PC2 5.05 → 2.47), consistent with the leading
+spectrum flattened appreciably (PC1 9.05 → 5.71, PC2 5.05 → 2.47), consistent with the leading
 axes of the old PCA reflecting the IPFJES-versus-external-control contrast rather than
 structure within the analytical sample.
 

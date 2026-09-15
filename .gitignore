@@ -23,7 +23,10 @@ muc5_haplogroups.csv
 *.eigenvec
 
 # Copyrighted third-party publications / supplements — do not redistribute publicly
-papers/*.pdf
+# The whole reference library is ignored, not `papers/*.pdf`: that glob missed
+# `papers/Hill2022pdf` (10 MB, filename has no dot — `papers/Hill2022.pdf` is a symlink to it),
+# which would otherwise have been committed.
+papers/
 Plender2024.pdf
 Reynolds2023.pdf
 Seibold2011.pdf
@@ -32,6 +35,7 @@ mmc2.xlsx
 # Large intermediate files
 muc5_tsnps_dosage.raw
 muc5b_h1h2_tsnp.raw
+muc5ac_h2_tag.raw
 muc5_tsnps_dosage_pheno.csv
 
 # Single-variant PED extractions (binary equivalent on array)
@@ -52,6 +56,13 @@ chrna5.nosex
 pruned_for_pca.prune.in
 pruned_for_pca.prune.out
 
+# Single-variant dosage extractions (individual-level genotypes — governance)
+nlrp3/genotypes/
+
+# Copyrighted full-text PDFs / reference sets — do not redistribute
+97.full.pdf
+nlrp3/papers/
+
 # Jupyter checkpoints
 .ipynb_checkpoints/
 
@@ -61,5 +72,25 @@ pruned_for_pca.prune.out
 # Personal working notes / correspondence drafts — not for the repo
 pre_send_notes.md
 
+# Private correspondence from collaborators — never commit (repo has a public sibling)
+feedback/
+
 # Claude memory
 .claude/
+
+# ImputeSV submission — pseudonym map is participant-linkable; VCFs are genotype data
+imputesv_id_map.tsv
+imputesv_*.vcf.gz
+keep798_chr11.txt
+rename798.txt
+tmp_sub.*
+tmp_chr11_full.*
+
+# ImputeSV server outputs (individual-level VNTR/SV dosages -- IPFJES governance)
+chr11.VNTR.GRCh38.noSNPs.zip
+chr11.SV.GRCh38.noSNPs.zip
+imputesv_out/
+chr11.VNTR.GRCh38.noSNPs/
+chr11.SV.GRCh38.noSNPs/
+kous_independent_signals.raw
+kous_independent_signals.log

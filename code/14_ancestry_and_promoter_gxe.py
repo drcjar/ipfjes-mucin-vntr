@@ -18,10 +18,11 @@
 #
 # Two analyses requested by collaborators:
 #
-# 1. **Ancestry restriction** (Allen, Hollox, Fawcett): the primary analysis adjusts
-#    for five within-sample PCs; reviewers asked whether restricting to a single
-#    ancestry changes the result. Re-run the primary estimates in the 771 self-reported
-#    white participants (96.6% of the sample).
+# 1. **Ancestry restriction** (Allen, Hollox, Fawcett): the analytical sample is now
+#    itself restricted to the 771 self-reported white participants (96.6% of the 798),
+#    so the restriction is the primary specification, not a sensitivity analysis. The
+#    comparison that still earns its place is the reverse one: relax the restriction and
+#    refit in all 798, to show the restriction did not manufacture the result.
 # 2. **rs35705950 x environment** (Schwartz): test the promoter variant for interaction
 #    with ever-smoking and with asbestos (Peto) exposure, complementing the haplogroup
 #    x environment tests already in Supplementary Table S5.
@@ -64,19 +65,40 @@ def fit(f, dd):
 
 
 # %% [markdown]
-# ## 1. European-ancestry (white) restricted sensitivity
+# ## 1. Ancestry restriction: does the unrestricted sample give the same answer?
+#
+# `d` is already the ancestry-restricted primary sample, so subsetting it to white
+# ethnicity again would compare it against itself. The informative direction is to relax
+# the restriction and refit in all 798. Principal components cannot enter that model: the
+# eigenvectors are computed within the 771 (REPRODUCE.md step 1), so no PCs exist for the
+# 27 participants the restriction removes. The unrestricted fit is therefore shown without
+# PC adjustment, with the restricted sample refitted on the same reduced covariate set
+# beside it, so those two columns differ only in who is included.
 
 # %%
-white = d[d.ethnicity.astype(str).str.contains("White", case=False, na=False)]
-print(f"white-ethnicity subset: N={len(white)} (cases={int(white.case.sum())}, "
-      f"controls={int((white.case == 0).sum())}); full sample N={len(d)}")
-for lab, f_, t in [("MUC5AC H3 unadjusted", f"case~H3_count+{COVS}", "H3_count"),
-                   ("MUC5AC H3 + rs35705950", f"case~H3_count+rs35705950_T_count+{COVS}", "H3_count"),
-                   ("MUC5AC H2 joint + rs35705950", f"case~H2t+H3_count+rs35705950_T_count+{COVS}", "H2t"),
-                   ("MUC5B H1 unadjusted", f"case~MUC5B_H1_count+{COVS}", "MUC5B_H1_count")]:
-    o, l, h, p = orci(fit(f_, white), t)
-    print(f"  {lab:30s} OR {o:.2f} ({l:.2f}-{h:.2f})  p={p:.3g}")
-print("  -> essentially unchanged from the full-sample estimates (paper Table 2).")
+unres = (clin.merge(hap[["pid", "H3_count", "MUC5B_H1_count", "rs35705950_T_count"]], on="pid")
+         .merge(raw[["pid", H2C]], on="pid")
+         .dropna(subset=["age", "ever_smoked", "peto_exposed", "centre"]))
+unres = unres[unres.centre != 16].copy()
+unres["H2t"] = unres[H2C] if _f < 0.5 else 2 - unres[H2C]
+NOPC = "age + ever_smoked + C(centre)"
+print(f"restricted (primary) N={len(d)} (cases={int(d.case.sum())}, "
+      f"controls={int((d.case == 0).sum())}); unrestricted N={len(unres)} "
+      f"(cases={int(unres.case.sum())}, controls={int((unres.case == 0).sum())}); "
+      f"the ancestry restriction removes {len(unres) - len(d)}")
+print(f"  {'':30s} {'restricted +PCs':>21s} {'restricted -PCs':>21s} {'unrestricted -PCs':>21s}")
+_shift = []
+for lab, t, terms in [("MUC5AC H3 unadjusted", "H3_count", "H3_count"),
+                      ("MUC5AC H3 + rs35705950", "H3_count", "H3_count+rs35705950_T_count"),
+                      ("MUC5AC H2 joint + rs35705950", "H2t", "H2t+H3_count+rs35705950_T_count"),
+                      ("MUC5B H1 unadjusted", "MUC5B_H1_count", "MUC5B_H1_count")]:
+    cells = [orci(fit(f"case~{terms}+{COVS}", d), t),
+             orci(fit(f"case~{terms}+{NOPC}", d), t),
+             orci(fit(f"case~{terms}+{NOPC}", unres), t)]
+    _shift.append(abs(cells[2][0] - cells[0][0]))
+    print(f"  {lab:30s} " + " ".join(f"{o:.2f} ({l:.2f}-{h:.2f})".rjust(21) for o, l, h, _ in cells))
+print(f"  -> largest OR difference between the restricted primary and the unrestricted "
+      f"refit: {max(_shift):.2f}")
 
 # %% [markdown]
 # ## 2. Supplementary Table S4: gene x environment, risk-oriented (RERI, delta method)

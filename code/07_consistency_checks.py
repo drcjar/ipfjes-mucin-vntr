@@ -239,7 +239,7 @@ else:
             (r"the reverse improves it decisively \(\u03c7\u00b2\u2081=([\d.]+)",
              "LRT|add rs35705950 to H3 chi2", 0.051),
             (r"adjustment for rs35705950 did not abolish it \(([\d.]+) to",
-             "Table 2 / joint \(H1 ref\)|H2t OR", 0.0051),
+             r"Table 2 / joint \(H1 ref\)|H2t OR", 0.0051),
             (r"did not abolish it \([\d.]+ to ([\d.]+)\)",
              "Table 2 / joint+rs|H2t OR", 0.0051),
             (r"no longer nominally significant \(([\d.]+), p=",
@@ -436,7 +436,6 @@ for _need, _lab in [(r"\*Support statement:", "support/funding statement"),
                     (r"[Cc]onflict of interest|[Cc]ompeting interests", "conflict-of-interest statement")]:
     if not re.search(_need, txt): flag("SUBMIT", f"missing: {_lab}")
 _defined = sorted(set(re.findall(r"\*\*Supplementary Table S(\d)", txt)), key=int)
-_citedST = sorted(set(re.findall(r"Supplementary Table S(\d)|\(Table S(\d)", _body)) , key=str)
 _citedST = sorted({x for pair in re.findall(r"Supplementary Table S(\d)|\(Table S(\d)", _body)
                    for x in pair if x}, key=int)
 for _n in _defined:

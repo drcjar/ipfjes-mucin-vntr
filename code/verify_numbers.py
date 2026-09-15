@@ -305,11 +305,11 @@ dm_neg = dm[(dm.rs35705950_T_count == 0) & (~dm.centre.isin([18]))]
 dm_pos = dm[(dm.rs35705950_T_count >= 1) & (~dm.centre.isin([17, 21]))]
 chk_int("Table S1", "Non-carrier N", 448, len(dm_neg))
 chk_int("Table S1", "Carrier N", 313, len(dm_pos))
-s1 = {("H3_count","Non-carrier"):(1.15,468), ("H3_count","Carrier"):(1.00,320), ("MUC5B_H1_count","Non-carrier"):(0.72,468), ("MUC5B_H1_count","Carrier"):(1.03,320)}
+s1 = {("H3_count","Non-carrier"):1.15, ("H3_count","Carrier"):1.00, ("MUC5B_H1_count","Non-carrier"):0.72, ("MUC5B_H1_count","Carrier"):1.03}
 with prov(tag="H3/MUC5B H1 counts from muc5_haplogroups.csv",
           model="case~<hg>+age+ever_smoked+PC1-5+C(centre)",
           strata="rs35705950 carrier status"):
-  for (hc, strat), (mo, mn) in s1.items():
+  for (hc, strat), mo in s1.items():
     d = dm_neg if strat == "Non-carrier" else dm_pos
     o, l, h, p = orci(fit(f"case~{hc}+{covs}", d), hc)
     chk_num("Table S1", f"{hc} {strat} OR", mo, o)
