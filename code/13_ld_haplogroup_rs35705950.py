@@ -22,9 +22,9 @@
 # Each haplogroup is represented by its concordance tSNP (the tag used to assign
 # it): H1 rs769768817, H2 rs879201833, H3 rs28542750, and the MUC5B H1/H2
 # discriminator chr11:1,244,757. LD is the Pearson r (and r²) of the tag allele
-# count with the rs35705950 T-allele count, computed in the 401 IPFJES controls
+# count with the rs35705950 T-allele count, computed in the 386 IPFJES controls
 # (the population reference, cases being enriched for risk haplotypes) and in the
-# full 798.
+# full 771.
 #
 # **Reference column.** Plender et al. do not tabulate haplogroup–rs35705950 LD.
 # The reference is the r² between rs35705950 and each tSNP in the 1000 Genomes
@@ -55,7 +55,7 @@ d = (clin
      .merge(hap[["pid", "H1_count", "H3_count", "MUC5B_H1_count", "rs35705950_T_count"]], on="pid")
      .merge(raw[["pid", H2COL]], on="pid")
      .dropna(subset=["age", "ever_smoked", "peto_exposed", "centre"]))
-d = d[d.centre != 16].copy()
+d = d[(d.centre != 16) & d.ethnicity.astype(str).str.contains("White", case=False, na=False)].copy()
 _f = d.loc[d.case == 0, H2COL].mean() / 2
 d["H2t"] = d[H2COL] if _f < 0.5 else 2 - d[H2COL]
 
@@ -73,5 +73,5 @@ for lab, col, ref in HAPS:
     rf = np.corrcoef(d[col], d.rs35705950_T_count)[0, 1]
     ref_s = f"{ref:.2f}" if ref is not None else "<0.05"
     print(f"{lab:30s} {rc:+.2f} ({rc**2:.2f})     {rf:+.2f} ({rf**2:.2f})     {ref_s}")
-print("\nOnly MUC5AC H3 has appreciable LD; IPFJES-controls r2 (0.09) matches the 1000G EUR")
-print("reference (0.10). Full-sample r2 is larger because cases are enriched for risk haplotypes.")
+print("\nOnly MUC5AC H3 has appreciable LD; IPFJES-controls r2 (0.097) is consistent with the")
+print("1000G EUR reference (0.104). Full-sample r2 is larger because cases are enriched for risk haplotypes.")

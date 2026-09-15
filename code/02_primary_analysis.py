@@ -39,7 +39,7 @@ _f = df.loc[df.case == 0, _h2c].mean() / 2
 df['H2t'] = df[_h2c] if _f < 0.5 else 2 - df[_h2c]
 
 # Centre 16 has no controls (31/31 cases) — exclude from regression models only
-dm = df[df['centre'] != 16].copy()
+dm = df[(df['centre'] != 16) & df.ethnicity.astype(str).str.contains("White", case=False, na=False)].copy()
 
 cases   = dm[dm['case']==1]        # Table 1 is the N=798 analytical sample (centre 16 excluded)
 controls= dm[dm['case']==0]
@@ -59,7 +59,7 @@ print(f"Age: {cases['age'].median():.1f}({cases['age'].quantile(.25):.1f}-{cases
 print(f"Ever-smoked: {es_c}({100*es_c/len(cases):.1f}%) vs {es_ct}({100*es_ct/len(controls):.1f}%) p={es_p:.3f}")
 print(f"Pack-years: {sc.median():.1f}({sc.quantile(.25):.1f}-{sc.quantile(.75):.1f}) vs {sct.median():.1f}({sct.quantile(.25):.1f}-{sct.quantile(.75):.1f}) p={py_p:.3f}")
 print(f"Asbestos: {ab_c}({100*ab_c/len(cases):.1f}%) vs {ab_ct}({100*ab_ct/len(controls):.1f}%) p={ab_p:.3f}")
-print(f"Peto exposed all: {ab_c+ab_ct}/{len(df)} = {(ab_c+ab_ct)/len(df):.1%}")
+print(f"Peto exposed all: {ab_c+ab_ct}/{len(dm)} = {(ab_c+ab_ct)/len(dm):.1%}")
 
 for col,lab in [('H1_count','MUC5AC H1'),('H2t','MUC5AC H2'),('H3_count','MUC5AC H3'),('MUC5B_H1_count','MUC5B H1')]:
     cn  = int((cases[col]>0).sum());   ctn = int((controls[col]>0).sum())

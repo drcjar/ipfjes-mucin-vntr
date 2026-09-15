@@ -86,7 +86,7 @@ df['rs35705950_T_count'] = 2 - df['chr11:1219991:G:T_G']   # count of T (risk) a
 
 # ── MUC5B H1/H2 tSNP ─────────────────────────────────────────────────────
 # Position GRCh38 1244757, variant chr11:1244757:C:G
-# C = ref, G = alt; per Plender H2 r²=1 at this position (H2 ~82% in EUR)
+# C = ref, G = alt; per Plender H2 r²=1 at this position (H2 ~82% panel-wide, 169/206 haplotypes)
 # We'll load this separately and merge
 import subprocess
 result = subprocess.run(
@@ -130,16 +130,16 @@ df['MUC5B_diplotype'] = df.apply(
 #    enriched for risk haplotypes, so control frequencies are the reference) ──
 ctrl = df[df['pheno'] == 1]
 print(f"\n── MUC5AC haplotype frequencies in IPFJES controls (n={len(ctrl)}) ──")
-print(f"  H1: {ctrl['H1_count'].mean()/2:.3f}  (Plender EUR: most common, ~57%)")
-print(f"  H2: {ctrl['H2_count'].mean()/2:.3f}  (Plender EUR: intermediate)")
+print(f"  H1: {ctrl['H1_count'].mean()/2:.3f}  (Plender: most common; 46% panel-wide)")
+print(f"  H2: {ctrl['H2_count'].mean()/2:.3f}  (Plender: intermediate; 33% panel-wide)")
 print(f"  H3: {ctrl['H3_count'].mean()/2:.3f}  (Plender EUR: ~21%)")
 
 print("\n── MUC5AC diplotype counts (IPFJES controls) ──")
 print(ctrl['MUC5AC_diplotype'].value_counts().to_string())
 
 print(f"\n── MUC5B haplotype frequencies in IPFJES controls (n={len(ctrl)}) ──")
-print(f"  H1: {ctrl['MUC5B_H1_count'].mean()/2:.3f}  (Plender EUR: ~18%)")
-print(f"  H2: {ctrl['MUC5B_H2_count'].mean()/2:.3f}  (Plender EUR: ~82%)")
+print(f"  H1: {ctrl['MUC5B_H1_count'].mean()/2:.3f}  (Plender: ~18% panel-wide)")
+print(f"  H2: {ctrl['MUC5B_H2_count'].mean()/2:.3f}  (Plender: ~82% panel-wide, 169/206)")
 
 print("\n── MUC5B diplotype counts (IPFJES controls) ──")
 print(ctrl['MUC5B_diplotype'].value_counts().to_string())

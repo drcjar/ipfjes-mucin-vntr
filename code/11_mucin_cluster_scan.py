@@ -137,7 +137,7 @@ dm = (clin
       .merge(pcs[["pid", "PC1", "PC2", "PC3", "PC4", "PC5"]], on="pid")
       .merge(dos.reset_index(), on="pid")
       .dropna(subset=["age", "ever_smoked", "peto_exposed", "centre"]))
-dm = dm[dm.centre != 16].copy()
+dm = dm[(dm.centre != 16) & dm.ethnicity.astype(str).str.contains("White", case=False, na=False)].copy()
 COVS = "age + ever_smoked + PC1+PC2+PC3+PC4+PC5 + C(centre)"
 print(f"N={len(dm)} (cases={int(dm.case.sum())}, controls={int((dm.case == 0).sum())})")
 

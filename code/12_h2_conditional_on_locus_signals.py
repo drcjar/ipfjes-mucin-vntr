@@ -14,7 +14,7 @@
 # ---
 
 # %% [markdown]
-# # 14. Does the MUC5AC H2 residual survive conditioning on ALL independent 11p15.5 signals?
+# # 14. Does the MUC5AC H2 residual survive conditioning on the other mucin-cluster 11p15.5 signals?
 #
 # The joint model conditions the H2 residual on rs35705950 alone. But 11p15.5 is a
 # multi-signal locus: Kousathanas et al. (2025) GCTA-COJO identified several
@@ -23,8 +23,10 @@
 # of the locus" — the H2 tag could be indexing one of those other signals.
 #
 # This tests it directly: the H2 tag conditioned on rs35705950 plus the eight
-# independent 11p15.5 signals from Kousathanas Table S5. If H2 attenuates, it was
-# tagging a neighbour; if it survives, it is distinct from every known signal here.
+# mucin-cluster 11p15.5 signals from Kousathanas Table S5. Their ninth 11p15.5
+# signal, rs34787245 at chr11:1,289,602, is intronic in TOLLIP and outside the
+# cluster, so it is not included. If H2 attenuates, it was tagging a neighbour;
+# if it survives, it is distinct from the other known cluster signals.
 #
 # Requires `kous_independent_signals.raw` from REPRODUCE.md step 3c.
 
@@ -57,7 +59,7 @@ d = (clin
      .merge(raw[["pid"] + MUC5B + MUC2_6], on="pid")
      .merge(pcs[["pid", "PC1", "PC2", "PC3", "PC4", "PC5"]], on="pid")
      .dropna(subset=["age", "ever_smoked", "peto_exposed", "centre"]))
-d = d[d.centre != 16].copy()
+d = d[(d.centre != 16) & d.ethnicity.astype(str).str.contains("White", case=False, na=False)].copy()
 f0 = d.loc[d.case == 0, H2COL].mean() / 2
 d["H2d"] = d[H2COL] if f0 < 0.5 else 2 - d[H2COL]   # orient to the H2-tracking allele
 COVS = "age + ever_smoked + PC1+PC2+PC3+PC4+PC5 + C(centre)"

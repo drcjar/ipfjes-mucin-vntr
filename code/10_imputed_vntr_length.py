@@ -108,7 +108,7 @@ dm = (clin
       .merge(pcs[["pid", "PC1", "PC2", "PC3", "PC4", "PC5"]], on="pid")
       .merge(dos.reset_index(), on="pid")
       .dropna(subset=["age", "ever_smoked", "peto_exposed", "centre"]))
-dm = dm[dm.centre != 16].copy()
+dm = dm[(dm.centre != 16) & dm.ethnicity.astype(str).str.contains("White", case=False, na=False)].copy()
 
 # composite repeat length: total inserted bp across MUC5AC exon 31, vs GRCh38
 ac_meta, ac_dos, ac_samples = read_dosages(*AC_EXON31, min_r2=0.30, min_af=0.0)

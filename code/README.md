@@ -13,7 +13,9 @@ uv run --python .venv python3 code/02_primary_analysis.py        # Table 1, Tabl
 uv run --python .venv python3 code/03_supplementary_analyses.py  # Tables S1/S2, HWE, bootstrap, power
 ```
 
-Before sending the manuscript anywhere, run all four verification layers; `08_provenance_audit.py`
+Before sending the manuscript anywhere, run `./check_paper.sh` from the repo root: it rebuilds
+the PDF/DOCX, runs all four verification layers, and checks the ERJ word limits and house style,
+exiting non-zero if anything fails. `08_provenance_audit.py`
 exits non-zero on failure, so it can gate a build:
 
 ```bash
@@ -25,8 +27,25 @@ uv run --python .venv python3 code/08_provenance_audit.py
 
 ## Verification & sensitivity
 
+Run build pdf/docx                    OK
+1. number audit                   OK  204 checks · 204 PASS
+2. assignment/orientation         OK  11 checks
+3. internal consistency           OK  sums, %, CIs, cross-check vs computed, references
+submission readiness              FAIL  1 outstanding
+      [SUBMIT] missing: conflict-of-interest statement
+analysis pipeline runs            OK  12 scripts
+independent re-derivation         OK  12 Table 2 estimates, second code path
+4. source provenance              OK  67 checks
+word limits                       OK    main 2997/3000, abstract 236/250
+house style                       OK  no em dashes, no bold in body text
+
+Something needs attention (see FAIL above). from the repo root before sending the paper anywhere. It takes about two
+minutes: it rebuilds the PDF/DOCX, runs all four audits, executes every analysis script, re-derives
+Table 2 by an independent code path, and checks the ERJ word limits, house style, references and
+submission readiness.  skips the slow pipeline step while iterating.
+
 - `verify_numbers.ipynb` (+ paired `verify_numbers.py`) — **number audit**: recomputes every
-  manuscript number from source data (192 checks (no flags; the bootstrap/power section was removed)).
+  manuscript number from source data (196 checks; European-ancestry-restricted analytical sample, N=771).
 - `06_foundational_audit.py` — **assignment/orientation audit** (11 checks): re-derives every
   haplogroup-tag, allele-orientation, and case-coding decision and checks it against independent
   references (gnomAD, Plender, the OEM paper). Catches a mislabel the number audit would not — it
@@ -39,7 +58,9 @@ uv run --python .venv python3 code/08_provenance_audit.py
   explanation for the surviving H2 signal fails); nested-model likelihood-ratio tests
   for the conditional asymmetry; and rs35705950 estimated within H3-carrier strata.
   Needs `muc5ac_h2_tag.raw` from REPRODUCE.md step 3b.
-- `07_consistency_checks.py` — **internal-consistency audit** (re-runnable): checks the manuscript
+- `07_consistency_checks.py` — **internal-consistency audit** (re-runnable): also cross-checks the
+  numbers printed in the manuscript against `verified_numbers.json`, which `verify_numbers.py` writes
+  on each run, so a literal updated there but not in the .md is caught. Otherwise checks the manuscript
   prose against itself — additive cohort sums, fraction↔% agreement, Table 1 cell arithmetic, CI
   ordering/bracketing of every OR, OR-quote drift, and CI-vs-p significance. A third layer that
   catches edit-drift neither the number audit nor the foundational audit would (they don't compare
@@ -48,7 +69,7 @@ uv run --python .venv python3 code/08_provenance_audit.py
   failure): the only layer that opens the cited document. Reads `../mmc2.xlsx` directly and
   checks that every Plender r² we quote is in the table we say it is in, at the position we say,
   for the haplogroup we say; that our panel counts match Plender's own (92 MUC5AC tSNPs = 35 H1 /
-  5 H2 / 52 H3); and that the tagging-SNP table pasted into the manuscript (now Supplementary Table S3) still matches
+  5 H2 / 52 H3); and that the tagging-SNP table pasted into the manuscript (now Supplementary Table S2) still matches
   `05_tsnp_table.py`'s output cell-for-cell.
 
 **Why layer 4 exists.** Layers 1–3 check numbers against *our* data, labels against *our* logic,
@@ -68,7 +89,7 @@ rs2075842→H1 r²=0.923 — matching the code.
 **Known false alarm (flagged by reviewers twice — NOT an error here):** Plender's *main text*
 (p.1709) writes "H1 vs. H2/H3 tSNP: rs28542750, H3 vs. H1/H2 tSNP: rs769768817", which *transposes*
 the two labels relative to their own Table S4. We follow Table S4 (the quantitative source). Allele
-frequency confirms it independently: rs28542750 MAF 0.197 in the 401 IPFJES controls ≈ the ~21% European H3 frequency, and a
+frequency confirms it independently: rs28542750 MAF 0.203 in the 386 IPFJES controls ≈ the ~21% European H3 frequency, and a
 tag with r²=1.0 must match its haplogroup's frequency — so rs28542750 tags H3, not H1 (~50%).
 `06_foundational_audit.py` enforces this (SWAP GUARD: H1 > H3).
 
@@ -77,9 +98,10 @@ H1 concordance tag is worthless. S6 lists rs28415193 (G/A) at chr11:1,195,214 wi
 lists rs769768817 at the same position with H1 r²=0.899. These are distinct variants at one
 coordinate — the variant extracted here is `chr11:1195214:G:C` (G/C), matching rs769768817, not
 rs28415193's G/A. Related: **rs35779873 is not in Table S4 at all**; its H3 r²=0.805 comes from
-Table S6, where Plender designate it a MUC5AC H3 tSNP (as they also do in their PheWAS, Table S15).
-`../muc5_allele_direction.csv` and the manuscript's Table S3 footnote both record that provenance.
-Of Plender's 92 MUC5AC tSNPs (35 H1 / 5 H2 / 52 H3) we use 17; of their 1 MUC5B tSNP we use 1.
+Table S6, and they list it among the MUC5AC H3 tSNPs in their Methods.
+`../muc5_allele_direction.csv` and the manuscript's Table S2 footnote both record that provenance.
+Of Plender's 92 MUC5AC tSNPs (35 H1 / 5 H2 / 52 H3) we use 16; with rs35779873 from their Table S6
+that gives the 17 in Supplementary Table S2. Of their 1 MUC5B tSNP we use 1.
 
 ## Inputs and their provenance
 

@@ -45,7 +45,7 @@ d = (clin.merge(hap[["pid", "H3_count", "MUC5B_H1_count", "rs35705950_T_count"]]
      .merge(raw[["pid", H2C]], on="pid")
      .merge(pcs[["pid", "PC1", "PC2", "PC3", "PC4", "PC5"]], on="pid")
      .dropna(subset=["age", "ever_smoked", "peto_exposed", "centre"]))
-d = d[d.centre != 16].copy()
+d = d[(d.centre != 16) & d.ethnicity.astype(str).str.contains("White", case=False, na=False)].copy()
 _f = d.loc[d.case == 0, H2C].mean() / 2
 d["H2t"] = d[H2C] if _f < 0.5 else 2 - d[H2C]
 COVS = "age + ever_smoked + PC1+PC2+PC3+PC4+PC5 + C(centre)"

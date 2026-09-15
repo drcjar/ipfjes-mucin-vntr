@@ -61,7 +61,7 @@ _h2c = [c for c in _h2.columns if c.startswith('chr11:1182279')][0]
 df = df.merge(_h2[['pid', _h2c]], on='pid')
 _f = df.loc[df.case == 0, _h2c].mean() / 2
 df['H2t'] = df[_h2c] if _f < 0.5 else 2 - df[_h2c]
-dm = df[df['centre'] != 16].copy()   # regression dataset (N=798)
+dm = df[(df['centre'] != 16) & df.ethnicity.astype(str).str.contains("White", case=False, na=False)].copy()   # regression dataset (N=771, European-ancestry restricted)
 
 covs = 'age + ever_smoked + PC1+PC2+PC3+PC4+PC5 + C(centre)'
 

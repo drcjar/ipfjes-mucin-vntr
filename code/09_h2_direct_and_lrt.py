@@ -75,7 +75,7 @@ dm = (clin
       .merge(raw[["pid", NEW]], on="pid")
       .merge(pcs[["pid", "PC1", "PC2", "PC3", "PC4", "PC5"]], on="pid")
       .dropna(subset=["age", "ever_smoked", "peto_exposed", "centre"]))
-dm = dm[dm["centre"] != 16].copy()
+dm = dm[(dm["centre"] != 16) & dm.ethnicity.astype(str).str.contains("White", case=False, na=False)].copy()
 covs = "age + ever_smoked + PC1+PC2+PC3+PC4+PC5 + C(centre)"
 print(f"N={len(dm)} (cases={int(dm.case.sum())}, controls={int((dm.case==0).sum())})")
 
@@ -155,8 +155,11 @@ print(f"\nH3 x rs35705950 interaction p = {m.pvalues['H3_count:rs35705950_T_coun
 # %%
 _neg = dm[(dm.rs35705950_T_count == 0) & (~dm.centre.isin([18]))]
 _pos = dm[(dm.rs35705950_T_count >= 1) & (~dm.centre.isin([17, 21]))]
-_f = dm.loc[dm.case == 0, "chr11:1202343:T:C_C"].mean() / 2
-dm["H2d"] = dm["chr11:1202343:T:C_C"] if _f < 0.5 else 2 - dm["chr11:1202343:T:C_C"]
+# Use the PRIMARY H2 tag (rs879201833) here, the one the manuscript reports
+# everywhere else. This section previously used rs28519516, a secondary panel
+# tag, which is what put the wrong H2 rows into Supplementary Table S1.
+_f = dm.loc[dm.case == 0, NEW].mean() / 2
+dm["H2d"] = dm[NEW] if _f < 0.5 else 2 - dm[NEW]
 for _lab, _d in [("Non-carrier", _neg), ("Carrier", _pos)]:
     for _tag, _v in [("subtraction", "H2_count"), ("direct tag", "H2d")]:
         _dd = _d.assign(H2d=dm.H2d.loc[_d.index])

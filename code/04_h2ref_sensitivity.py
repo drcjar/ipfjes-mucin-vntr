@@ -36,7 +36,7 @@ hap = pd.read_csv(f"{R}/muc5_haplogroups.csv"); hap["pid"] = hap.IID.str.split("
 df = (clin.merge(hap[["pid","H1_count","H2_count","H3_count","rs35705950_T_count"]], on="pid")
       .merge(pcs[["pid","PC1","PC2","PC3","PC4","PC5"]], on="pid")
       .dropna(subset=["age","ever_smoked","peto_exposed","centre"]))
-dm = df[df.centre != 16].copy()
+dm = df[(df.centre != 16) & df.ethnicity.astype(str).str.contains("White", case=False, na=False)].copy()
 covs = "age + ever_smoked + PC1+PC2+PC3+PC4+PC5 + C(centre)"
 fit = lambda f: smf.logit(f, data=dm).fit(disp=0)
 def orci(m, t):

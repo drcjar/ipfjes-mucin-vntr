@@ -128,12 +128,12 @@ locus, not just rs35705950. The variant IDs are listed in `kous_independent_sign
 
 ### 4. Tag-SNP QC — Hardy-Weinberg in the IPFJES controls
 
-Not a PLINK step. Tag-SNP Hardy-Weinberg equilibrium is computed in the **401 IPFJES
+Not a PLINK step. Tag-SNP Hardy-Weinberg equilibrium is computed in the **386 IPFJES
 controls** directly from the exported dosages, in `verify_numbers.py` (section 5), which
-reports the minimum p across all 18 variants (0.41). Controls are used as the population
+reports the minimum p across all 19 variants (0.39). Controls are used as the population
 reference for every frequency and HWE figure in the manuscript.
 
-All frequency and Hardy-Weinberg reporting uses the 401 IPFJES controls (the population reference).
+All frequency and Hardy-Weinberg reporting uses the 386 IPFJES controls (the population reference).
 
 Genotypes are hard-called from the imputed fileset, so per-variant missingness is zero by
 construction and a call-rate threshold is not informative.
