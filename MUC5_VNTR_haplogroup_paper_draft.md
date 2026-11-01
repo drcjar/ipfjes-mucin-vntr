@@ -22,7 +22,7 @@
 
 ## Abstract
 
-**Background:** A *MUC5B* promoter variant (rs35705950) is the strongest common genetic risk factor for idiopathic pulmonary fibrosis (IPF). *MUC5B* and *MUC5AC* contain variable number tandem repeat (VNTR) regions. Long-read sequencing resolves *MUC5AC* into three SNP-tagged haplogroups (H1, H2, H3) differing in repeat length, and *MUC5B* into two (H1, H2) differing in lineage but not length. The tags correlate with rs35705950, so whether a haplogroup effect is distinguishable from the promoter variant is unclear.
+**Background:** The *MUC5B* promoter variant (rs35705950) is the strongest common genetic risk factor for idiopathic pulmonary fibrosis (IPF). *MUC5B* and *MUC5AC* contain variable number tandem repeat (VNTR) regions. Long-read sequencing resolves *MUC5AC* into three SNP-tagged haplogroups (H1, H2, H3) differing in repeat length, and *MUC5B* into two (H1, H2) differing in lineage but not length. The tags correlate with rs35705950, so whether a haplogroup effect is distinguishable from the promoter variant is unclear.
 
 **Methods:** We assigned *MUC5AC* and *MUC5B* haplogroups from imputed chromosome 11 array data in 771 European-ancestry IPF Job Exposures Study participants (385 cases, 386 controls). Logistic regression adjusted for age, smoking, principal components and centre, with and without rs35705950. The same models were fitted in TOPMed (2,425 cases, 3,816 controls).
 
@@ -66,7 +66,7 @@ Five genetic principal components, computed with PLINK v2 from LD-pruned typed-a
 
 ### TOPMed sample
 
-The replication sample comprised 2,425 IPF cases and 3,816 controls of European ancestry from the National Institutes of Health Trans-Omics for Precision Medicine (TOPMed) programme. Cases were diagnosed according to American Thoracic Society/European Respiratory Society criteria at centres in the United States, Europe and Australia and underwent whole-genome sequencing through TOPMed; controls were drawn from the COPDGene, Framingham Heart Study and MESA cohorts, and ancestry was assigned using ancestry-informative principal components (Peljto et al., 2023). *MUC5AC* haplogroups were assigned from the same tagging SNPs, alleles and coding used here. Models were fitted in the 1,961 cases with complete covariate data, adjusted for sex, age, smoking status and the first four principal components. Unlike IPFJES, the sample includes women, and all models are therefore adjusted for sex. [Peljto and Schwartz to confirm: the TOPMed freeze used here, which yields more cases and controls than the 2,180 cases and 2,457 controls described in Peljto et al. 2023; and the ethics and consent statement.]
+The replication sample comprised 2,425 IPF cases and 3,816 controls of European ancestry from the National Institutes of Health Trans-Omics for Precision Medicine (TOPMed) programme. Cases were diagnosed according to American Thoracic Society/European Respiratory Society criteria at centres in the United States, Europe and Australia and underwent whole-genome sequencing through TOPMed; controls were drawn from the COPDGene, Framingham Heart Study and MESA cohorts, and ancestry was assigned using ancestry-informative principal components (Peljto et al., 2023). *MUC5AC* haplogroups were assigned from the same tagging SNPs, alleles and coding used here. Models were fitted in the 1,961 cases with complete covariate data, adjusted for sex, age, smoking status and the first four principal components. Unlike IPFJES, the sample includes women, and all models are therefore adjusted for sex.
 
 ### Statistical analysis
 
@@ -130,7 +130,7 @@ Our conclusion agrees with the only other direct test here. Oketch et al. found 
 
 Whether repeat number itself carries risk can be addressed more directly. Imputing *MUC5AC* repeat length into IPFJES from the Bai et al. long-read panel recovered the exon-31 length variants at high fidelity (imputation r²=0.99 for the 751 bp insertion), but imputed length proved equivalent to the clade tag, correlating with H3 count at r=0.98 and carrying the same weak linkage with rs35705950 (r=0.37). It behaved identically to the H3 tag (unadjusted OR 1.60, 95% CI 1.24–2.07; adjusted 1.06, 0.79–1.41), and a composite of total exon-31 length gave the same result (Supplementary Table S4). The H3 tagging r² of 1.0 is Plender's panel estimate and need not transfer to a European cohort, but the tag and the independently imputed length agree at r=0.98 in our own data, so little remains for imputation to add. In Bai et al.'s UK Biobank statistics the *MUC5AC* exon-31 repeat is likewise not associated with the pulmonary-fibrosis phecode, an independent and far larger test, though one using a heterogeneous phecode and without conditioning on rs35705950 (Bai et al., 2026).
 
-Cysteine-rich domain copy number and glycosylation density are among the features invisible to a length-based model, as are the protein-truncating alleles that recur across haplogroups rather than defining one (Plender et al., 2024). The *MUC5B* H1 inverse association (0.71) is explained as H3's is: H2, the predominant *MUC5B* haplogroup, carries rs35705950 T, making H1 appear protective by contrast, and the estimate attenuates on adjustment (0.82, p=0.25). At *MUC5B* the haplogroups index lineage rather than length, so this analysis could only ever detect co-inherited variation of another kind, regulatory or coding, rather than a repeat-length effect.
+Cysteine-rich domain copy number and glycosylation density are among the features invisible to a length-based model, as are the protein-truncating alleles that recur across haplogroups rather than defining one (Plender et al., 2024). The *MUC5B* H1 inverse association (0.71) is explained as H3's is: H2, the predominant *MUC5B* haplogroup, carries rs35705950 T, making H1 appear protective by contrast, and the estimate attenuates on adjustment (0.82, p=0.25).
 
 ### Strengths and limitations
 
@@ -138,7 +138,7 @@ Strengths include validated tSNPs from long-read sequencing and a cohort recruit
 
 ### Conclusions
 
-*MUC5AC* H3 and *MUC5B* H1 are associated with IPF risk in directions consistent with their LD with rs35705950, and neither association is separable from it. A *MUC5AC* H2 association did survive adjustment for rs35705950 here, but was no longer nominally significant under conditioning on the other known signals in the mucin cluster, and was not replicated in an independent sample with five times as many cases, where the rs35705950-adjusted estimate was null (OR 0.99, 95% CI 0.88–1.11). We therefore do not claim a haplogroup effect independent of the promoter variant.
+*MUC5AC* H3 and *MUC5B* H1 are associated with IPF risk in directions consistent with their LD with rs35705950, and neither association is separable from it. A *MUC5AC* H2 association did survive adjustment for rs35705950 here, but was not replicated in an independent sample with five times as many cases, where the rs35705950-adjusted estimate was null (OR 0.99, 95% CI 0.88–1.11). We therefore do not claim a haplogroup effect independent of the promoter variant.
 
 ---
 
