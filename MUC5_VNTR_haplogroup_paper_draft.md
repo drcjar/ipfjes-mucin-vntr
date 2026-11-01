@@ -227,7 +227,7 @@ Seibold MA, et al. A common *MUC5B* promoter polymorphism and pulmonary fibrosis
 
 *Conflict of interest: C.J. Reynolds has nothing to disclose.*
 
-*Support statement: CJR is funded by The Colt Foundation.*
+*Support statement: C.J. Reynolds is funded by The Colt Foundation. K.A. Fawcett is supported by Medical Research Council grant MR/Z506576/1.*
 
 *Code and data availability: analysis code, the exact genotype-handling commands (`code/REPRODUCE.md`), and four independent verification layers are available at https://github.com/drcjar/ipfjes-mucin-vntr. Individual-level participant data are held under IPFJES governance arrangements and are available to qualified researchers upon application to the corresponding author and completion of a data access agreement.*
 
