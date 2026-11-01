@@ -225,7 +225,7 @@ Seibold MA, et al. A common *MUC5B* promoter polymorphism and pulmonary fibrosis
 
 ---
 
-*Conflict of interest: C.J. Reynolds has nothing to disclose.*
+*Conflict of interest: none of the authors has anything to disclose.*
 
 *Support statement: C.J. Reynolds is funded by The Colt Foundation. K.A. Fawcett is supported by Medical Research Council grant MR/Z506576/1.*
 
