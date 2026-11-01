@@ -18,7 +18,7 @@
 TOPMed replication (A. Peljto, Schwartz lab, email 21 Aug 2026).
 
 Her query: the alleles she used to define the haplogroups differ from those printed
-in our Supplementary Table S2, and because the H1 and H3 tags are palindromic
+in our Supplementary Table S1, and because the H1 and H3 tags are palindromic
 (G/C and A/T) a strand flip could be contributing to the non-replication.
 
 This script settles that from source, without trusting any hand-written table:
@@ -34,7 +34,7 @@ This script settles that from source, without trusting any hand-written table:
            PLINK minor/major codings of the same sites, so an exact slot-for-slot
            match means the cohorts coded the variants identically. They do match at
            all three tags, which settles strand outright. NB this is a different
-           ordering from the ref/alt printed in Supplementary Table S2, which comes
+           ordering from the ref/alt printed in Supplementary Table S1, which comes
            from the variant ID; the two coincide only where the genomic reference
            allele is also the major allele (13 of our 19 tags).
        (b) the allele pairs unordered, which is weaker: it excludes a flip at the

@@ -127,11 +127,11 @@ else:
     PROV = _vn.get("provenance", {})
 
     # Provenance assertions: a recorded value must have come from the variant the
-    # manuscript says it did. Supplementary Table S1's H2 rows were computed from
+    # manuscript says it did. Supplementary Table S2's H2 rows were computed from
     # rs28519516, a secondary panel tag, while the table note promised the primary
     # rs879201833; nothing could see that because the number carried no origin.
     for _k, _p in PROV.items():
-        if _k.startswith("Table S1 H2|") and not str(_p.get("tag", "")).startswith("chr11:1182279"):
+        if _k.startswith("Table S2 H2|") and not str(_p.get("tag", "")).startswith("chr11:1182279"):
             flag("PROV", f"{_k} computed from {_p.get('tag')}, not the primary H2 tag chr11:1182279")
         if "H2" in _k and "H3_count" not in _k and str(_p.get("tag", "")).startswith("chr11:1202343"):
             flag("PROV", f"{_k} computed from rs28519516, a secondary panel tag")
@@ -226,13 +226,13 @@ else:
 
     # --- Discussion prose: figures quoted in running text, previously unchecked ---
     for pat, key, tol in [
-            (r"Adjusting rs35705950 for H3 barely changes it \(OR ([\d.]+) to",
+            (r"barely changes the rs35705950 estimate \(OR ([\d.]+) to",
              "Table 2 / rs alone|rs35705950_T_count OR", 0.0051),
-            (r"barely changes it \(OR [\d.]+ to ([\d.]+)\)",
+            (r"barely changes the rs35705950 estimate \(OR [\d.]+ to ([\d.]+)\)",
              "Table 2 / 1b H3+rs|rs35705950_T_count OR", 0.0051),
-            (r"adjusting H3 for rs35705950 abolishes it \(([\d.]+) to",
+            (r"abolishes the H3 estimate \(([\d.]+) to",
              "Table 2 / 1a H3 unadj|H3_count OR", 0.0051),
-            (r"abolishes it \([\d.]+ to ([\d.]+)\)",
+            (r"abolishes the H3 estimate \([\d.]+ to ([\d.]+)\)",
              "Table 2 / 1b H3+rs|H3_count OR", 0.0051),
             (r"does not improve fit \(\u03c7\u00b2\u2081=([\d.]+)",
              "LRT|add H3 to rs35705950 chi2", 0.051),
@@ -254,6 +254,20 @@ else:
              "Table 2 / 1b H3+rs|H3_count CI-lo", 0.0051),
             (r"H3 interval, [\d.]+\u2013([\d.]+), remains compatible",
              "Table 2 / 1b H3+rs|H3_count CI-hi", 0.0051),
+            # Cluster-scan power: the figures Louise Wain asked to see backed up.
+            (r"this sample has (\d+)% power", "Cluster-scan power|rs12802931 power pct", 1.0),
+            (r"most strongly associated \*MUC5B\* signal \(OR ([\d.]+) at a frequency",
+             "Cluster-scan power|rs12802931 published OR", 0.0051),
+            (r"signal \(OR [\d.]+ at a frequency of ([\d.]+)\)",
+             "Cluster-scan power|rs12802931 published AF", 0.0051),
+            (r"odds ratios are ([\d.]+) to [\d.]+ at allele frequencies",
+             "Cluster-scan power|MUC2/MUC6 published OR minimum", 0.0051),
+            (r"odds ratios are [\d.]+ to ([\d.]+) at allele frequencies",
+             "Cluster-scan power|MUC2/MUC6 published OR maximum", 0.0051),
+            (r"at allele frequencies of ([\d.]+) to [\d.]+", 
+             "Cluster-scan power|MUC2/MUC6 published AF minimum", 0.0051),
+            (r"at allele frequencies of [\d.]+ to ([\d.]+)",
+             "Cluster-scan power|MUC2/MUC6 published AF maximum", 0.0051),
             # IPFJES pooled with TOPMed's published estimate; recomputed in verify_numbers.py
             (r"pooled with TOPMed it narrows to ([\d.]+) \(",
              "TOPMed pooled / 1b H3+rs|H3_count OR", 0.0051),
@@ -312,26 +326,26 @@ else:
                 "MUC5B H1 carrier": "Table 1|MUC5B H1 carrier p"}
         if stem in _t1p: cmp_p(f"Table 1 '{lab}' p", cells[3], _t1p[stem])
 
-    # --- Supplementary Table S1: stratified estimates ---
-    S1 = {("MUC5AC H3", "Non-carrier"): "Table S1|H3_count Non-carrier OR",
-          ("MUC5AC H3", "Carrier"):     "Table S1|H3_count Carrier OR",
-          ("MUC5B H1", "Non-carrier"):  "Table S1|MUC5B_H1_count Non-carrier OR",
-          ("MUC5B H1", "Carrier"):      "Table S1|MUC5B_H1_count Carrier OR",
-          ("MUC5AC H2", "Non-carrier"): "Table S1 H2|H2 Non-carrier OR",
-          ("MUC5AC H2", "Carrier"):     "Table S1 H2|H2 Carrier OR"}
+    # --- Supplementary Table S2: stratified estimates ---
+    S1 = {("MUC5AC H3", "Non-carrier"): "Table S2|H3_count Non-carrier OR",
+          ("MUC5AC H3", "Carrier"):     "Table S2|H3_count Carrier OR",
+          ("MUC5B H1", "Non-carrier"):  "Table S2|MUC5B_H1_count Non-carrier OR",
+          ("MUC5B H1", "Carrier"):      "Table S2|MUC5B_H1_count Carrier OR",
+          ("MUC5AC H2", "Non-carrier"): "Table S2 H2|H2 Non-carrier OR",
+          ("MUC5AC H2", "Carrier"):     "Table S2 H2|H2 Carrier OR"}
     for line in txt.split("\n"):
         if not line.startswith("| MUC5"): continue
         cells = [c.strip() for c in line.strip().strip("|").split("|")]
         if len(cells) != 6: continue
         hg, stratum = cells[0].replace("*", ""), cells[1].split(" (")[0]
         key = S1.get((hg, stratum))
-        if key: cmp(f"Table S1 {hg} {stratum} OR", cells[3], key)
+        if key: cmp(f"Table S2 {hg} {stratum} OR", cells[3], key)
         if stratum in ("Non-carrier", "Carrier"):
-            cmp(f"Table S1 {hg} {stratum} N", cells[2], f"Table S1|{stratum} N", tol=0)
-            _s1p = {"MUC5AC H3": "Table S1|H3_count", "MUC5B H1": "Table S1|MUC5B_H1_count",
-                    "MUC5AC H2": "Table S1 H2|H2"}
+            cmp(f"Table S2 {hg} {stratum} N", cells[2], f"Table S2|{stratum} N", tol=0)
+            _s1p = {"MUC5AC H3": "Table S2|H3_count", "MUC5B H1": "Table S2|MUC5B_H1_count",
+                    "MUC5AC H2": "Table S2 H2|H2"}
             if hg in _s1p:
-                cmp_p(f"Table S1 {hg} {stratum} p", cells[5], f"{_s1p[hg]} {stratum} p")
+                cmp_p(f"Table S2 {hg} {stratum} p", cells[5], f"{_s1p[hg]} {stratum} p")
 
     # --- Supplementary Table S3: H2 across tagging measures ---
     for line in txt.split("\n"):
@@ -365,7 +379,15 @@ else:
           "MUC5AC H2, adjusted for H3 + rs35705950": "Table 2 / joint+rs|H2t",
           "MUC5B H1, unadjusted": "Table 2 / 4a MUC5B H1|MUC5B_H1_count",
           "MUC5B H1, adjusted for rs35705950": "Table 2 / 4b MUC5B H1+rs|MUC5B_H1_count",
-          "rs35705950 alone (reference)": "Table 2 / rs alone|rs35705950_T_count"}
+          "rs35705950 alone (reference)": "Table 2 / rs alone|rs35705950_T_count",
+          # The second term of each adjusted model. These rows carry the model name
+          # followed by "(same model)" rather than an empty Model cell, so that a
+          # reader cannot attach them to the wrong model and so that they are keyed
+          # here: with a blank label they matched nothing and went unverified.
+          "MUC5AC H3, adjusted for rs35705950 (same model)":
+              "Table 2 / 1b H3+rs|rs35705950_T_count",
+          "MUC5B H1, adjusted for rs35705950 (same model)":
+              "Table 2 / 4b MUC5B H1+rs|rs35705950_T_count"}
     for line in txt.split("\n"):
         if not line.startswith("|"): continue
         cells = [c.strip() for c in line.strip().strip("|").split("|")]

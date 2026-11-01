@@ -2,9 +2,8 @@
 
 Analysis code and manuscript source for:
 
-> **MUC5AC and MUC5B VNTR haplogroups are not separable from the promoter variant
-> rs35705950 in idiopathic pulmonary fibrosis using array-based data: a tagging-SNP
-> analysis of the IPF Job Exposures Study (IPFJES).**
+> **Mucin VNTR haplogroup associations with idiopathic pulmonary fibrosis are not
+> independent of rs35705950.**
 
 A tagging-SNP test of whether MUC5AC (H1/H2/H3, length-defined) and MUC5B (H1/H2,
 composition-defined) VNTR haplogroups associate with IPF independently of the *MUC5B*

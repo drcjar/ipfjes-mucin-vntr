@@ -22,13 +22,13 @@
 
 ## Abstract
 
-**Background:** A *MUC5B* promoter variant (rs35705950) is the strongest common genetic risk factor for idiopathic pulmonary fibrosis (IPF). The adjacent genes *MUC5B* and *MUC5AC* contain variable number tandem repeat (VNTR) regions, resolved by long-read sequencing into SNP-tagged haplogroups. The tags assign haplogroups well but correlate with rs35705950, so whether a haplogroup effect is distinguishable from the promoter variant is unclear.
+**Background:** A *MUC5B* promoter variant (rs35705950) is the strongest common genetic risk factor for idiopathic pulmonary fibrosis (IPF). *MUC5B* and *MUC5AC* contain variable number tandem repeat (VNTR) regions. Long-read sequencing resolves *MUC5AC* into three SNP-tagged haplogroups (H1, H2, H3) differing in repeat length, and *MUC5B* into two (H1, H2) differing in lineage but not length. The tags correlate with rs35705950, so whether a haplogroup effect is distinguishable from the promoter variant is unclear.
 
-**Methods:** We assigned *MUC5AC* (H1/H2/H3) and *MUC5B* (H1/H2) haplogroups from imputed chromosome 11 array data in 771 European-ancestry IPF Job Exposures Study participants (385 cases, 386 controls). Logistic regression adjusted for age, smoking, principal components and centre, with and without rs35705950. Estimates were compared with an independent TOPMed sample (2,425 cases, 3,816 controls).
+**Methods:** We assigned *MUC5AC* and *MUC5B* haplogroups from imputed chromosome 11 array data in 771 European-ancestry IPF Job Exposures Study participants (385 cases, 386 controls). Logistic regression adjusted for age, smoking, principal components and centre, with and without rs35705950. The same models were fitted in TOPMed (2,425 cases, 3,816 controls).
 
-**Results:** *MUC5AC* H3 and *MUC5B* H1 were each associated with IPF (H3 OR 1.63, 95% CI 1.26–2.09, p=1.8×10⁻⁴; *MUC5B* H1 OR 0.71, 0.52–0.98, p=0.038). Both tracked the rs35705950 T allele and attenuated on adjustment for it (H3 OR 1.10, 0.83–1.45, p=0.52; *MUC5B* H1 OR 0.82, 0.58–1.15, p=0.25). A *MUC5AC* H2 association persisted after adjustment (OR 0.69, 0.51–0.94, p=0.017). In TOPMed the H3 findings replicated (unadjusted OR 1.62, 1.47–1.78, p<10⁻¹⁵; adjusted 0.94, 0.84–1.05, p=0.26), but the rs35705950-adjusted H2 estimate was null (OR 0.99, 0.88–1.11, p=0.87). The *MUC5B* tag failed quality control in TOPMed, so that association was untested.
+**Results:** *MUC5AC* H3 and *MUC5B* H1 were each associated with IPF (H3 OR 1.63, 95% CI 1.26–2.09, p=1.8×10⁻⁴; *MUC5B* H1 OR 0.71, 0.52–0.98, p=0.038). Both attenuated on adjustment for rs35705950 (H3 OR 1.10, 0.83–1.45, p=0.52; *MUC5B* H1 OR 0.82, 0.58–1.15, p=0.25). A *MUC5AC* H2 association persisted after adjustment (OR 0.69, 0.51–0.94, p=0.017). In TOPMed the H3 findings replicated (unadjusted OR 1.62, 1.47–1.78, p<10⁻¹⁵; adjusted 0.94, 0.84–1.05, p=0.26), but the H2 association did not: the adjusted estimate was null overall (OR 0.99, 0.88–1.11, p=0.87) and in men and women separately (1.00, 0.87–1.16; 0.97, 0.79–1.19). The *MUC5B* tag failed quality control in TOPMed.
 
-**Conclusions:** The *MUC5AC* H3 and *MUC5B* H1 associations with IPF are not independent of rs35705950. A *MUC5AC* H2 association survived adjustment here but not in a larger independent sample. VNTR haplogroup does not appear to contribute materially to IPF risk independently of rs35705950.
+**Conclusions:** The *MUC5AC* H3 and *MUC5B* H1 associations are not independent of rs35705950. The *MUC5AC* H2 association seen here did not replicate. VNTR haplogroup does not appear to contribute to IPF risk independently of rs35705950.
 
 ---
 
@@ -38,7 +38,7 @@ Idiopathic pulmonary fibrosis (IPF) is a progressive and frequently fatal fibrot
 
 *MUC5B* and *MUC5AC* lie within the 11p15.5 mucin cluster and encode gel-forming mucins with large central variable number tandem repeat (VNTR) regions. Plender et al. used long-read sequencing to define three *MUC5AC* haplogroups (H1 short, H2 medium, H3 long) and two *MUC5B* haplogroups (H1 less common, H2 common), with tagging SNPs (tSNPs) allowing assignment in short-read data (Plender et al., 2024). Both are phylogenetic clades from putatively neutral non-coding sequence, but the *MUC5AC* clades also differ in repeat length (H3 is ~670 amino acids longer than H1), whereas the MUC5B protein clades do not.
 
-There are biological grounds to ask whether haplogroup matters beyond rs35705950. The VNTR encodes the serine- and threonine-rich backbone carrying the O-glycans that set mucus viscoelasticity, and MUC5AC and MUC5B are the principal determinants of mucociliary clearance (Hill et al., 2022; Abrami et al., 2024). VNTR structure could therefore act on that mechanism through protein architecture rather than expression. Length is not the only route: clades differ in other architectural features and may carry regulatory variation. At *MUC5B*, where length is invariant, any effect must be of that kind.
+There are biological grounds to ask whether haplogroup matters beyond rs35705950. The VNTR encodes the serine- and threonine-rich backbone carrying the O-glycans that set mucus viscoelasticity, and MUC5AC and MUC5B are the principal determinants of mucociliary clearance (Hill et al., 2022; Abrami et al., 2024). VNTR structure could therefore act on that mechanism through protein architecture rather than expression. Length is not the only route: clades differ in other architectural features and may carry regulatory or other coding variation. At *MUC5B*, where length is invariant, any effect must be of that kind, which is the reason to test the *MUC5B* haplogroups despite their shared repeat length.
 
 This has not been tested directly. In the *All of Us* phenome-wide scan no *MUC5AC* haplogroup tag survived multiple-testing correction, and the *MUC5B* locus was represented by rs35705950 rather than a haplogroup tag (Plender et al., 2024). A genome-wide tandem-repeat study in IPF reported an associated repeat at 11p15.5 that lost significance once rs35705950 was included, but its catalogue was restricted to repeat units of ≤20 bp, so it indexed a shorter intergenic repeat rather than the *MUC5AC* (24 bp) or *MUC5B* (87 bp) coding VNTRs, and it did not test the haplogroup classification (Oketch et al., 2025). We therefore ask, in IPFJES (the IPF Job Exposures Study), a dedicated IPF case-control study (Reynolds et al., 2023), how much haplogroup association, if any, is independent of rs35705950. Tagging SNPs are the only way to index these clades in array data, and such a test shows whether clade membership adds to the promoter variant, not which feature of a clade is responsible.
 
@@ -48,7 +48,7 @@ This has not been tested directly. In the *All of Us* phenome-wide scan no *MUC5
 
 ### Study population
 
-IPFJES is a multicentre UK case-control study of men, recruiting from 21 hospitals in England, Scotland, and Wales (Reynolds et al., 2023). IPF cases were diagnosed at multidisciplinary team meetings by 2011 ATS/ERS/JRS/ALAT guidelines; recruitment ran from February 2017 to October 2019. Controls were participants without IPF from the same centres, frequency-matched for age. All participants provided written informed consent. Ethical approval was granted by the East Midlands – Nottingham 1 Research Ethics Committee (REC 17/EM/0021; IRAS 203355). Of 902 IPFJES participants with clinical data, 829 also had typed-array and imputed chromosome 11 genotypes with complete covariates. One centre (n=31) enrolled cases only and caused complete separation, so was excluded, leaving 798. Because genetic ancestry is the principal confounder here and adjustment alone may not remove it, analyses were then restricted to participants of self-reported white ethnicity, who form a single genetic cluster: 25 of the 27 excluded lie beyond 3 SD of the white-ethnicity mean on PC1. This gave an analytical sample of 771 participants (385 cases, 386 controls) used throughout, with principal components recomputed within it.
+IPFJES is a multicentre UK case-control study of men, recruiting from 21 hospitals in England, Scotland, and Wales (Reynolds et al., 2023). IPF cases were diagnosed at multidisciplinary team meetings by 2011 ATS/ERS/JRS/ALAT guidelines; recruitment ran from February 2017 to October 2019. Controls were participants without IPF from the same centres, frequency-matched for age. All participants provided written informed consent. Ethical approval was granted by the East Midlands – Nottingham 1 Research Ethics Committee (REC 17/EM/0021; IRAS 203355). Of 902 IPFJES participants with clinical data, 829 also had typed-array and imputed chromosome 11 genotypes with complete covariates. One centre (n=31) enrolled cases only, so its centre indicator predicted case status perfectly and the corresponding coefficient could not be estimated (complete separation); that centre was excluded, leaving 798. Because genetic ancestry is the principal confounder here and adjustment alone may not remove it, analyses were then restricted to participants of self-reported white ethnicity, who form a single genetic cluster: 25 of the 27 excluded lie beyond 3 SD of the white-ethnicity mean on PC1. This gave an analytical sample of 771 participants (385 cases, 386 controls) used throughout, with principal components recomputed within it.
 
 ### Genotyping and imputation
 
@@ -56,7 +56,7 @@ Participants were genotyped on the Biobank Affymetrix Axiom array (GRCh37). As p
 
 ### Haplogroup assignment
 
-*MUC5AC* tSNPs and their r² values were taken from Plender et al. Supplementary Table S4, with allele orientation verified against their Table S6; 17 *MUC5AC* tSNPs, 16 of their 92 Table S4 tags plus rs35779873 from their Table S6, were extracted from our GRCh38 imputed data using PLINK v2. Haplogroups were tagged by their concordance SNPs, each entered as an allele-dosage count: H3 by rs28542750 (r²=1.0) and H2 by rs879201833 (r²=0.888, the best available H2 tag), with H1 (the most common haplogroup, r²=0.899 for rs769768817) as reference. The direct H2 tag is primary because it tags H2 directly rather than by subtraction, and agrees closely with the diplotype complement (r=0.97; Supplementary Table S3). The joint model is therefore an approximate rather than exact H1-reference parameterisation. Tags were cross-checked against 14 further tagging SNPs (Supplementary Table S2). Plender et al.'s main text transposes the haplogroup labels for rs28542750 and rs769768817 relative to their Table S4; we followed the latter (Supplementary methods).
+We used a two-step procedure. First, 17 *MUC5AC* tSNPs were extracted from our GRCh38 imputed data using PLINK v2: 16 of the 92 tags listed in Plender et al. Supplementary Table S4, plus rs35779873 from their Table S6. Second, one concordance SNP was chosen per haplogroup as the primary tag, each entered as an allele-dosage count: H3 by rs28542750 (r²=1.0) and H2 by rs879201833 (r²=0.888, the best available H2 tag), with H1 as reference (the most common haplogroup, r²=0.899 for rs769768817). The remaining 14 tSNPs were retained as a cross-check on those three (Supplementary Table S1). Tagging r² values are from Plender et al. Supplementary Table S4, except rs35779873, whose r² is from their Table S6. Allele orientation was resolved separately for each tSNP and recorded with its evidence: from the Plender main text for the concordance tSNPs, from the risk allele given in their Table S6 where listed, and otherwise by matching the counted-allele frequency in our controls to the published haplogroup frequency. The direct H2 tag is primary because it tags H2 directly rather than by subtraction. The joint model is therefore an approximate rather than exact H1-reference parameterisation. Tags were cross-checked against 14 further tagging SNPs (Supplementary Table S1). Plender et al.'s main text transposes the haplogroup labels for rs28542750 and rs769768817 relative to Plender et al. Table S4; we followed the latter (Supplementary methods).
 
 The *MUC5B* H1/H2 discriminator (chr11:1,244,757; H2 r²=1.0) was taken from the Plender main text; being strand-ambiguous, its orientation was resolved by allele frequency (Supplementary methods). All tSNPs passed Hardy-Weinberg testing in controls (minimum p=0.39) and were hard-called with no missingness; their alleles, frequencies and tagging r² are in Supplementary Table S2.
 
@@ -64,15 +64,21 @@ The *MUC5B* H1/H2 discriminator (chr11:1,244,757; H2 r²=1.0) was taken from the
 
 Five genetic principal components, computed with PLINK v2 from LD-pruned typed-array data (309,453 variants) within the 771 analytical participants themselves, were used in all models. Smoking history and lifetime occupational history were collected at the same structured telephone interview, by an interviewer unaware of case status (Reynolds et al., 2023); ever-smoking and age were covariates in all models. Occupational asbestos exposure was ascertained by Peto job-exposure matrix applied to the occupational history (binary classification); 502 of 771 participants (65.1%) were classified as exposed.
 
+### TOPMed sample
+
+The replication sample comprised 2,425 IPF cases and 3,816 controls of European ancestry from the National Institutes of Health Trans-Omics for Precision Medicine (TOPMed) programme. Cases were diagnosed according to American Thoracic Society/European Respiratory Society criteria at centres in the United States, Europe and Australia and underwent whole-genome sequencing through TOPMed; controls were drawn from the COPDGene, Framingham Heart Study and MESA cohorts, and ancestry was assigned using ancestry-informative principal components (Peljto et al., 2023). *MUC5AC* haplogroups were assigned from the same tagging SNPs, alleles and coding used here. Models were fitted in the 1,961 cases with complete covariate data, adjusted for sex, age, smoking status and the first four principal components. Unlike IPFJES, the sample includes women, and all models are therefore adjusted for sex. [Peljto and Schwartz to confirm: the TOPMed freeze used here, which yields more cases and controls than the 2,180 cases and 2,457 controls described in Peljto et al. 2023; and the ethics and consent statement.]
+
 ### Statistical analysis
 
 Logistic regression (Python 3.12; statsmodels) was performed with IPF case/control status as outcome. Haplogroup counts were entered additively (0/1/2 copies); all models adjusted for age and ever-smoking as established IPF risk factors, PC1–5 (genetic ancestry), and recruitment centre (regression N=771).
 
 The *MUC5AC* models, with H1 as reference in the joint model, were (1a) H3 main effect; (1b) H3 + imputed rs35705950 T count; (1c) joint model with H2 and H3 entered simultaneously; (1d) additionally adjusted for rs35705950. The *MUC5B* models were (2a) H1 main effect and (2b) H1 + rs35705950 T count. rs35705950 was also modelled alone.
 
-Sensitivity analyses, reported in the supplementary tables and detailed in the Supplementary methods, comprised rs35705950-stratified models (Table S1), alternative H2 tags (Table S3), genotypic rather than additive fits for H2 and H3, imputed *MUC5AC* exon-31 repeat length (Table S4), an agnostic conditional scan of 109 common well-imputed structural variants across the mucin cluster (Table S5), and conditioning of the H2 tag on the mucin-cluster subset of the conditionally-independent 11p15.5 IPF signals reported by Kousathanas et al. (2025). Nested models were compared by likelihood-ratio test.
+Sensitivity analyses, reported in the supplementary tables and detailed in the Supplementary methods, comprised rs35705950-stratified models (Table S2), alternative H2 tags (Table S3), genotypic rather than additive fits for H2 and H3, imputed *MUC5AC* exon-31 repeat length (Table S4), an agnostic conditional scan of 109 common well-imputed structural variants across the mucin cluster, imputed from the Bai et al. (2026) long-read assembly panel rather than from the TOPMed panel used for the SNP imputation (Table S5), and conditioning of the H2 tag on the mucin-cluster subset of the conditionally-independent 11p15.5 IPF signals reported by Kousathanas et al. (2025). Nested models were compared by likelihood-ratio test.
 
-Estimates were compared with results for the same models in an independent TOPMed IPF case-control sample, provided by the Schwartz laboratory (A. Peljto and D. Schwartz, personal communication); between-sample heterogeneity was assessed by a two-sided z test on the difference in log odds ratios, equivalently Cochran's Q on one degree of freedom, with standard errors recovered from the reported confidence intervals (`code/15_orientation_vs_topmed.py`).
+The same models were fitted in an independent TOPMed IPF case-control sample (described above); between-sample heterogeneity was assessed by a two-sided z test on the difference in log odds ratios, equivalently Cochran's Q on one degree of freedom, with standard errors recovered from the reported confidence intervals (`code/15_orientation_vs_topmed.py`).
+
+Power for the cluster-wide scan was computed for each of the eight conditionally independent 11p15.5 signals reported by Kousathanas et al. (their Supplementary Table 5), using the European allele frequency and odds ratio reported there. For each signal, genotypes were simulated under Hardy-Weinberg equilibrium at the reported frequency, the scan model was fitted in the 771 analytical participants to obtain the standard error of the log odds ratio, and power was evaluated analytically at the cluster-wide threshold (α = 0.05/54, the effective number of independent tests; `code/17_cluster_scan_power.py`).
 
 Four primary haplogroup coefficients were tested; p-values are two-sided and uncorrected, and nominal results described as such.
 
@@ -82,7 +88,7 @@ Four primary haplogroup coefficients were tested; p-values are two-sided and unc
 
 ### Participant characteristics
 
-Table 1 shows the participant characteristics. Cases were slightly older (median 77 vs 76 years, p=0.010); ever-smoking (75.8% vs 69.7%, p=0.066) and occupational asbestos exposure (67.5% vs 62.7%, p=0.182) did not differ significantly. The rs35705950 T allele was carried by 59.7% of cases versus 23.1% of controls (p=9.9×10⁻²⁵).
+Table 1 shows the participant characteristics. Cases were slightly older (median 77 vs 76 years, p=0.010); ever-smoking (75.8% vs 69.7%, p=0.066) and occupational asbestos exposure (67.5% vs 62.7%, p=0.182) did not differ significantly. The rs35705950 T allele frequency was 0.33 in cases and 0.12 in controls; 59.7% of cases and 23.1% of controls carried at least one copy, and 6.8% and 1.0% respectively were homozygous (p=9.9×10⁻²⁵ for carriage).
 
 ### Haplogroup frequencies
 
@@ -90,25 +96,25 @@ In the IPFJES controls (n=386), which approximate a population reference since c
 
 ### Linkage disequilibrium between *MUC5AC* H3 and rs35705950
 
-*MUC5AC* H3 count was correlated with rs35705950 T count (r=0.363, p=1.7×10⁻²⁵), sharing ~13% of its variance; among H3 carriers, 61.4% also carried the T allele. *MUC5B* H1, *MUC5AC* H1 and *MUC5AC* H2 were inversely correlated with T count (r=−0.113, −0.140 and −0.235), so the risk allele co-occurs with the *MUC5B* H2 and *MUC5AC* H3 backgrounds. Carrier status for H3 and for the T allele was nonetheless discordant in 241 of 771 participants (31%). Only H3 has appreciable LD with rs35705950, and its estimate in the IPFJES controls (r²=0.10, lower than the full-sample value above because cases are enriched for risk haplotypes) is consistent with the 1000 Genomes European reference (0.10; Supplementary Table S6), so the LD is representative rather than a feature of this cohort.
+Correlations with rs35705950 are reported as the signed r, because the direction of tagging differs between haplogroups; r² is given alongside in Supplementary Table S6. *MUC5AC* H3 count was correlated with rs35705950 T count (r=0.363, p=1.7×10⁻²⁵), sharing ~13% of its variance; among H3 carriers, 61.4% also carried the T allele. *MUC5B* H1, *MUC5AC* H1 and *MUC5AC* H2 were inversely correlated with T count (r=−0.113, −0.140 and −0.235), so the risk allele co-occurs with the *MUC5B* H2 and *MUC5AC* H3 backgrounds. Carrier status for H3 and for the T allele was nonetheless discordant in 241 of 771 participants (31%). Only H3 has appreciable LD with rs35705950, and its estimate in the IPFJES controls (r²=0.10, slightly lower than the full-sample r² of 0.13 because cases are enriched for risk haplotypes) is consistent with the 1000 Genomes European reference (0.10; Supplementary Table S6), so the LD is representative rather than a feature of this cohort.
 
 ### Haplogroup associations with IPF
 
-Full estimates are in Table 2. *MUC5AC* H3 was positively associated with IPF (OR 1.63, 95% CI 1.26–2.09; p=1.8×10⁻⁴), but not independently of rs35705950: adjusting for the promoter variant attenuated H3 to the null (OR 1.10, 95% CI 0.83–1.45; p=0.52), while rs35705950 itself retained a strong effect (OR 3.90, 95% CI 2.83–5.38; p=1.1×10⁻¹⁶). *MUC5B* H1 was inversely associated with IPF (OR 0.71, 95% CI 0.52–0.98; p=0.038) and likewise attenuated after adjustment (OR 0.82, 95% CI 0.58–1.15; p=0.25).
+Full estimates are in Table 2. *MUC5AC* H3 was positively associated with IPF (OR 1.63, 95% CI 1.26–2.09; p=1.8×10⁻⁴), but not independently of rs35705950: adjusting for the promoter variant attenuated H3 to the null (OR 1.10, 95% CI 0.83–1.45; p=0.52), while rs35705950 itself retained a strong effect (OR 3.90, 95% CI 2.83–5.38; p=1.1×10⁻¹⁶). Each additional *MUC5B* H1 copy, in place of H2, was associated with lower odds of IPF (OR 0.71, 95% CI 0.52–0.98; p=0.038), and this likewise attenuated after adjustment (OR 0.82, 95% CI 0.58–1.15; p=0.25).
 
-The three-haplotype joint model (H1 reference) showed the same pattern for H3, but an inverse *MUC5AC* H2 association persisted after additional adjustment for rs35705950 (OR 0.69, 95% CI 0.51–0.94; p=0.017, which does not survive correction for the four primary coefficients). This estimate was stable across tag choices, agreeing with the diplotype complement and the three panel H2 tSNPs (Supplementary Table S3).
+The three-haplotype joint model (H1 reference) showed the same pattern for H3, but a *MUC5AC* H2 association persisted after additional adjustment for rs35705950, each additional H2 copy in place of H1 being associated with lower odds of IPF (OR 0.69, 95% CI 0.51–0.94; p=0.017, which does not survive correction for the four primary coefficients). This estimate was stable across tag choices, agreeing with the three panel H2 tSNPs and with the diplotype complement, that is, H2 count inferred by subtraction from the other two haplogroups (2 − H1 − H3) rather than from a tag of its own (Supplementary Table S3).
 
-In rs35705950 non-carriers, where the promoter variant cannot confound, H3 was directionally consistent but underpowered (N=448; OR 1.15, 95% CI 0.79–1.69; Supplementary Table S1). Genotypic fits for H3 and H2 did not improve on the additive model (Supplementary methods).
+Among participants carrying no copy of the rs35705950 T allele, the promoter variant has no variance and so cannot account for any association. In that stratum H3 was directionally consistent but imprecise (151 cases, 297 controls; OR 1.15, 95% CI 0.79–1.69; Supplementary Table S2). Genotypic fits for H3 and H2 did not improve on the additive model (Supplementary methods).
 
 ### Comparison with an independent TOPMed sample
 
-Estimates for the same models were available from an independent TOPMed IPF case-control sample (2,425 cases, 3,816 controls; models fitted in the 2,031 cases with complete covariates, adjusted for sex, age, smoking and PC1–4; A. Peljto and D. Schwartz, personal communication), with haplogroups assigned from the same tags and coding.
+The same models were fitted in the TOPMed IPF case-control sample (2,425 cases, 3,816 controls; 1,961 cases with complete covariates, adjusted for sex, age, smoking and PC1–4), with haplogroups assigned from the same tags and coding.
 
-The *MUC5AC* H3 findings replicated: OR 1.62 (95% CI 1.47–1.78) unadjusted against 1.63 (1.26–2.09) here (p=0.96 for heterogeneity), attenuating to 0.94 (0.84–1.05) on adjustment for rs35705950 against 1.10 (0.83–1.45) here (p=0.31). H2 adjusted for H3 alone was also inverse (OR 0.83, 0.74–0.93), though weaker than ours (0.58, 0.43–0.78; p=0.028 for heterogeneity). The rs35705950-adjusted H2 residual, however, did not replicate: it was null in TOPMed (OR 0.99, 0.88–1.11) against 0.69 (0.51–0.94) here, and the TOPMed interval excludes our estimate (p=0.030, uncorrected). The *MUC5B* H1/H2 discriminator failed quality control in TOPMed, so the *MUC5B* association could not be tested there. The samples differ in composition: TOPMed controls were drawn from the COPDGene, FHS and MESA cohorts rather than from outpatient clinics and are more heavily smoked than their own cases (73.9% versus 65.5% ever-smokers, the reverse of the IPFJES pattern); IPFJES recruited men only, and its clinic-recruited controls also depart from a population sample.
+The *MUC5AC* H3 findings replicated: OR 1.62 (95% CI 1.47–1.78) unadjusted in TOPMed against 1.63 (1.26–2.09) here (p=0.96 for heterogeneity). In both samples the association was abolished by adjustment for rs35705950, falling to 0.94 (0.84–1.05) in TOPMed and 1.10 (0.83–1.45) here (p=0.31 for heterogeneity); neither adjusted interval excludes 1, so this is attenuation to the null rather than a reversal of direction. H2 is estimable only alongside H3, with H1 as reference, so the estimate before adjustment for rs35705950 is the H3-adjusted one: 0.83 (0.74–0.93) in TOPMed against 0.58 (0.43–0.78) here (p=0.028 for heterogeneity). The rs35705950-adjusted H2 residual, however, did not replicate: it was null in TOPMed (OR 0.99, 0.88–1.11), an interval that excludes the 0.69 (0.51–0.94) estimated here, in a sample with five times as many cases. Because IPFJES recruited men only, the TOPMed models were refitted separately by sex (adjusted for age, smoking and PC1–4). The pattern was the same in both: H3 was associated with IPF before adjustment for rs35705950 (men 1.68, 1.48–1.90; women 1.40, 1.19–1.65) and null after it (1.01, 0.88–1.17; 0.85, 0.70–1.02), and the H2 residual was null in both (1.00, 0.87–1.16; 0.97, 0.79–1.19). The failure of the H2 association to replicate is therefore not explained by the male-only composition of IPFJES. The *MUC5B* H1/H2 discriminator failed quality control in TOPMed, so the *MUC5B* association could not be tested there. The samples differ in composition. A higher proportion of TOPMed controls than TOPMed cases had ever smoked (73.9% versus 68.7%), the reverse of the pattern in IPFJES (68.8% of controls versus 75.6% of cases). TOPMed controls came from the COPDGene, Framingham and MESA cohorts. IPFJES recruited men only, and its controls were patients attending outpatient clinics, so neither control group represents the general population.
 
 ### Cluster-wide scan of imputed structural variants
 
-11p15.5 is a mucin cluster in which a larger meta-analysis places independent IPF signals near *MUC2* and *MUC6* as well as *MUC5B* (Kousathanas et al., 2025). We therefore tested every common, well-imputed VNTR and structural-variant allele across the cluster (109 variants), including the *MUC2* VNTR domain no haplogroup analysis reaches. Twenty-one reached the cluster-wide threshold marginally, but all were attenuated by adjustment for rs35705950 and none reached it after adjustment (Supplementary Table S5). This is a power-limited negative: 385 cases cannot detect those signals.
+11p15.5 contains repeat and structural variation that haplogroup tagging cannot reach, including the *MUC2* VNTR domain. We therefore asked whether any common, well-imputed VNTR or structural-variant allele across the cluster (109 variants) is associated with IPF independently of rs35705950, recognising that this sample can only detect large effects. Twenty-one reached the cluster-wide threshold marginally, but all were attenuated by adjustment for rs35705950 and none reached it after adjustment (Supplementary Table S5). This is a power-limited negative. Taking the effect sizes and allele frequencies Kousathanas et al. report for the eight conditionally independent 11p15.5 signals, this sample has 74% power to detect their most strongly associated *MUC5B* signal (OR 1.71 at a frequency of 0.20) at the cluster-wide threshold but 1% to 2% power for each of the four *MUC2* and *MUC6* signals, whose odds ratios are 1.15 to 2.10 at allele frequencies of 0.007 to 0.69 (Methods). The absence of those signals here is therefore uninformative.
 
 ---
 
@@ -116,19 +122,19 @@ The *MUC5AC* H3 findings replicated: OR 1.62 (95% CI 1.47–1.78) unadjusted aga
 
 We tested whether *MUC5AC* or *MUC5B* haplogroup is associated with IPF independently of the *MUC5B* promoter variant rs35705950 in a dedicated IPF case-control study. *MUC5AC* H3 was associated with IPF, but the association is largely explained by its linkage disequilibrium with rs35705950, as was that of *MUC5B* H1. A residual *MUC5AC* H2 association survived adjustment in this cohort but did not replicate in a larger independent sample.
 
-Adjusting rs35705950 for H3 barely changes it (OR 4.03 to 3.90), whereas adjusting H3 for rs35705950 abolishes it (1.63 to 1.10); adding H3 to a model already containing rs35705950 does not improve fit (χ²₁=0.41, p=0.52), whereas the reverse does (χ²₁=77.8, p=1.2×10⁻¹⁸). This pattern is consistent with the H3 association being explained by rs35705950, or by variation more closely tagged by rs35705950 than by the H3 proxy. The LD between them (r=0.36) is the key interpretive constraint: because H3 and rs35705950 are co-inherited, no sample of this size can say whether an H3 association reflects VNTR length, rs35705950-mediated expression, or another co-inherited variant. The tag itself is not the limitation, since it indexes H3 at r²=1.0. The joint-model ordering (H2 depleted, H1 intermediate, H3 enriched for the T allele) is what would be seen if risk tracks rs35705950 frequency by haplogroup rather than repeat length.
+Adjusting rs35705950 for H3 barely changes the rs35705950 estimate (OR 4.03 to 3.90), whereas adjusting H3 for rs35705950 abolishes the H3 estimate (1.63 to 1.10); adding H3 to a model already containing rs35705950 does not improve fit (χ²₁=0.41, p=0.52), whereas the reverse does (χ²₁=77.8, p=1.2×10⁻¹⁸). This pattern is consistent with the H3 association being explained by rs35705950, or by variation more closely tagged by rs35705950 than by the H3 proxy. The LD between them (r=0.36) is the key interpretive constraint: because H3 and rs35705950 are co-inherited, no sample of this size can say whether an H3 association reflects VNTR length, rs35705950-mediated expression, or another co-inherited variant. That LD was also addressed directly rather than only by adjustment: nearly a third of participants are discordant for H3 and T carrier status, and the non-carrier stratum removes the promoter variant's variance entirely, where H3 remained directionally consistent but imprecise (OR 1.15, 95% CI 0.79–1.69, on 151 cases). The limit there is power, not LD. The tag itself is not the limitation, since it indexes H3 at r²=1.0 in Plender's panel and tracks independently imputed repeat length at r=0.98 here. The joint-model ordering (H2 depleted, H1 intermediate, H3 enriched for the T allele) is what would be seen if risk tracks rs35705950 frequency by haplogroup rather than repeat length.
 
-*MUC5AC* H2 behaved differently within this cohort: adjustment for rs35705950 did not abolish it (0.58 to 0.69), the estimate was stable across alternative tags (Supplementary Table S3), and conditioning on the eight mucin-cluster 11p15.5 signals reported by Kousathanas et al. left the point estimate essentially unchanged, though no longer nominally significant (0.71, p=0.051). However, it did not replicate. In the independent TOPMed sample the rs35705950-adjusted estimate was null (OR 0.99, 95% CI 0.88–1.11), an interval that excludes our estimate, in a sample with five times as many cases, so we do not claim an H2 effect independent of the promoter variant. The samples differ in control ascertainment and in the men-only composition of IPFJES, but the parsimonious reading is that our estimate was inflated by chance in a small sample. 
+*MUC5AC* H2 behaved differently within this cohort: adjustment for rs35705950 did not abolish it (0.58 to 0.69), the estimate was stable across alternative tags and agreed closely with the diplotype complement (r=0.97; Supplementary Table S3), and conditioning on the eight mucin-cluster 11p15.5 signals reported by Kousathanas et al. left the point estimate essentially unchanged, though no longer nominally significant (0.71, p=0.051). However, it did not replicate. In the independent TOPMed sample the rs35705950-adjusted estimate was null (OR 0.99, 95% CI 0.88–1.11), an interval that excludes our estimate, in a sample with five times as many cases, so we do not claim an H2 effect independent of the promoter variant. The samples differ in control ascertainment and in the men-only composition of IPFJES, but the parsimonious reading is that our estimate was inflated by chance in a small sample. 
 
 Our conclusion agrees with the only other direct test here. Oketch et al. found that a shorter intergenic tandem repeat at 11p15.5 lost genome-wide significance once rs35705950 was entered (Oketch et al., 2025). That study measured repeats directly but did not resolve haplogroups; ours resolves the clades but tags them indirectly.
 
-Whether repeat number itself carries risk can be addressed more directly. Imputing *MUC5AC* repeat length into IPFJES from the Bai et al. long-read panel recovered the exon-31 length variants at high fidelity (a 751 bp insertion at r²=0.99), but imputed length proved equivalent to the clade tag, correlating with H3 count at r=0.98 and carrying the same weak linkage with rs35705950 (r=0.37). It behaved identically to the H3 tag (unadjusted OR 1.60, 95% CI 1.24–2.07; adjusted 1.06, 0.79–1.41), and a composite of total exon-31 length gave the same result (Supplementary Table S4). Because a single SNP already tags H3 at r²=1.0, little remains for imputation to add. In Bai et al.'s UK Biobank statistics the *MUC5AC* exon-31 repeat is likewise not associated with the pulmonary-fibrosis phecode (Bai et al., 2026); that analysis uses a heterogeneous phecode rather than MDT-diagnosed IPF and does not condition on rs35705950, so it addresses a different question, but it is an independent and far larger test.
+Whether repeat number itself carries risk can be addressed more directly. Imputing *MUC5AC* repeat length into IPFJES from the Bai et al. long-read panel recovered the exon-31 length variants at high fidelity (imputation r²=0.99 for the 751 bp insertion), but imputed length proved equivalent to the clade tag, correlating with H3 count at r=0.98 and carrying the same weak linkage with rs35705950 (r=0.37). It behaved identically to the H3 tag (unadjusted OR 1.60, 95% CI 1.24–2.07; adjusted 1.06, 0.79–1.41), and a composite of total exon-31 length gave the same result (Supplementary Table S4). The H3 tagging r² of 1.0 is Plender's panel estimate and need not transfer to a European cohort, but the tag and the independently imputed length agree at r=0.98 in our own data, so little remains for imputation to add. In Bai et al.'s UK Biobank statistics the *MUC5AC* exon-31 repeat is likewise not associated with the pulmonary-fibrosis phecode, an independent and far larger test, though one using a heterogeneous phecode and without conditioning on rs35705950 (Bai et al., 2026).
 
-Cysteine-rich domain copy number and glycosylation density are among the features invisible to a length-based model, as are the protein-truncating alleles that recur across haplogroups rather than defining one (Plender et al., 2024). The *MUC5B* H1 inverse association (0.71) is explained as H3's is: H2, the predominant *MUC5B* haplogroup, carries rs35705950 T, making H1 appear protective by contrast, and the estimate attenuates on adjustment (0.82, p=0.25). At *MUC5B* the haplogroups index lineage rather than length, so this analysis could only ever detect co-inherited regulatory variation, the same class of mechanism as rs35705950 itself and correspondingly hard to separate from it.
+Cysteine-rich domain copy number and glycosylation density are among the features invisible to a length-based model, as are the protein-truncating alleles that recur across haplogroups rather than defining one (Plender et al., 2024). The *MUC5B* H1 inverse association (0.71) is explained as H3's is: H2, the predominant *MUC5B* haplogroup, carries rs35705950 T, making H1 appear protective by contrast, and the estimate attenuates on adjustment (0.82, p=0.25). At *MUC5B* the haplogroups index lineage rather than length, so this analysis could only ever detect co-inherited variation of another kind, regulatory or coding, rather than a repeat-length effect.
 
 ### Strengths and limitations
 
-Strengths include validated tSNPs from long-read sequencing and a cohort recruited specifically for IPF, with MDT-confirmed diagnoses. The principal limitation is that array-based tSNPs index a phylogenetic clade within an LD block, so even a surviving association identifies the clade, not the feature driving it. The second concerns the variants themselves: per-variant imputation quality for the tagging SNPs could not be assessed beyond the r²≥0.5 QC threshold, so imputation error in a tag propagates into haplogroup assignment, and Plender's tagging r² values are averaged across a 206-haplotype panel assembled from 104 individuals, only 10 of them European, so they carry no guarantee of transferring to a European cohort. The third concerns rs35705950. It is imputed rather than directly typed, so conditioning on it may be incomplete, which would bias towards an apparent residual rather than against one, a further reason for caution over H2; and it is not wholly external to the sequence defining the haplogroups, so conditioning asks the narrower question of whether clade membership matters among chromosomes matched on promoter genotype. The fourth is power: where an association attenuates, this sample cannot exclude a modest residual (the adjusted *MUC5AC* H3 interval, 0.83–1.45, remains compatible with a per-allele OR of about 1.45), though pooled with TOPMed it narrows to 0.96 (0.87–1.07). IPFJES recruited men only, so applicability to women is unknown.
+Strengths include validated tSNPs from long-read sequencing and a cohort recruited specifically for IPF, with MDT-confirmed diagnoses. The principal limitation is that array-based tSNPs index a phylogenetic clade within an LD block, so even a surviving association identifies the clade, not the feature driving it. The second concerns the variants themselves: per-variant imputation quality for the tagging SNPs could not be assessed beyond the r²≥0.5 QC threshold, so imputation error in a tag propagates into haplogroup assignment, and Plender's tagging r² values are averaged across a 206-haplotype panel assembled from 104 individuals, only 10 of them European, so they carry no guarantee of transferring to a European cohort. The third concerns rs35705950. It lies within the same locus as the haplogroups and in partial linkage disequilibrium with them, so it is not an external covariate: adjusting for it may remove part of the haplogroup signal itself, and the adjusted estimate asks whether haplogroup matters among chromosomes already matched on promoter genotype, which is a narrower question than whether haplogroup matters at all. The fourth is power: where an association attenuates, this sample cannot exclude a modest residual (the adjusted *MUC5AC* H3 interval, 0.83–1.45, remains compatible with a per-allele OR of about 1.45), though pooled with TOPMed it narrows to 0.96 (0.87–1.07). IPFJES recruited men only, so applicability to women is unknown.
 
 ### Conclusions
 
@@ -153,6 +159,7 @@ Strengths include validated tSNPs from long-read sequencing and a cohort recruit
 | **_MUC5B_ haplogroup** | | | |
 | H1 carrier, n (%) | 79 (20.5%) | 107 (27.7%) | 0.024 |
 | **rs35705950 (*MUC5B* promoter)** | | | |
+| T allele frequency | 0.33 | 0.12 | |
 | T carrier, n (%) | 230 (59.7%) | 89 (23.1%) | 9.9×10⁻²⁵ |
 | TT homozygote, n (%) | 26 (6.8%) | 4 (1.0%) | 8.9×10⁻⁵ |
 
@@ -166,12 +173,12 @@ p-values: Mann-Whitney U (continuous); chi-squared (categorical). All statistics
 |-------|------|----|--------|:-:|
 | MUC5AC H3, unadjusted | H3 count | 1.63 | 1.26–2.09 | 1.8×10⁻⁴ |
 | MUC5AC H3, adjusted for rs35705950 | H3 count | 1.10 | 0.83–1.45 | 0.52 |
-| | rs35705950 T count | 3.90 | 2.83–5.38 | 1.1×10⁻¹⁶ |
+| MUC5AC H3, adjusted for rs35705950 (same model) | rs35705950 T count | 3.90 | 2.83–5.38 | 1.1×10⁻¹⁶ |
 | MUC5AC H2, adjusted for H3 | H2 count | 0.58 | 0.43–0.78 | 2.7×10⁻⁴ |
 | MUC5AC H2, adjusted for H3 + rs35705950 | H2 count | 0.69 | 0.51–0.94 | 0.017 |
 | MUC5B H1, unadjusted | H1 count | 0.71 | 0.52–0.98 | 0.038 |
 | MUC5B H1, adjusted for rs35705950 | H1 count | 0.82 | 0.58–1.15 | 0.25 |
-| | rs35705950 T count | 3.98 | 2.93–5.41 | 1.2×10⁻¹⁸ |
+| MUC5B H1, adjusted for rs35705950 (same model) | rs35705950 T count | 3.98 | 2.93–5.41 | 1.2×10⁻¹⁸ |
 | rs35705950 alone (reference) | rs35705950 T count | 4.03 | 2.97–5.48 | 4.0×10⁻¹⁹ |
 
 All models adjusted for age, ever-smoking, PC1–5, and recruitment centre (N=771; one cases-only centre excluded). The "*MUC5AC* H2, adjusted for H3" rows are the joint model (H2 and H3 entered together, H1 reference), reporting the H2 term; in that model H3 is enriched and attenuates on rs35705950 adjustment as in the H3 main-effect rows above. rs35705950 odds ratios differ between rows because each is conditioned on the haplogroup term(s) in that model. Every haplogroup term is an allele-dosage count (0/1/2): the H2 term is the count of the direct H2 tag rs879201833, and the H3 and *MUC5B* H1 terms are the counts of their concordance SNPs.
@@ -208,6 +215,8 @@ Oketch JW, et al. Genome-wide analysis of tandem repeat variation identifies *SL
 
 Plender EG, Prodanov T, Hsieh P, et al. Structural and genetic diversity in the secreted mucins *MUC5AC* and *MUC5B*. *Am J Hum Genet*. 2024;111:1700–1716. https://doi.org/10.1016/j.ajhg.2024.06.007
 
+Peljto AL, Blumhagen RZ, Walts AD, et al. Idiopathic pulmonary fibrosis is associated with common genetic variants and limited rare variants. *Am J Respir Crit Care Med*. 2023;207(9):1194–1202. https://doi.org/10.1164/rccm.202207-1331OC
+
 Raghu G, et al. Idiopathic pulmonary fibrosis (an update) and progressive pulmonary fibrosis in adults: an official ATS/ERS/JRS/ALAT clinical practice guideline. *Am J Respir Crit Care Med*. 2022;205(9):e18–e47.
 
 Reynolds CJ, Sisodia R, Barber C, et al. What role for asbestos in idiopathic pulmonary fibrosis? Findings from the IPF job exposures case-control study. *Occup Environ Med*. 2023;80:97–103. https://doi.org/10.1136/oemed-2022-108404
@@ -215,6 +224,8 @@ Reynolds CJ, Sisodia R, Barber C, et al. What role for asbestos in idiopathic pu
 Seibold MA, et al. A common *MUC5B* promoter polymorphism and pulmonary fibrosis. *N Engl J Med*. 2011;364(16):1503–1512.
 
 ---
+
+*Conflict of interest: C.J. Reynolds has nothing to disclose.*
 
 *Support statement: CJR is funded by The Colt Foundation.*
 
@@ -228,7 +239,7 @@ Analyses used PLINK v2.00a3.7 for LD-pruning, PCA, dosage export and Hardy-Weinb
 
 ### Haplogroup label assignment
 
-The haplogroup labels for rs28542750 and rs769768817 in Plender et al.'s main text appear transposed relative to their Supplementary Table S4. Their Table S4 resolves it, giving per-haplogroup r² of 0.111 (H1), 0.055 (H2) and 1.000 (H3) for rs28542750, and 0.899 (H1), 0.012 (H2) and 0.001 (H3) for rs769768817. We therefore assigned rs28542750 to H3 and rs769768817 to H1. Our own control frequencies corroborate this: rs28542750 (0.203) falls within the H3 tag set and matches the ~21% European H3 frequency, and rs769768817 (0.571) within the H1 tag set; this also fixes the orientation of both palindromes. The primary inference is in any case invariant to the labelling; only which clade is described as the long one would change.
+The haplogroup labels for rs28542750 and rs769768817 in Plender et al.'s main text appear transposed relative to Plender et al. Supplementary Table S4. That table resolves it, giving per-haplogroup r² of 0.111 (H1), 0.055 (H2) and 1.000 (H3) for rs28542750, and 0.899 (H1), 0.012 (H2) and 0.001 (H3) for rs769768817. We therefore assigned rs28542750 to H3 and rs769768817 to H1. Our own control frequencies corroborate this: rs28542750 (0.203) falls within the H3 tag set and matches the ~21% European H3 frequency, and rs769768817 (0.571) within the H1 tag set; this also fixes the orientation of both palindromes. The primary inference is in any case invariant to the labelling; only which clade is described as the long one would change.
 
 ### *MUC5B* discriminator orientation
 
@@ -242,25 +253,7 @@ A fifth Plender H2 tag, rs1201597847 (H2 r²=0.859), is present in the imputed d
 
 ## Supplementary Tables
 
-**Supplementary Table S1. *MUC5AC* H3 and *MUC5B* H1 associations stratified by rs35705950 carrier status**
-
-| Haplogroup | Stratum | N | OR | 95% CI | p |
-|------------|---------|---|----|--------|---|
-| MUC5AC H3 | Non-carrier (T=0) | 448 | 1.15 | 0.79–1.69 | 0.46 |
-| MUC5AC H3 | Carrier (T≥1) | 313 | 1.00 | 0.64–1.54 | 0.98 |
-| MUC5AC H3 | Overall | 771 | 1.63 | 1.26–2.09 | 1.8×10⁻⁴ |
-| MUC5B H1 | Non-carrier (T=0) | 448 | 0.72 | 0.46–1.11 | 0.14 |
-| MUC5B H1 | Carrier (T≥1) | 313 | 1.03 | 0.54–1.95 | 0.93 |
-| MUC5B H1 | Overall | 771 | 0.71 | 0.52–0.98 | 0.038 |
-| MUC5AC H2 | Non-carrier (T=0) | 448 | 0.69 | 0.48–1.01 | 0.054 |
-| MUC5AC H2 | Carrier (T≥1) | 313 | 0.54 | 0.30–0.97 | 0.040 |
-| MUC5AC H2 | Overall | 771 | 0.69 | 0.51–0.94 | 0.017 |
-
-All models adjusted for age, ever-smoking, PC1–5, and recruitment centre. Non-carrier stratum excludes centre 18 (n=4, cases only); carrier stratum excludes centres 17 (n=2) and 21 (n=4) (cases only), to avoid complete separation. H3 OR in non-carriers (1.15) is consistent with confounding but the analysis is underpowered to exclude an independent effect of modest magnitude. *MUC5AC* H2 rows are from the joint model (H2 tag and H3 entered together, H1 reference). The "Overall" column is not uniform: for H3 and *MUC5B* H1 it is the unadjusted single-term estimate, whereas for H2 it is the rs35705950-adjusted joint estimate (0.69; Table 2), shown because the H2 estimate of interest is the one adjusted for rs35705950, which is the estimate that did not replicate in TOPMed (Results). The non-carrier rows control for rs35705950 by design, since the promoter variant has no variance in that stratum; the carrier rows pool T=1 and T=2 without adjusting for T count.
-
----
-
-**Supplementary Table S2. Haplogroup-tagging SNP panel: alleles, frequencies, and tagging quality**
+**Supplementary Table S1. Haplogroup-tagging SNP panel: alleles, frequencies, and tagging quality**
 
 \scriptsize
 
@@ -292,6 +285,24 @@ Alleles = reference/alternate on the GRCh38 forward strand, as carried in the TO
 
 ---
 
+**Supplementary Table S2. *MUC5AC* H3 and *MUC5B* H1 associations stratified by rs35705950 carrier status**
+
+| Haplogroup | Stratum | N | OR | 95% CI | p |
+|------------|---------|---|----|--------|---|
+| MUC5AC H3 | Non-carrier (T=0) | 448 | 1.15 | 0.79–1.69 | 0.46 |
+| MUC5AC H3 | Carrier (T≥1) | 313 | 1.00 | 0.64–1.54 | 0.98 |
+| MUC5AC H3 | Overall | 771 | 1.63 | 1.26–2.09 | 1.8×10⁻⁴ |
+| MUC5B H1 | Non-carrier (T=0) | 448 | 0.72 | 0.46–1.11 | 0.14 |
+| MUC5B H1 | Carrier (T≥1) | 313 | 1.03 | 0.54–1.95 | 0.93 |
+| MUC5B H1 | Overall | 771 | 0.71 | 0.52–0.98 | 0.038 |
+| MUC5AC H2 | Non-carrier (T=0) | 448 | 0.69 | 0.48–1.01 | 0.054 |
+| MUC5AC H2 | Carrier (T≥1) | 313 | 0.54 | 0.30–0.97 | 0.040 |
+| MUC5AC H2 | Overall | 771 | 0.69 | 0.51–0.94 | 0.017 |
+
+All models adjusted for age, ever-smoking, PC1–5, and recruitment centre. Non-carrier stratum excludes centre 18 (n=4, cases only); carrier stratum excludes centres 17 (n=2) and 21 (n=4) (cases only), to avoid complete separation. H3 OR in non-carriers (1.15) is consistent with confounding but the analysis is underpowered to exclude an independent effect of modest magnitude. *MUC5AC* H2 rows are from the joint model (H2 tag and H3 entered together, H1 reference). The "Overall" column is not uniform: for H3 and *MUC5B* H1 it is the unadjusted single-term estimate, whereas for H2 it is the rs35705950-adjusted joint estimate (0.69; Table 2), shown because the H2 estimate of interest is the one adjusted for rs35705950, which is the estimate that did not replicate in TOPMed (Results). The non-carrier rows control for rs35705950 by design, since the promoter variant has no variance in that stratum; the carrier rows pool T=1 and T=2 without adjusting for T count.
+
+---
+
 **Supplementary Table S3. *MUC5AC* H2 association across tagging measures**
 
 \scriptsize
@@ -299,14 +310,12 @@ Alleles = reference/alternate on the GRCh38 forward strand, as carried in the TO
 | H2 measure | Plender r² | Ctrl freq | r (compl.) | Unadjusted OR (95% CI) | +rs35705950 OR (95% CI) | p |
 |--------------|:---:|:---:|:----:|----------|----------|:-:|
 | rs879201833 (primary) | 0.888 | 0.225 | 0.972 | 0.58 (0.43–0.78) | 0.69 (0.51–0.94) | 0.017 |
-| rs28519516 | 0.862 | 0.227 | 0.968 | 0.55 (0.41–0.74) | 0.66 (0.49–0.90) | 0.009 |
-| rs28558973 | 0.862 | 0.227 | 0.968 | 0.55 (0.41–0.74) | 0.66 (0.49–0.90) | 0.009 |
-| rs28368633 | 0.862 | 0.227 | 0.968 | 0.55 (0.41–0.74) | 0.66 (0.49–0.90) | 0.009 |
+| Plender panel tags (rs28519516, rs28558973, rs28368633) | 0.862 | 0.227 | 0.968 | 0.55 (0.41–0.74) | 0.66 (0.49–0.90) | 0.009 |
 | Diplotype complement (2 − H1 − H3) | n/a | 0.225 | 1.000 | 0.63 (0.47–0.83) | 0.73 (0.54–0.98) | 0.038 |
 
 \normalsize
 
-Ctrl freq = control-allele frequency; r (compl.) = correlation with the diplotype complement. The primary H2 measure is the direct tag rs879201833 (r²=0.888). The three r²=0.862 panel tags are in complete mutual linkage disequilibrium (r=1.000) and give identical rows; the diplotype complement (2 − H1 − H3) is shown as a cross-check. All measures agree in direction and magnitude (adjusted OR 0.66–0.73), so the H2 residual is not an artefact of how H2 is assigned; the tags and the complement have comparable tagging quality (r²≈0.86–0.90), and the small differences between them should not be over-read. All models are the *MUC5AC* joint model (H2 and H3 entered together, H1 reference), adjusted for age, ever-smoking, PC1–5 and recruitment centre (N=771). Computed by `code/09_h2_direct_and_lrt.py`.
+Ctrl freq = control-allele frequency; r (compl.) = correlation with the diplotype complement. The primary H2 measure is the direct tag rs879201833 (r²=0.888). The three Plender panel tags are in complete mutual linkage disequilibrium in our data (r=1.000) and give identical estimates, so they are shown as a single row; each was nonetheless fitted separately and all four estimates are verified individually by `code/verify_numbers.py`; the diplotype complement (2 − H1 − H3) is shown as a cross-check. All measures agree in direction and magnitude (adjusted OR 0.66–0.73), so the H2 residual is not an artefact of how H2 is assigned; the tags and the complement have comparable tagging quality (r²≈0.86–0.90), and the small differences between them should not be over-read. All models are the *MUC5AC* joint model (H2 and H3 entered together, H1 reference), adjusted for age, ever-smoking, PC1–5 and recruitment centre (N=771). Computed by `code/09_h2_direct_and_lrt.py`.
 
 ---
 
@@ -331,7 +340,8 @@ Imp. r² = imputation r²; r (H3) = correlation with imputed H3 count. Repeat le
 
 | | |
 |---|---|
-| Variants tested (MUC6–MUC5B, chr11:1.01–1.263 Mb) | 109 common (MAF≥0.01), well-imputed (r²≥0.8) VNTR + SV alleles |
+| Variants tested (MUC6–MUC5B, chr11:1.01–1.263 Mb) | 109 common (MAF≥0.01), well-imputed (r²≥0.8) VNTR + SV alleles from the Bai et al. (2026) long-read assembly panel, via the ImputeSV server (69 VNTR panel, 40 SV panel) |
+| Allele size (length change versus reference) | 44 to 2,863 bp, median 291 bp; 106 of 109 at least 50 bp |
 | By gene | MUC2 73, MUC5AC 15, MUC5B 8, intergenic/flanking 13, MUC6 0 (imputes poorly) |
 | Effective independent tests (Li & Ji, 2005) | M_eff = 54; cluster-wide threshold 0.05/M_eff = 9.3×10⁻⁴ |
 | Reaching threshold marginally | 21 (mostly MUC2; 2 the already-reported MUC5AC exon-31) |
@@ -352,3 +362,5 @@ Every common, well-imputed VNTR and structural-variant allele in the mucin clust
 | MUC5B H1 (chr11:1,244,757) | −0.10 (0.01) | −0.11 (0.01) | <0.05 |
 
 Each haplogroup is represented by its concordance tSNP (Methods); r is the Pearson correlation of the tag allele-dosage count with the rs35705950 T-allele count, r² its square. The reference column is the r² between rs35705950 and each tSNP in the 1000 Genomes European panel (phase 3; Ensembl LD API), the panel Plender et al. used for their locus-wide LD analysis; Plender et al. do not themselves tabulate haplogroup–rs35705950 LD. Only *MUC5AC* H3 shows appreciable LD with rs35705950, and the IPFJES-controls value (r²=0.10) is consistent with the reference (0.10), indicating the LD is representative rather than a feature of this cohort; the full-sample estimates are modestly larger because cases are enriched for risk haplotypes. H1, H2 and *MUC5B* H1 have negligible LD (r²<0.05) in both IPFJES and the reference (the Ensembl API does not return pairs below ~0.05). Computed by `code/13_ld_haplogroup_rs35705950.py`.
+
+

@@ -51,7 +51,7 @@ ROOT = "/home/drcjar/ipfjes-omics"
 _checks = []
 # Provenance for the current block of checks: which variant column, which model
 # formula, which N. Set with `prov(...)` before a group of checks. Supplementary
-# Table S1's H2 rows were computed from the wrong tagging SNP for weeks because a
+# Table S2's H2 rows were computed from the wrong tagging SNP for weeks because a
 # number carried no record of where it came from; this makes that visible.
 _prov = {}
 from contextlib import contextmanager
@@ -225,7 +225,7 @@ chk_int("Discordant", "discordant controls (n)", 123, int(hd[dm.case==0].sum()))
 bd = (dm.MUC5B_H1_count > 0) != (dm.rs35705950_T_count > 0)
 chk_int("Discordant", "MUC5B H1 discordant n", 383, int(bd.sum()))
 
-# Supplementary Table S2 — per-tSNP counted-allele frequencies in the 386 controls.
+# Supplementary Table S1 — per-tSNP counted-allele frequencies in the 386 controls.
 _dos = pd.read_csv(f"{ROOT}/muc5_tsnps_dosage_pheno.csv")
 _dos["pid"] = _dos["IID"].astype(str).str.split("_").str[0]
 _ctrl_pid = set(controls.pid)
@@ -239,9 +239,9 @@ s3_freq = {
     "chr11:1197482:C:T_C": 0.799, "chr11:1219991:G:T_G": 0.880,
 }
 for _cc, _exp in s3_freq.items():
-    chk_num("Table S2", f"{_cc} freq", _exp, _dc[_cc].mean()/2, dp=3)
+    chk_num("Table S1", f"{_cc} freq", _exp, _dc[_cc].mean()/2, dp=3)
 # MUC5B discriminator: counted allele tags H2, taken from the haplogroup calls.
-chk_num("Table S2", "chr11:1244757 (MUC5B H2) freq", 0.852, controls.MUC5B_H2_count.mean()/2, dp=3)
+chk_num("Table S1", "chr11:1244757 (MUC5B H2) freq", 0.852, controls.MUC5B_H2_count.mean()/2, dp=3)
 
 r_h3, p_h3 = stats.pearsonr(dm.H3_count, dm.rs35705950_T_count)
 chk_num("LD", "r(H3, rs35705950)", 0.363, r_h3, dp=3)
@@ -298,13 +298,13 @@ check_model("Table 2 / rs alone", f"case~rs35705950_T_count+{covs}",
             {"rs35705950_T_count": (4.03, 2.97, 5.48, 4.0e-19)})
 
 # %% [markdown]
-# ## 4. Table S1 — rs35705950-stratified
+# ## 4. Table S2 — rs35705950-stratified
 
 # %%
 dm_neg = dm[(dm.rs35705950_T_count == 0) & (~dm.centre.isin([18]))]
 dm_pos = dm[(dm.rs35705950_T_count >= 1) & (~dm.centre.isin([17, 21]))]
-chk_int("Table S1", "Non-carrier N", 448, len(dm_neg))
-chk_int("Table S1", "Carrier N", 313, len(dm_pos))
+chk_int("Table S2", "Non-carrier N", 448, len(dm_neg))
+chk_int("Table S2", "Carrier N", 313, len(dm_pos))
 s1 = {("H3_count","Non-carrier"):1.15, ("H3_count","Carrier"):1.00, ("MUC5B_H1_count","Non-carrier"):0.72, ("MUC5B_H1_count","Carrier"):1.03}
 with prov(tag="H3/MUC5B H1 counts from muc5_haplogroups.csv",
           model="case~<hg>+age+ever_smoked+PC1-5+C(centre)",
@@ -312,18 +312,18 @@ with prov(tag="H3/MUC5B H1 counts from muc5_haplogroups.csv",
   for (hc, strat), mo in s1.items():
     d = dm_neg if strat == "Non-carrier" else dm_pos
     o, l, h, p = orci(fit(f"case~{hc}+{covs}", d), hc)
-    chk_num("Table S1", f"{hc} {strat} OR", mo, o)
+    chk_num("Table S2", f"{hc} {strat} OR", mo, o)
     # intervals recorded so 07_consistency_checks.py can check the Discussion,
     # which quotes the H3 non-carrier interval directly
     _rec_ci = {("H3_count", "Non-carrier"): (0.79, 1.69), ("H3_count", "Carrier"): (0.64, 1.54),
                ("MUC5B_H1_count", "Non-carrier"): (0.46, 1.11), ("MUC5B_H1_count", "Carrier"): (0.54, 1.95)}
     if (hc, strat) in _rec_ci:
         _cl, _ch = _rec_ci[(hc, strat)]
-        chk_num("Table S1", f"{hc} {strat} CI-lo", _cl, l)
-        chk_num("Table S1", f"{hc} {strat} CI-hi", _ch, h)
+        chk_num("Table S2", f"{hc} {strat} CI-lo", _cl, l)
+        chk_num("Table S2", f"{hc} {strat} CI-hi", _ch, h)
         _rec_p = {("H3_count", "Non-carrier"): 0.46, ("H3_count", "Carrier"): 0.98,
                   ("MUC5B_H1_count", "Non-carrier"): 0.14, ("MUC5B_H1_count", "Carrier"): 0.93}
-        chk_p("Table S1", f"{hc} {strat} p", _rec_p[(hc, strat)], p)
+        chk_p("Table S2", f"{hc} {strat} p", _rec_p[(hc, strat)], p)
 
 # %% [markdown]
 # ## 5. Hardy-Weinberg in the IPFJES controls, and attenuation
@@ -344,7 +344,7 @@ chk_num("HWE", "MUC5B H1 p", 0.57, hwe_p(controls.MUC5B_H1_count), dp=2)
 # Methods: "All tSNPs passed Hardy-Weinberg testing in the IPFJES controls
 # (minimum p=0.41); genotypes were hard-called from imputed data with no missingness."
 # rs879201833 lives in muc5ac_h2_tag.raw, not the main dosage export, and was
-# previously omitted from this set even though it is a row in Table S2.
+# previously omitted from this set even though it is a row in Table S1.
 _h2raw = pd.read_csv(f"{ROOT}/muc5ac_h2_tag.raw", sep=r"\s+")
 _h2raw["pid"] = _h2raw["IID"].astype(str).str.split("_").str[0]
 _h2c = _h2raw[_h2raw.pid.isin(set(controls.pid))]
@@ -421,7 +421,7 @@ chk_num("Stratified", "rs35705950 in H3 non-carriers CI-hi", 5.32, _h)
 # %% [markdown]
 # ## 7. Additions reported after peer review
 #
-# H2 stratified by rs35705950 (Table S1); the H3-carrier stratum; the genotypic
+# H2 stratified by rs35705950 (Table S2); the H3-carrier stratum; the genotypic
 # H3 model; and the minimum detectable residual effect quoted in the Discussion.
 
 # %%
@@ -431,8 +431,8 @@ with prov(tag=NEW_TAG_ID, model="case~H2t+H3_count+age+ever_smoked+PC1-5+C(centr
           strata="rs35705950 carrier status"):
  for _lab, _d, _mo, _mp in [("Non-carrier", _neg2, 0.69, 0.054), ("Carrier", _pos2, 0.54, 0.040)]:
     _o, _l, _h, _p = orci(fit(f"case~H2t+H3_count+{covs}", _d), "H2t")
-    chk_num("Table S1 H2", f"H2 {_lab} OR", _mo, _o)
-    chk_num("Table S1 H2", f"H2 {_lab} p", _mp, _p, dp=3)
+    chk_num("Table S2 H2", f"H2 {_lab} OR", _mo, _o)
+    chk_num("Table S2 H2", f"H2 {_lab} p", _mp, _p, dp=3)
 
 _pos3 = dm[dm.H3_count > 0]
 chk_int("Stratified", "H3 carriers N", 342, len(_pos3))
@@ -495,6 +495,7 @@ chk_int("Ancestry", "white-ethnicity participants", 771, _white)
 chk_num("Ancestry", "white-ethnicity %", 100.0, 100 * _white / len(_eth), dp=1)
 
 # %% [markdown]
+#
 # %% [markdown]
 # ## 9. The non-monotonic clade ordering cited in the Discussion
 #
@@ -511,6 +512,77 @@ chk_num("Clade ordering", "H3 vs H1 (adjusted) p", 0.88, _p, dp=2)
 _m2 = fit(f"case~H1_count+H3_count+rs35705950_T_count+{covs}")      # H2 reference
 chk_num("Clade ordering", "H1 vs H2 (adjusted) OR", 1.37, np.exp(_m2.params["H1_count"]))
 chk_num("Clade ordering", "H3 vs H2 (adjusted) OR", 1.4, np.exp(_m2.params["H3_count"]))
+
+# %% [markdown]
+# ## 10. Power of the cluster-wide scan for the known 11p15.5 signals
+#
+# The scan's negative is quoted in the Results with a power figure; a reviewer asked
+# for that figure to be backed up rather than asserted. Recomputed here by the same
+# method as `17_cluster_scan_power.py` but written out independently, so the two are
+# not a single code path. Published AF_EUR and OR are from Kousathanas et al. (2025)
+# Supplementary Table 5. Checked with a tolerance of one percentage point, because
+# the standard error is obtained from simulated genotypes and shifts slightly with
+# the random stream (73.9-74.4% across four seeds).
+
+# %%
+_KOUS = [  # pos, rsid, af_eur, OR, nearest gene
+    (1013992, "rs148815783", 0.0073, 2.10, "MUC6"),
+    (1057948, "rs12574439",  0.12,   1.21, "MUC2"),
+    (1078249, "rs7104590",   0.69,   1.15, "MUC2"),
+    (1081750, "rs41359951",  0.018,  1.55, "MUC2"),
+    (1208601, "rs548688097", 0.0070, 2.84, "MUC5B"),
+    (1214934, "rs12802931",  0.20,   1.71, "MUC5B"),
+    (1219775, "rs2672794",   0.61,   1.20, "MUC5B"),
+    (1224068, "rs56321310",  0.19,   1.39, "MUC5B"),
+]
+_M_EFF = 54                       # 11_mucin_cluster_scan.py, Li & Ji (2005)
+_ZC = stats.norm.isf((0.05 / _M_EFF) / 2)
+_rng = np.random.default_rng(4242)        # deliberately not 17_...'s seed
+
+with prov(tag="simulated genotype at published AF_EUR",
+          model=f"case ~ g + {covs}", strata=f"N={len(dm)}"):
+    _pw = {}
+    for _pos, _rs, _af, _or, _gene in _KOUS:
+        _ses = []
+        for _ in range(200):
+            _g = _rng.binomial(2, _af, size=len(dm)).astype(float)
+            if _g.std() == 0:
+                continue
+            try:
+                _m = fit(f"case~g+{covs}", dm.assign(g=_g))
+            except Exception:
+                continue
+            _se = _m.bse.get("g", np.nan)
+            if np.isfinite(_se) and _se < 10:
+                _ses.append(_se)
+        _ncp = np.log(_or) / float(np.mean(_ses))
+        _pw[_rs] = stats.norm.sf(_ZC - _ncp) + stats.norm.cdf(-_ZC - _ncp)
+
+    # The figure quoted in the Results: their most strongly associated MUC5B signal.
+    chk_tol("Cluster-scan power", "rs12802931 (MUC5B, OR 1.71, AF 0.20) power",
+            0.74, _pw["rs12802931"], tol=0.01)
+    # And the range quoted for the four MUC2/MUC6 signals, which the scan cannot reach.
+    _m26 = [_pw[r] for _, r, _, _, g in _KOUS if g in ("MUC2", "MUC6")]
+    chk_tol("Cluster-scan power", "MUC2/MUC6 signals minimum power",
+            0.012, min(_m26), tol=0.01)
+    chk_tol("Cluster-scan power", "MUC2/MUC6 signals maximum power",
+            0.017, max(_m26), tol=0.01)
+    # The published effect sizes and frequencies quoted alongside them.
+    _or26 = [o for _, _, _, o, g in _KOUS if g in ("MUC2", "MUC6")]
+    _af26 = [a for _, _, a, _, g in _KOUS if g in ("MUC2", "MUC6")]
+    chk_num("Cluster-scan power", "MUC2/MUC6 published OR minimum", 1.15, min(_or26))
+    chk_num("Cluster-scan power", "MUC2/MUC6 published OR maximum", 2.10, max(_or26))
+    chk_num("Cluster-scan power", "MUC2/MUC6 published AF minimum", 0.007, min(_af26), dp=3)
+    chk_num("Cluster-scan power", "MUC2/MUC6 published AF maximum", 0.69, max(_af26))
+    chk_int("Cluster-scan power", "signals tested", 8, len(_KOUS))
+    # Percent form and the two published figures quoted beside it, so that
+    # 07_consistency_checks.py can compare the manuscript sentence word for word.
+    chk_tol("Cluster-scan power", "rs12802931 power pct", 74,
+            100 * _pw["rs12802931"], tol=1)
+    chk_num("Cluster-scan power", "rs12802931 published OR", 1.71,
+            [_o for _, _r, _, _o, _ in _KOUS if _r == "rs12802931"][0])
+    chk_num("Cluster-scan power", "rs12802931 published AF", 0.20,
+            [_a for _, _r, _a, _, _ in _KOUS if _r == "rs12802931"][0])
 
 # %% [markdown]
 # ## Summary — any FAIL needs attention

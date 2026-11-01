@@ -36,7 +36,7 @@
 # it; adjusting H3 for rs35705950 abolishes it).
 #
 # **3. Reciprocal stratification**: rs35705950 estimated within H3-carrier
-# strata, the complement of Supplementary Table S1.
+# strata, the complement of Supplementary Table S2.
 #
 # Requires `muc5ac_h2_tag.raw` from REPRODUCE.md step 3b.
 
@@ -61,6 +61,9 @@ raw = pd.read_csv(f"{ROOT}/muc5ac_h2_tag.raw", sep=r"\s+")
 raw["pid"] = raw["IID"].astype(str).str.split("_").str[0]
 NEW = [c for c in raw.columns if c.startswith("chr11:1182279")][0]
 
+# All four tags are fitted separately here. The three r2=0.862 panel tags are in complete
+# mutual LD in our data and give identical estimates, so Supplementary Table S3 reports them
+# as one row; they are still computed and checked individually so the collapse is verifiable.
 H2_TAGS = {
     "rs879201833 (H2 r2=0.888)": NEW,
     "rs28519516  (H2 r2=0.862)": "chr11:1202343:T:C_C",
@@ -145,11 +148,11 @@ print(f"\nH3 x rs35705950 interaction p = {m.pvalues['H3_count:rs35705950_T_coun
       "(justifies pooling the strata)")
 
 # %% [markdown]
-# ## 4. MUC5AC H2 stratified by rs35705950 carrier status (Supplementary Table S1)
+# ## 4. MUC5AC H2 stratified by rs35705950 carrier status (Supplementary Table S2)
 #
 # H2 is the one contrast retaining significance after adjustment, so it is
 # stratified here as H3 and MUC5B H1 already are. Centre exclusions follow the
-# Table S1 convention (centre 18 from the non-carrier stratum; 17 and 21 from
+# Table S2 convention (centre 18 from the non-carrier stratum; 17 and 21 from
 # the carrier stratum) to avoid complete separation.
 
 # %%
@@ -157,7 +160,7 @@ _neg = dm[(dm.rs35705950_T_count == 0) & (~dm.centre.isin([18]))]
 _pos = dm[(dm.rs35705950_T_count >= 1) & (~dm.centre.isin([17, 21]))]
 # Use the PRIMARY H2 tag (rs879201833) here, the one the manuscript reports
 # everywhere else. This section previously used rs28519516, a secondary panel
-# tag, which is what put the wrong H2 rows into Supplementary Table S1.
+# tag, which is what put the wrong H2 rows into Supplementary Table S2.
 _f = dm.loc[dm.case == 0, NEW].mean() / 2
 dm["H2d"] = dm[NEW] if _f < 0.5 else 2 - dm[NEW]
 for _lab, _d in [("Non-carrier", _neg), ("Carrier", _pos)]:

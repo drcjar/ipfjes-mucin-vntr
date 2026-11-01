@@ -2,7 +2,7 @@
 
 `verify_numbers.py` proves the manuscript matches what this pipeline computes. It
 cannot prove the pipeline is right: a wrong assumption shared by the analysis and
-the audit agrees with itself. Supplementary Table S1's H2 rows were wrong for
+the audit agrees with itself. Supplementary Table S2's H2 rows were wrong for
 weeks for exactly that reason, and were only caught because two scripts happened
 to disagree.
 

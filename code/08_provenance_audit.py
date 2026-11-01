@@ -157,10 +157,10 @@ def cells(lines):
 
 
 def s3_block(path):
-    """The Supplementary Table S2 rows only — other tables may also carry chr11: IDs."""
+    """The Supplementary Table S1 rows only — other tables may also carry chr11: IDs."""
     keep, out = False, []
     for ln in open(path):
-        if ln.startswith("**Supplementary Table S2"):
+        if ln.startswith("**Supplementary Table S1"):
             keep = True
         elif ln.startswith("**Supplementary Table S") and keep:
             break
@@ -174,7 +174,7 @@ gen = cells(subprocess.run([sys.executable, f"{R}/code/05_tsnp_table.py"],
 paper = cells(s3_block(f"{R}/MUC5_VNTR_haplogroup_paper_draft.md"))
 drift = [f"{k}:{i}" for k, g in gen.items()
          for i, (a, b) in enumerate(zip(g, paper.get(k, [""] * len(g)))) if a != b]
-audit("Manuscript Table S2 == 05_tsnp_table.py output", f"{len(gen)} rows, {len(drift)} drifted cells",
+audit("Manuscript Table S1 == 05_tsnp_table.py output", f"{len(gen)} rows, {len(drift)} drifted cells",
       "0 drifted cells", set(gen) == set(paper) and not drift)
 if drift:
     print("DRIFTED CELLS:", ", ".join(drift), "\n")

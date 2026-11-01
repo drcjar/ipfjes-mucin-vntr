@@ -14,7 +14,7 @@
 #     name: python3
 # ---
 
-"""05_tsnp_table.py — Supplementary Table S2: haplogroup-tagging SNP panel.
+"""05_tsnp_table.py — Supplementary Table S1: haplogroup-tagging SNP panel.
 
 Emits a markdown table of the tagging SNPs used for haplogroup assignment, with
 the counted (effect) allele, its frequency and the minor-allele frequency (MAF)

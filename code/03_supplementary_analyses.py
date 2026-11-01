@@ -20,7 +20,7 @@ Runs in sequence after 01_haplogroup_assignment.py and 02_primary_analysis.py.
 Requires: muc5_haplogroups.csv, flat_data_genotype_subset.csv, ipfjes_pca.eigenvec
 
 Tasks:
-  1. rs35705950-stratified haplogroup associations (Supplementary Table S1)
+  1. rs35705950-stratified haplogroup associations (Supplementary Table S2)
   2. Joint MUC5AC model + rs35705950 adjustment; attenuation quantification
   3. Bootstrap RERI 95% CIs (500 resamples, seed=42)
   4. Hardy-Weinberg equilibrium in controls
