@@ -254,6 +254,13 @@ else:
              "Table 2 / 1b H3+rs|H3_count CI-lo", 0.0051),
             (r"H3 interval, [\d.]+\u2013([\d.]+), remains compatible",
              "Table 2 / 1b H3+rs|H3_count CI-hi", 0.0051),
+            # IPFJES smoking quoted in the TOPMed comparison paragraph. These were
+            # the N=798 figures (300/397, 276/401) and survived the restriction to
+            # 771 unchecked, because no pattern here referred to them.
+            (r"the reverse of the pattern in IPFJES \(([\d.]+)% of controls",
+             "Table 1|Ever-smoked controls %", 0.051),
+            (r"the pattern in IPFJES \([\d.]+% of controls versus ([\d.]+)% of cases\)",
+             "Table 1|Ever-smoked cases %", 0.051),
             # Cluster-scan power: the figures Louise Wain asked to see backed up.
             (r"this sample has (\d+)% power", "Cluster-scan power|rs12802931 power pct", 1.0),
             (r"most strongly associated \*MUC5B\* signal \(OR ([\d.]+) at a frequency",
