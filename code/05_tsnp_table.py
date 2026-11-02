@@ -91,10 +91,14 @@ print("| tSNP | Position | Alleles | Counted | Freq | MAF | Hap. allele | Tags |
 print("|--------------|---------|:---:|:---:|:--:|:--:|:--:|-----------|:--:|")
 for _, r in ad.iterrows():
     hap = "*MUC5B* promoter" if r["haplogroup"] == "MUC5B promoter" else r["haplogroup"].replace(" concordance", " conc.")
+    # Gene names are italicised in every table cell in the manuscript, so emit them
+    # that way here: 08_provenance_audit.py compares this output to Table S1 cell by
+    # cell, and plain names here would show up as drift in 26 cells.
+    hap = re.sub(r"(?<!\*)\b(MUC5AC|MUC5B|MUC2|MUC6)\b(?!\*)", r"*\1*", hap)
     # trailing zeros stripped but at least one decimal kept: 1.000 -> "1.0", 0.899 -> "0.899"
     r2 = "n/a" if pd.isna(r["source_r2"]) else f'{r["source_r2"]:.3f}'.rstrip("0").ljust(3, "0")
     print(row(r["rsID"], r["column"], hap, r2, r["direction"]))
 # The MUC5B discriminator is counted directly as H2: 01_haplogroup_assignment.py
 # assigns the counted allele to H2 when its frequency exceeds 0.5 (here 0.852).
-print(row("MUC5B discriminator", "chr11:1244757:C:G_C", "MUC5B H2", "1.0",
+print(row("*MUC5B* discriminator", "chr11:1244757:C:G_C", "*MUC5B* H2", "1.0",
           "counted C = H2 allele"))

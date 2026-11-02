@@ -334,7 +334,10 @@ else:
           ("MUC5AC H2", "Non-carrier"): "Table S2 H2|H2 Non-carrier OR",
           ("MUC5AC H2", "Carrier"):     "Table S2 H2|H2 Carrier OR"}
     for line in txt.split("\n"):
-        if not line.startswith("| MUC5"): continue
+        # Gene names in table cells are italicised, so the row starts "| *MUC5...".
+        # A bare startswith("| MUC5") silently matched nothing and dropped every
+        # Table S2 check without failing, which is worse than a wrong answer.
+        if not re.match(r"\|\s*\*?MUC5", line): continue
         cells = [c.strip() for c in line.strip().strip("|").split("|")]
         if len(cells) != 6: continue
         hg, stratum = cells[0].replace("*", ""), cells[1].split(" (")[0]
@@ -387,7 +390,9 @@ else:
           "MUC5AC H3, adjusted for rs35705950 (same model)":
               "Table 2 / 1b H3+rs|rs35705950_T_count",
           "MUC5B H1, adjusted for rs35705950 (same model)":
-              "Table 2 / 4b MUC5B H1+rs|rs35705950_T_count"}
+              "Table 2 / 4b MUC5B H1+rs|rs35705950_T_count",
+          "MUC5AC H2, adjusted for H3 + rs35705950 (same model)":
+              "Table 2 / joint+rs|rs35705950_T_count"}
     for line in txt.split("\n"):
         if not line.startswith("|"): continue
         cells = [c.strip() for c in line.strip().strip("|").split("|")]

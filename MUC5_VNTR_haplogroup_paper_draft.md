@@ -152,11 +152,11 @@ Strengths include validated tSNPs from long-read sequencing and a cohort recruit
 | Ever-smoked, n (%) | 292 (75.8%) | 269 (69.7%) | 0.066 |
 | Pack-years (smokers), median (IQR) | 20.0 (9.0–39.0) | 19.0 (7.0–35.0) | 0.110 |
 | Asbestos-exposed (Peto), n (%) | 260 (67.5%) | 242 (62.7%) | 0.182 |
-| **_MUC5AC_ haplogroup** | | | |
+| **MUC5AC haplogroup** | | | |
 | H1 carrier, n (%) | 307 (79.7%) | 318 (82.4%) | 0.398 |
 | H2 carrier, n (%) | 99 (25.7%) | 157 (40.7%) | 1.5×10⁻⁵ |
 | H3 carrier, n (%) | 202 (52.5%) | 140 (36.3%) | 8.4×10⁻⁶ |
-| **_MUC5B_ haplogroup** | | | |
+| **MUC5B haplogroup** | | | |
 | H1 carrier, n (%) | 79 (20.5%) | 107 (27.7%) | 0.024 |
 | **rs35705950 (*MUC5B* promoter)** | | | |
 | T allele frequency | 0.33 | 0.12 | |
@@ -171,17 +171,18 @@ p-values: Mann-Whitney U (continuous); chi-squared (categorical). All statistics
 
 | Model | Term | OR | 95% CI | p |
 |-------|------|----|--------|:-:|
-| MUC5AC H3, unadjusted | H3 count | 1.63 | 1.26–2.09 | 1.8×10⁻⁴ |
-| MUC5AC H3, adjusted for rs35705950 | H3 count | 1.10 | 0.83–1.45 | 0.52 |
-| MUC5AC H3, adjusted for rs35705950 (same model) | rs35705950 T count | 3.90 | 2.83–5.38 | 1.1×10⁻¹⁶ |
-| MUC5AC H2, adjusted for H3 | H2 count | 0.58 | 0.43–0.78 | 2.7×10⁻⁴ |
-| MUC5AC H2, adjusted for H3 + rs35705950 | H2 count | 0.69 | 0.51–0.94 | 0.017 |
-| MUC5B H1, unadjusted | H1 count | 0.71 | 0.52–0.98 | 0.038 |
-| MUC5B H1, adjusted for rs35705950 | H1 count | 0.82 | 0.58–1.15 | 0.25 |
-| MUC5B H1, adjusted for rs35705950 (same model) | rs35705950 T count | 3.98 | 2.93–5.41 | 1.2×10⁻¹⁸ |
+| *MUC5AC* H3, unadjusted | H3 count | 1.63 | 1.26–2.09 | 1.8×10⁻⁴ |
+| *MUC5AC* H3, adjusted for rs35705950 | H3 count | 1.10 | 0.83–1.45 | 0.52 |
+| *MUC5AC* H3, adjusted for rs35705950 (same model) | rs35705950 T count | 3.90 | 2.83–5.38 | 1.1×10⁻¹⁶ |
+| *MUC5AC* H2, adjusted for H3 | H2 count | 0.58 | 0.43–0.78 | 2.7×10⁻⁴ |
+| *MUC5AC* H2, adjusted for H3 + rs35705950 | H2 count | 0.69 | 0.51–0.94 | 0.017 |
+| *MUC5AC* H2, adjusted for H3 + rs35705950 (same model) | rs35705950 T count | 3.72 | 2.68–5.15 | 2.6×10⁻¹⁵ |
+| *MUC5B* H1, unadjusted | H1 count | 0.71 | 0.52–0.98 | 0.038 |
+| *MUC5B* H1, adjusted for rs35705950 | H1 count | 0.82 | 0.58–1.15 | 0.25 |
+| *MUC5B* H1, adjusted for rs35705950 (same model) | rs35705950 T count | 3.98 | 2.93–5.41 | 1.2×10⁻¹⁸ |
 | rs35705950 alone (reference) | rs35705950 T count | 4.03 | 2.97–5.48 | 4.0×10⁻¹⁹ |
 
-All models adjusted for age, ever-smoking, PC1–5, and recruitment centre (N=771; one cases-only centre excluded). The "*MUC5AC* H2, adjusted for H3" rows are the joint model (H2 and H3 entered together, H1 reference), reporting the H2 term; in that model H3 is enriched and attenuates on rs35705950 adjustment as in the H3 main-effect rows above. rs35705950 odds ratios differ between rows because each is conditioned on the haplogroup term(s) in that model. Every haplogroup term is an allele-dosage count (0/1/2): the H2 term is the count of the direct H2 tag rs879201833, and the H3 and *MUC5B* H1 terms are the counts of their concordance SNPs.
+All models adjusted for age, ever-smoking, PC1–5, and recruitment centre (N=771; one cases-only centre excluded). The three "*MUC5AC* H2" rows are the joint model (H2 and H3 entered together, H1 reference): the first two report the H2 term, the third the promoter term from the same fit. In that model H3 is enriched and attenuates on rs35705950 adjustment as in the H3 main-effect rows above. rs35705950 odds ratios differ between rows because each is conditioned on the haplogroup term(s) in that model. Every haplogroup term is an allele-dosage count (0/1/2): the H2 term is the count of the direct H2 tag rs879201833, and the H3 and *MUC5B* H1 terms are the counts of their concordance SNPs.
 
 ---
 
@@ -259,25 +260,25 @@ A fifth Plender H2 tag, rs1201597847 (H2 r²=0.859), is present in the imputed d
 
 | tSNP | Position | Alleles | Counted | Freq | MAF | Hap. allele | Tags | r² |
 |--------------|---------|:---:|:---:|:--:|:--:|:--:|-----------|:--:|
-| rs28542750 | chr11:1165501 | T/A | T | 0.797 | 0.203 | A | MUC5AC H3 conc. | 1.0 |
-| rs769768817 | chr11:1195214 | G/C | C | 0.571 | 0.429 | C | MUC5AC H1 conc. | 0.899 |
-| rs2075842 | chr11:1193830 | G/C | G | 0.574 | 0.426 | G | MUC5AC H1 | 0.923 |
-| rs1132433 | chr11:1194354 | A/G | A | 0.574 | 0.426 | A | MUC5AC H1 | 0.923 |
-| rs1132434 | chr11:1195265 | G/C | C | 0.573 | 0.427 | C | MUC5AC H1 | 0.923 |
-| rs28652890 | chr11:1195858 | T/C | T | 0.573 | 0.427 | T | MUC5AC H1 | 0.923 |
-| rs879136008 | chr11:1182048 | A/T | T | 0.574 | 0.426 | T | MUC5AC H1 | 0.923 |
-| rs28519516 | chr11:1202343 | T/C | C | 0.773 | 0.227 | T | MUC5AC H2 | 0.862 |
-| rs28558973 | chr11:1202859 | A/G | G | 0.773 | 0.227 | A | MUC5AC H2 | 0.862 |
-| rs28368633 | chr11:1202914 | T/C | C | 0.773 | 0.227 | T | MUC5AC H2 | 0.862 |
-| rs36154966 | chr11:1178216 | C/G | C | 0.803 | 0.197 | G | MUC5AC H3 | 1.0 |
-| rs1004828576 | chr11:1178023 | A/G | A | 0.797 | 0.203 | G | MUC5AC H3 | 1.0 |
-| rs940158763 | chr11:1177688 | A/T | A | 0.797 | 0.203 | T | MUC5AC H3 | 1.0 |
-| rs36151150 | chr11:1177356 | T/C | T | 0.797 | 0.203 | C | MUC5AC H3 | 1.0 |
-| rs36132281 | chr11:1177269 | T/C | T | 0.797 | 0.203 | C | MUC5AC H3 | 1.0 |
-| rs35779873 | chr11:1197482 | C/T | C | 0.799 | 0.201 | T | MUC5AC H3 | 0.805 |
+| rs28542750 | chr11:1165501 | T/A | T | 0.797 | 0.203 | A | *MUC5AC* H3 conc. | 1.0 |
+| rs769768817 | chr11:1195214 | G/C | C | 0.571 | 0.429 | C | *MUC5AC* H1 conc. | 0.899 |
+| rs2075842 | chr11:1193830 | G/C | G | 0.574 | 0.426 | G | *MUC5AC* H1 | 0.923 |
+| rs1132433 | chr11:1194354 | A/G | A | 0.574 | 0.426 | A | *MUC5AC* H1 | 0.923 |
+| rs1132434 | chr11:1195265 | G/C | C | 0.573 | 0.427 | C | *MUC5AC* H1 | 0.923 |
+| rs28652890 | chr11:1195858 | T/C | T | 0.573 | 0.427 | T | *MUC5AC* H1 | 0.923 |
+| rs879136008 | chr11:1182048 | A/T | T | 0.574 | 0.426 | T | *MUC5AC* H1 | 0.923 |
+| rs28519516 | chr11:1202343 | T/C | C | 0.773 | 0.227 | T | *MUC5AC* H2 | 0.862 |
+| rs28558973 | chr11:1202859 | A/G | G | 0.773 | 0.227 | A | *MUC5AC* H2 | 0.862 |
+| rs28368633 | chr11:1202914 | T/C | C | 0.773 | 0.227 | T | *MUC5AC* H2 | 0.862 |
+| rs36154966 | chr11:1178216 | C/G | C | 0.803 | 0.197 | G | *MUC5AC* H3 | 1.0 |
+| rs1004828576 | chr11:1178023 | A/G | A | 0.797 | 0.203 | G | *MUC5AC* H3 | 1.0 |
+| rs940158763 | chr11:1177688 | A/T | A | 0.797 | 0.203 | T | *MUC5AC* H3 | 1.0 |
+| rs36151150 | chr11:1177356 | T/C | T | 0.797 | 0.203 | C | *MUC5AC* H3 | 1.0 |
+| rs36132281 | chr11:1177269 | T/C | T | 0.797 | 0.203 | C | *MUC5AC* H3 | 1.0 |
+| rs35779873 | chr11:1197482 | C/T | C | 0.799 | 0.201 | T | *MUC5AC* H3 | 0.805 |
 | rs35705950 | chr11:1219991 | G/T | G | 0.880 | 0.120 | T | *MUC5B* promoter | n/a |
-| rs879201833 | chr11:1182279 | A/G | A | 0.775 | 0.225 | G | MUC5AC H2 direct | 0.888 |
-| MUC5B discriminator | chr11:1244757 | C/G | C | 0.852 | 0.148 | C | MUC5B H2 | 1.0 |
+| rs879201833 | chr11:1182279 | A/G | A | 0.775 | 0.225 | G | *MUC5AC* H2 direct | 0.888 |
+| *MUC5B* discriminator | chr11:1244757 | C/G | C | 0.852 | 0.148 | C | *MUC5B* H2 | 1.0 |
 
 \normalsize
 
@@ -289,17 +290,17 @@ Alleles = reference/alternate on the GRCh38 forward strand, as carried in the TO
 
 | Haplogroup | Stratum | N | OR | 95% CI | p |
 |------------|---------|---|----|--------|---|
-| MUC5AC H3 | Non-carrier (T=0) | 448 | 1.15 | 0.79–1.69 | 0.46 |
-| MUC5AC H3 | Carrier (T≥1) | 313 | 1.00 | 0.64–1.54 | 0.98 |
-| MUC5AC H3 | Overall | 771 | 1.63 | 1.26–2.09 | 1.8×10⁻⁴ |
-| MUC5B H1 | Non-carrier (T=0) | 448 | 0.72 | 0.46–1.11 | 0.14 |
-| MUC5B H1 | Carrier (T≥1) | 313 | 1.03 | 0.54–1.95 | 0.93 |
-| MUC5B H1 | Overall | 771 | 0.71 | 0.52–0.98 | 0.038 |
-| MUC5AC H2 | Non-carrier (T=0) | 448 | 0.69 | 0.48–1.01 | 0.054 |
-| MUC5AC H2 | Carrier (T≥1) | 313 | 0.54 | 0.30–0.97 | 0.040 |
-| MUC5AC H2 | Overall | 771 | 0.69 | 0.51–0.94 | 0.017 |
+| *MUC5AC* H3 | Non-carrier (T=0) | 448 | 1.15 | 0.79–1.69 | 0.46 |
+| *MUC5AC* H3 | Carrier (T≥1) | 313 | 1.00 | 0.64–1.54 | 0.98 |
+| *MUC5AC* H3 | Overall | 771 | 1.63 | 1.26–2.09 | 1.8×10⁻⁴ |
+| *MUC5B* H1 | Non-carrier (T=0) | 448 | 0.72 | 0.46–1.11 | 0.14 |
+| *MUC5B* H1 | Carrier (T≥1) | 313 | 1.03 | 0.54–1.95 | 0.93 |
+| *MUC5B* H1 | Overall | 771 | 0.71 | 0.52–0.98 | 0.038 |
+| *MUC5AC* H2 | Non-carrier (T=0) | 448 | 0.69 | 0.48–1.01 | 0.054 |
+| *MUC5AC* H2 | Carrier (T≥1) | 313 | 0.54 | 0.30–0.97 | 0.040 |
+| *MUC5AC* H2 | Overall | 771 | 0.69 | 0.51–0.94 | 0.017 |
 
-All models adjusted for age, ever-smoking, PC1–5, and recruitment centre. Non-carrier stratum excludes centre 18 (n=4, cases only); carrier stratum excludes centres 17 (n=2) and 21 (n=4) (cases only), to avoid complete separation. H3 OR in non-carriers (1.15) is consistent with confounding but the analysis is underpowered to exclude an independent effect of modest magnitude. *MUC5AC* H2 rows are from the joint model (H2 tag and H3 entered together, H1 reference). The "Overall" column is not uniform: for H3 and *MUC5B* H1 it is the unadjusted single-term estimate, whereas for H2 it is the rs35705950-adjusted joint estimate (0.69; Table 2), shown because the H2 estimate of interest is the one adjusted for rs35705950, which is the estimate that did not replicate in TOPMed (Results). The non-carrier rows control for rs35705950 by design, since the promoter variant has no variance in that stratum; the carrier rows pool T=1 and T=2 without adjusting for T count.
+All models adjusted for age, ever-smoking, PC1–5, and recruitment centre. Non-carrier stratum excludes centre 18 (n=4, cases only); carrier stratum excludes centres 17 (n=2) and 21 (n=4) (cases only), to avoid complete separation. H3 OR in non-carriers (1.15) is consistent with confounding but the analysis is underpowered to exclude an independent effect of modest magnitude. *MUC5AC* H2 rows are from the joint model (H2 tag and H3 entered together, H1 reference). The "Overall" rows are not uniform: for H3 and *MUC5B* H1 the estimate is the unadjusted single-term one, whereas for H2 it is the rs35705950-adjusted joint estimate (0.69; Table 2), shown because the H2 estimate of interest is the one adjusted for rs35705950, which is the estimate that did not replicate in TOPMed (Results). The non-carrier rows control for rs35705950 by design, since the promoter variant has no variance in that stratum; the carrier rows pool T=1 and T=2 without adjusting for T count.
 
 ---
 
@@ -315,7 +316,7 @@ All models adjusted for age, ever-smoking, PC1–5, and recruitment centre. Non-
 
 \normalsize
 
-Ctrl freq = control-allele frequency; r (compl.) = correlation with the diplotype complement. The primary H2 measure is the direct tag rs879201833 (r²=0.888). The three Plender panel tags are in complete mutual linkage disequilibrium in our data (r=1.000) and give identical estimates, so they are shown as a single row; each was nonetheless fitted separately and all four estimates are verified individually by `code/verify_numbers.py`; the diplotype complement (2 − H1 − H3) is shown as a cross-check. All measures agree in direction and magnitude (adjusted OR 0.66–0.73), so the H2 residual is not an artefact of how H2 is assigned; the tags and the complement have comparable tagging quality (r²≈0.86–0.90), and the small differences between them should not be over-read. All models are the *MUC5AC* joint model (H2 and H3 entered together, H1 reference), adjusted for age, ever-smoking, PC1–5 and recruitment centre (N=771). Computed by `code/09_h2_direct_and_lrt.py`.
+Ctrl freq = frequency in the IPFJES controls (n=386) of the H2-defining allele, or of H2 itself for the complement; r (compl.) = correlation with the diplotype complement. The primary H2 measure is the direct tag rs879201833 (r²=0.888). The three Plender panel tags are in complete mutual linkage disequilibrium in our data (r=1.000) and give identical estimates, so they are shown as a single row; each was nonetheless fitted separately and all four estimates are verified individually by `code/verify_numbers.py`; the diplotype complement (2 − H1 − H3) is shown as a cross-check. All measures agree in direction and magnitude (adjusted OR 0.66–0.73), so the H2 residual is not an artefact of how H2 is assigned; the two tag sets have comparable tagging quality (Plender r² 0.888 and 0.862; the complement is derived by subtraction and has no tagging r² of its own), and the small differences between the three measures should not be over-read. All models are the *MUC5AC* joint model (H2 and H3 entered together, H1 reference), adjusted for age, ever-smoking, PC1–5 and recruitment centre (N=771). Computed by `code/09_h2_direct_and_lrt.py`.
 
 ---
 
@@ -326,7 +327,7 @@ Ctrl freq = control-allele frequency; r (compl.) = correlation with the diplotyp
 | Length measure | Imp. r² | r (H3) | Unadj. OR (95% CI) | +rs35705950 OR (95% CI) |
 |--------------|:--:|:--:|--------------|-------------|
 | 751 bp exon-31 insertion (chr11:1,188,533) | 0.99 | r=0.98 | 1.60 (1.24–2.07); p=3.2×10⁻⁴ | 1.06 (0.79–1.41); p=0.71 |
-| MUC5AC H3 clade tag (for comparison) | n/a | n/a | 1.63 (1.26–2.09); p=1.8×10⁻⁴ | 1.10 (0.83–1.45); p=0.52 |
+| *MUC5AC* H3 clade tag (for comparison) | n/a | n/a | 1.63 (1.26–2.09); p=1.8×10⁻⁴ | 1.10 (0.83–1.45); p=0.52 |
 | Composite exon-31 length, per +1 kb | n/a | r=0.92 | 1.40 (1.07–1.83); p=0.015 | 0.92 (0.68–1.25); p=0.60 |
 | Composite exon-31 length, per +1 repeat (24 bp) | n/a | r=0.92 | 1.008 (1.002–1.015); p=0.015 | 0.998 (0.991–1.005); p=0.60 |
 
@@ -340,12 +341,12 @@ Imp. r² = imputation r²; r (H3) = correlation with imputed H3 count. Repeat le
 
 | | |
 |---|---|
-| Variants tested (MUC6–MUC5B, chr11:1.01–1.263 Mb) | 109 common (MAF≥0.01), well-imputed (r²≥0.8) VNTR + SV alleles from the Bai et al. (2026) long-read assembly panel, via the ImputeSV server (69 VNTR panel, 40 SV panel) |
+| Variants tested (*MUC6*–*MUC5B*, chr11:1.01–1.263 Mb) | 109 common (MAF≥0.01), well-imputed (r²≥0.8) VNTR + SV alleles from the Bai et al. (2026) long-read assembly panel, via the ImputeSV server (69 VNTR panel, 40 SV panel) |
 | Allele size (length change versus reference) | 44 to 2,863 bp, median 291 bp; 106 of 109 at least 50 bp |
-| By gene | MUC2 73, MUC5AC 15, MUC5B 8, intergenic/flanking 13, MUC6 0 (imputes poorly) |
+| By gene | *MUC2* 73, *MUC5AC* 15, *MUC5B* 8, intergenic/flanking 13, *MUC6* 0 (imputes poorly) |
 | Effective independent tests (Li & Ji, 2005) | M_eff = 54; cluster-wide threshold 0.05/M_eff = 9.3×10⁻⁴ |
-| Reaching threshold marginally | 21 (mostly MUC2; 2 the already-reported MUC5AC exon-31) |
-| Strongest marginal | MUC2 +1479 bp \@1,096,722: OR 2.77, p=6×10⁻¹² (r=0.52 with rs35705950 T) |
+| Reaching threshold marginally | 21 (mostly *MUC2*; 2 the already-reported *MUC5AC* exon-31) |
+| Strongest marginal | *MUC2* +1479 bp \@1,096,722: OR 2.77, p=6×10⁻¹² (r=0.52 with rs35705950 T) |
 | Surviving adjustment for rs35705950 | 0; smallest adjusted p=0.003, expected P(min<0.003) over M_eff=54 = 0.15 |
 
 Every common, well-imputed VNTR and structural-variant allele in the mucin cluster was tested against IPF by logistic regression (adjusted for age, ever-smoking, PC1–5 and recruitment centre), marginally and with rs35705950 T-allele count added; loci present in both the VNTR and SV panels were de-duplicated and kept at their higher imputation r². The strong marginal associations, concentrated in the *MUC2* VNTR domain that no haplogroup analysis reaches, all reflect linkage disequilibrium with rs35705950 (top hits r=0.24–0.53 with the T allele) and are markedly attenuated by adjustment for it (the strongest, a *MUC2* allele, from OR 2.77 to 1.64); none survives the cluster-wide threshold, and the smallest adjusted p is within chance expectation across the correlated tests. Survival of adjustment would in any case not establish a causal repeat effect, since every variant lies in the same linkage-disequilibrium block (Discussion). Within this sample, then, no imputed mucin structural variant reached significance independently of the promoter variant. (The *MUC5AC* H2 haplogroup tags are SNPs, not structural variants, and so are not among the 109 alleles scanned here; the smallest adjusted p in this table, 0.003, is a low-frequency *MUC2* allele, whereas the residual H2 association discussed in the main text is assessed against a different, less stringent multiplicity family, the four primary haplogroup coefficients, not this 54-test cluster-wide threshold.) This is a power-limited negative, not a claim that no such variant exists: in a far larger IPF meta-analysis, GCTA-COJO resolves conditionally-independent signals annotated by nearest gene to *MUC2* (three) and *MUC6* (one), as well as several in *MUC5B* (Kousathanas et al., 2025), which 385 cases are underpowered to detect (*MUC2* and *MUC6* are canonically gastrointestinal mucins, so these labels are positional and need not imply an airway role for those proteins). The locus is therefore genuinely multi-signal; what the haplogroup analysis shows is more specifically that the *MUC5AC* and *MUC5B* *haplogroups* are not separable from rs35705950. Computed by `code/11_mucin_cluster_scan.py`; provenance in `code/REPRODUCE.md` (step 6).
@@ -356,11 +357,11 @@ Every common, well-imputed VNTR and structural-variant allele in the mucin clust
 
 | Haplogroup (concordance tSNP) | IPFJES controls (n=386), r (r²) | IPFJES full sample (n=771), r (r²) | 1000G EUR reference, r² |
 |-------------------------------|:--:|:--:|:--:|
-| MUC5AC H1 (rs769768817) | −0.13 (0.02) | −0.14 (0.02) | <0.05 |
-| MUC5AC H2 (rs879201833) | −0.16 (0.02) | −0.24 (0.06) | <0.05 |
-| MUC5AC H3 (rs28542750) | +0.31 (0.10) | +0.36 (0.13) | 0.10 |
-| MUC5B H1 (chr11:1,244,757) | −0.10 (0.01) | −0.11 (0.01) | <0.05 |
+| *MUC5AC* H1 (rs769768817) | −0.13 (0.02) | −0.14 (0.02) | <0.05 |
+| *MUC5AC* H2 (rs879201833) | −0.16 (0.02) | −0.24 (0.06) | <0.05 |
+| *MUC5AC* H3 (rs28542750) | +0.31 (0.10) | +0.36 (0.13) | 0.10 |
+| *MUC5B* H1 (chr11:1,244,757) | −0.10 (0.01) | −0.11 (0.01) | <0.05 |
 
-Each haplogroup is represented by its concordance tSNP (Methods); r is the Pearson correlation of the tag allele-dosage count with the rs35705950 T-allele count, r² its square. The reference column is the r² between rs35705950 and each tSNP in the 1000 Genomes European panel (phase 3; Ensembl LD API), the panel Plender et al. used for their locus-wide LD analysis; Plender et al. do not themselves tabulate haplogroup–rs35705950 LD. Only *MUC5AC* H3 shows appreciable LD with rs35705950, and the IPFJES-controls value (r²=0.10) is consistent with the reference (0.10), indicating the LD is representative rather than a feature of this cohort; the full-sample estimates are modestly larger because cases are enriched for risk haplotypes. H1, H2 and *MUC5B* H1 have negligible LD (r²<0.05) in both IPFJES and the reference (the Ensembl API does not return pairs below ~0.05). Computed by `code/13_ld_haplogroup_rs35705950.py`.
+Each haplogroup is represented by its concordance tSNP (Methods); r is the Pearson correlation of the tag allele-dosage count with the rs35705950 T-allele count, r² its square. The reference column is the r² between rs35705950 and each tSNP in the 1000 Genomes European panel (phase 3; Ensembl LD API), the panel Plender et al. used for their locus-wide LD analysis; Plender et al. do not themselves tabulate haplogroup–rs35705950 LD. Only *MUC5AC* H3 shows appreciable LD with rs35705950, and the IPFJES-controls value (r²=0.10) is consistent with the reference (0.10), indicating the LD is representative rather than a feature of this cohort; the full-sample estimates are modestly larger because cases are enriched for risk haplotypes. H1, H2 and *MUC5B* H1 have little LD with rs35705950: r² is 0.02 or less in the controls and 0.06 or less in the full sample, the largest being *MUC5AC* H2 at 0.06. All three fall below the ~0.05 floor beneath which the Ensembl API returns no value for the reference panel. Computed by `code/13_ld_haplogroup_rs35705950.py`.
 
 
