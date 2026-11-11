@@ -44,7 +44,7 @@ import numpy as np
 import pandas as pd
 
 warnings.filterwarnings("ignore")
-ROOT = "/home/drcjar/ipfjes-omics"
+ROOT = "/home/drcjar/academic/ipfjes-omics"
 
 clin = pd.read_csv(f"{ROOT}/flat_data_genotype_subset.csv"); clin["pid"] = clin.participant_id.astype(str)
 hap = pd.read_csv(f"{ROOT}/muc5_haplogroups.csv"); hap["pid"] = hap.IID.str.split("_").str[0]

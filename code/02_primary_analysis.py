@@ -19,11 +19,11 @@ from scipy import stats
 import statsmodels.formula.api as smf
 warnings.filterwarnings('ignore')
 
-pcs = pd.read_csv('/home/drcjar/ipfjes-omics/code/ipfjes_pca.eigenvec', sep=r'\s+')
+pcs = pd.read_csv('/home/drcjar/academic/ipfjes-omics/code/ipfjes_pca.eigenvec', sep=r'\s+')
 pcs['pid'] = pcs['IID'].astype(str)
-clin = pd.read_csv('/home/drcjar/ipfjes-omics/flat_data_genotype_subset.csv')
+clin = pd.read_csv('/home/drcjar/academic/ipfjes-omics/flat_data_genotype_subset.csv')
 clin['pid'] = clin['participant_id'].astype(str)
-hap  = pd.read_csv('/home/drcjar/ipfjes-omics/muc5_haplogroups.csv')
+hap  = pd.read_csv('/home/drcjar/academic/ipfjes-omics/muc5_haplogroups.csv')
 hap['pid'] = hap['IID'].str.split('_').str[0]
 
 df = (clin
@@ -31,7 +31,7 @@ df = (clin
       .merge(pcs[['pid','PC1','PC2','PC3','PC4','PC5']], on='pid')
       .dropna(subset=['age','ever_smoked','peto_exposed','centre']))
 # Primary MUC5AC H2 is the direct tag rs879201833 (H2_count is the diplotype complement).
-_h2 = pd.read_csv('/home/drcjar/ipfjes-omics/muc5ac_h2_tag.raw', sep=r'\s+')
+_h2 = pd.read_csv('/home/drcjar/academic/ipfjes-omics/muc5ac_h2_tag.raw', sep=r'\s+')
 _h2['pid'] = _h2['IID'].astype(str).str.split('_').str[0]
 _h2c = [c for c in _h2.columns if c.startswith('chr11:1182279')][0]
 df = df.merge(_h2[['pid', _h2c]], on='pid')

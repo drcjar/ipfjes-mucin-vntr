@@ -17,7 +17,7 @@
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv('/home/drcjar/ipfjes-omics/muc5_tsnps_dosage_pheno.csv')
+df = pd.read_csv('/home/drcjar/academic/ipfjes-omics/muc5_tsnps_dosage_pheno.csv')
 
 # ── MUC5AC concordance SNPs ────────────────────────────────────────────────
 # rs28542750: T allele = non-H3 (H3 r²=1.0); H3 count = 2 - T_dosage
@@ -92,12 +92,12 @@ import subprocess
 result = subprocess.run(
     ['./plink2', '--bfile', 'chr11', '--snp', 'chr11:1244757:C:G',
      '--export', 'A', '--out', 'muc5b_h1h2_tsnp'],
-    capture_output=True, text=True, cwd='/home/drcjar/ipfjes-omics'
+    capture_output=True, text=True, cwd='/home/drcjar/academic/ipfjes-omics'
 )
 print(result.stdout[-200:] if result.stdout else "")
 print(result.stderr[-200:] if result.stderr else "")
 
-muc5b = pd.read_csv('/home/drcjar/ipfjes-omics/muc5b_h1h2_tsnp.raw', sep=r'\s+')
+muc5b = pd.read_csv('/home/drcjar/academic/ipfjes-omics/muc5b_h1h2_tsnp.raw', sep=r'\s+')
 # restrict to the IPFJES cohort (5-6 digit IDs), as everywhere else in this project
 muc5b = muc5b[muc5b['IID'].str.split('_').str[0].str.len() <= 6].copy()
 muc5b['IID_bare'] = muc5b['IID'].str.split('_').str[0].astype(int)
@@ -156,5 +156,5 @@ out_cols = ['FID', 'IID', 'pheno',
             'H1_tagset_avg', 'H3_tagset_avg', 'H2_tagset_complement_avg',
             'has_H1', 'has_H2', 'has_H3', 'MUC5AC_diplotype',
             'rs35705950_T_count', 'MUC5B_H1_count', 'MUC5B_H2_count', 'MUC5B_diplotype']
-df[out_cols].to_csv('/home/drcjar/ipfjes-omics/muc5_haplogroups.csv', index=False)
+df[out_cols].to_csv('/home/drcjar/academic/ipfjes-omics/muc5_haplogroups.csv', index=False)
 print("\nSaved: muc5_haplogroups.csv")

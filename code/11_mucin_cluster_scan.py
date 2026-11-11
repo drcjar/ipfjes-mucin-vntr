@@ -44,7 +44,7 @@ import statsmodels.formula.api as smf
 
 warnings.filterwarnings("ignore")
 
-ROOT = "/home/drcjar/ipfjes-omics"
+ROOT = "/home/drcjar/academic/ipfjes-omics"
 PANELS = {
     "VNTR": f"{ROOT}/chr11.VNTR.GRCh38.noSNPs/chr11.VNTR.GRCh38.noSNPs.dose.vcf.gz",
     "SV": f"{ROOT}/chr11.SV.GRCh38.noSNPs/chr11.SV.GRCh38.noSNPs.dose.vcf.gz",

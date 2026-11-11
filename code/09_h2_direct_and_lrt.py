@@ -47,7 +47,7 @@ import statsmodels.formula.api as smf
 from scipy import stats
 warnings.filterwarnings("ignore")
 
-ROOT = "/home/drcjar/ipfjes-omics"
+ROOT = "/home/drcjar/academic/ipfjes-omics"
 
 pcs = pd.read_csv(f"{ROOT}/code/ipfjes_pca.eigenvec", sep=r"\s+")
 pcs["pid"] = pcs["IID"].astype(str)

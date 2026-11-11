@@ -60,7 +60,7 @@ import warnings
 from scipy import stats
 
 warnings.filterwarnings("ignore")
-R = "/home/drcjar/ipfjes-omics"
+R = "/home/drcjar/academic/ipfjes-omics"
 
 def other_allele(counted, ref, alt):
     """The other allele at a biallelic site.

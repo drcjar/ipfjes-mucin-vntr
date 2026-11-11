@@ -26,7 +26,7 @@ assignment may be wrong even if every downstream statistic looks fine.
 """
 import pandas as pd, numpy as np, warnings
 warnings.filterwarnings("ignore")
-R = "/home/drcjar/ipfjes-omics"
+R = "/home/drcjar/academic/ipfjes-omics"
 
 rows = []
 def audit(item, derived, expected, ok):

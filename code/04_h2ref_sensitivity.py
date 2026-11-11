@@ -28,7 +28,7 @@ NOT depend on the H1/H2 split at all. Runs on the regression sample N=798.
 import pandas as pd, numpy as np, warnings
 import statsmodels.formula.api as smf
 warnings.filterwarnings("ignore")
-R = "/home/drcjar/ipfjes-omics"
+R = "/home/drcjar/academic/ipfjes-omics"
 
 pcs = pd.read_csv(f"{R}/code/ipfjes_pca.eigenvec", sep=r"\s+"); pcs["pid"] = pcs.IID.astype(str)
 clin = pd.read_csv(f"{R}/flat_data_genotype_subset.csv"); clin["pid"] = clin.participant_id.astype(str)

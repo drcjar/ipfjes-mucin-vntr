@@ -46,7 +46,7 @@ from scipy import stats
 
 warnings.filterwarnings("ignore")
 
-ROOT = "/home/drcjar/ipfjes-omics"
+ROOT = "/home/drcjar/academic/ipfjes-omics"
 VCF = f"{ROOT}/chr11.VNTR.GRCh38.noSNPs/chr11.VNTR.GRCh38.noSNPs.dose.vcf.gz"
 
 # MUC5AC exon 31 (the 24 bp coding repeat); MUC5B intron-37 minisatellite at 1,255,550.

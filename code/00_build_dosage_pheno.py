@@ -41,7 +41,7 @@ Run: uv run --python .venv python3 code/00_build_dosage_pheno.py
 """
 import pandas as pd
 
-ROOT = "/home/drcjar/ipfjes-omics"
+ROOT = "/home/drcjar/academic/ipfjes-omics"
 
 # dosages (PLINK2 --export A); drop the unphenotyped PHENOTYPE column (all -9)
 dos = pd.read_csv(f"{ROOT}/muc5_tsnps_dosage.raw", sep=r"\s+").drop(columns=["PHENOTYPE"])

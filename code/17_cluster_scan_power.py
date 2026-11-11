@@ -52,7 +52,7 @@ import statsmodels.formula.api as smf
 from scipy import stats
 
 warnings.filterwarnings("ignore")
-ROOT = "/home/drcjar/ipfjes-omics"
+ROOT = "/home/drcjar/academic/ipfjes-omics"
 RNG = np.random.default_rng(20261031)   # fixed: the printed numbers must reproduce
 N_SIM = 200                             # SE averaged over simulated genotypes
 M_EFF = 54                              # from 11_mucin_cluster_scan.py (Li & Ji 2005)

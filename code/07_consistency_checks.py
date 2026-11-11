@@ -35,7 +35,7 @@ if the cohort numbers change.)
 import os, re
 from collections import defaultdict
 
-M = "/home/drcjar/ipfjes-omics/MUC5_VNTR_haplogroup_paper_draft.md"
+M = "/home/drcjar/academic/ipfjes-omics/MUC5_VNTR_haplogroup_paper_draft.md"
 txt = open(M).read()
 issues = []
 def flag(cls, msg): issues.append((cls, msg))

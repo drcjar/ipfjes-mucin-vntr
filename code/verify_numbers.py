@@ -45,7 +45,7 @@ from scipy import stats
 import statsmodels.formula.api as smf
 warnings.filterwarnings("ignore")
 
-ROOT = "/home/drcjar/ipfjes-omics"
+ROOT = "/home/drcjar/academic/ipfjes-omics"
 
 # Collects every check so we can summarise pass/fail at the end.
 _checks = []

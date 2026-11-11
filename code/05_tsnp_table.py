@@ -36,7 +36,7 @@ diffs this script's output against the table pasted into the manuscript.
 """
 import pandas as pd, re, warnings
 warnings.filterwarnings("ignore")
-R = "/home/drcjar/ipfjes-omics"
+R = "/home/drcjar/academic/ipfjes-omics"
 ad  = pd.read_csv(f"{R}/muc5_allele_direction.csv")
 dos = pd.read_csv(f"{R}/muc5_tsnps_dosage_pheno.csv")
 mb  = pd.read_csv(f"{R}/muc5b_h1h2_tsnp.raw", sep=r"\s+")

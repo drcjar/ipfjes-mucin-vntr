@@ -37,7 +37,7 @@ import pandas as pd
 import statsmodels.formula.api as smf
 
 warnings.filterwarnings("ignore")
-ROOT = "/home/drcjar/ipfjes-omics"
+ROOT = "/home/drcjar/academic/ipfjes-omics"
 
 raw = pd.read_csv(f"{ROOT}/kous_independent_signals.raw", sep=r"\s+")
 raw["pid"] = raw["IID"].astype(str).str.split("_").str[0]

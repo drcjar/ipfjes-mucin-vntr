@@ -24,7 +24,7 @@ import json, sys, warnings
 import numpy as np, pandas as pd, statsmodels.api as sm
 
 warnings.filterwarnings("ignore")
-R = "/home/drcjar/ipfjes-omics"
+R = "/home/drcjar/academic/ipfjes-omics"
 
 clin = pd.read_csv(f"{R}/flat_data_genotype_subset.csv"); clin["pid"] = clin.participant_id.astype(str)
 pcs  = pd.read_csv(f"{R}/code/ipfjes_pca.eigenvec", sep=r"\s+"); pcs["pid"] = pcs.IID.astype(str)

@@ -62,7 +62,7 @@ import warnings
 import pandas as pd
 
 warnings.filterwarnings("ignore")
-R = "/home/drcjar/ipfjes-omics"
+R = "/home/drcjar/academic/ipfjes-omics"
 
 rows = []
 
