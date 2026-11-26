@@ -1,4 +1,4 @@
-# Mucin VNTR haplogroup associations with idiopathic pulmonary fibrosis are not independent of rs35705950
+# Mucin VNTR haplogroup associations with IPF are not independent of rs35705950
 
 **Authors:** Carl J Reynolds¹², Richard J Allen³, Katherine A Fawcett³, Edward J Hollox⁴, Louise V Wain³⁶, Anna Peljto⁵, David A Schwartz⁵
 
@@ -22,11 +22,11 @@
 
 **Background:** The *MUC5B* promoter variant (rs35705950) is the strongest common genetic risk factor for idiopathic pulmonary fibrosis (IPF). *MUC5B* and *MUC5AC* contain variable number tandem repeat (VNTR) regions. Long-read sequencing resolves *MUC5AC* into three SNP-tagged haplogroups (H1, H2, H3) differing in repeat length, and *MUC5B* into two (H1, H2) differing in lineage but not length. The tags correlate with rs35705950, so whether a haplogroup effect is distinguishable from the promoter variant is unclear.
 
-**Methods:** We assigned *MUC5AC* and *MUC5B* haplogroups from imputed chromosome 11 array data in 771 European-ancestry IPF Job Exposures Study participants (385 cases, 386 controls). Logistic regression adjusted for age, smoking, principal components and centre, with and without rs35705950. The same models were fitted in TOPMed (1,961 cases, 3,816 controls).
+**Methods:** In this case-control study we assigned *MUC5AC* and *MUC5B* haplogroups from imputed chromosome 11 array data in 771 European-ancestry IPF Job Exposures Study participants (385 cases, 386 controls). Logistic regression adjusted for age, smoking, principal components and centre, with and without rs35705950. The same models were fitted in TOPMed (1,961 cases, 3,816 controls).
 
-**Results:** *MUC5AC* H3 and *MUC5B* H1 were each associated with IPF (H3 OR 1.63, 95% CI 1.26–2.09, p=1.8×10⁻⁴; *MUC5B* H1 OR 0.71, 0.52–0.98, p=0.038). Both attenuated on adjustment for rs35705950 (H3 OR 1.10, 0.83–1.45, p=0.52; *MUC5B* H1 OR 0.82, 0.58–1.15, p=0.25). A *MUC5AC* H2 association persisted after adjustment (OR 0.69, 0.51–0.94, p=0.017). In TOPMed the H3 findings were consistent with those from IPFJES (unadjusted OR 1.62, 1.47–1.78, p<10⁻¹⁵; adjusted 0.94, 0.84–1.05, p=0.26), but the rs35705950-adjusted H2 association did not replicate: the estimate was null overall (OR 0.99, 0.88–1.11, p=0.87) and in men and women separately (1.00, 0.87–1.16; 0.97, 0.79–1.19). The *MUC5B* H1 and H2 haplogroups could not be tagged in TOPMed.
+**Results:** *MUC5AC* H3 and *MUC5B* H1 were each associated with IPF (H3 OR 1.63, 95% CI 1.26–2.09, p=1.8×10⁻⁴; *MUC5B* H1 OR 0.71, 0.52–0.98, p=0.038). Both attenuated on adjustment for rs35705950 (H3 OR 1.10, 0.83–1.45, p=0.52; *MUC5B* H1 OR 0.82, 0.58–1.15, p=0.25). A *MUC5AC* H2 association persisted after adjustment (OR 0.69, 0.51–0.94, p=0.017). In TOPMed the H3 findings were consistent with those from IPFJES (unadjusted OR 1.62, 1.47–1.78, p<10⁻¹⁵; adjusted 0.94, 0.84–1.05, p=0.26), but the rs35705950-adjusted H2 association did not replicate (OR 0.99, 0.88–1.11, p=0.87), including in men and women separately. *MUC5B* haplogroups could not be tagged in TOPMed.
 
-**Conclusions:** The *MUC5AC* H3 and *MUC5B* H1 associations are not independent of rs35705950. The *MUC5AC* H2 association seen here did not replicate. VNTR haplogroup does not appear to contribute to IPF risk independently of rs35705950.
+**Conclusions:** The *MUC5AC* H3 and *MUC5B* H1 associations are not independent of rs35705950. The *MUC5AC* H2 association seen here did not replicate.
 
 ---
 
@@ -77,6 +77,8 @@ The same models were fitted in an independent TOPMed IPF case-control sample (de
 Power for the cluster-wide scan was computed for each of the eight mucin-cluster 11p15.5 signals reported by Kousathanas et al. (their Supplementary Table 5), using the European allele frequency and odds ratio reported there. For each signal, genotypes were simulated under Hardy-Weinberg equilibrium at the reported frequency, the scan model was fitted in the 771 analytical participants to obtain the standard error of the log odds ratio, and power was evaluated analytically at the cluster-wide threshold (α = 0.05/54, the effective number of independent tests; `code/17_cluster_scan_power.py`).
 
 Four primary haplogroup coefficients were tested; p-values are two-sided and uncorrected, and nominal results described as such.
+
+Analysis code was written with the assistance of a large language model (Claude, Anthropic) under the authors' direction; all reported estimates were re-derived independently by a separate code path.
 
 ---
 
@@ -219,6 +221,8 @@ Reynolds CJ, Sisodia R, Barber C, et al. What role for asbestos in idiopathic pu
 Seibold MA, et al. A common *MUC5B* promoter polymorphism and pulmonary fibrosis. *N Engl J Med*. 2011;364(16):1503–1512.
 
 ---
+
+*Acknowledgements: a large language model (Claude, Anthropic) was used to assist with drafting and structuring the manuscript text. The authors reviewed and verified all content and take responsibility for it.*
 
 *Conflict of interest: A. Peljto is a consultant for Eleven P15 Inc. L.V. Wain has received funding or in-kind support for research from GSK, Pfizer, Genentech Roche and Orion Pharma, unrelated to this work. The other authors have nothing to disclose.*
 
